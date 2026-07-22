@@ -240,7 +240,11 @@ def format_candidate_line(record: dict[str, Any]) -> str:
     if status == "invalid" and reason:
         extra = f"  {reason}"
     elif status == "timeout":
-        extra = "  after timeout"
+        elapsed = record["search"]["execution"].get("elapsed_ms")
+        if elapsed is not None:
+            extra = f"  after {elapsed / 1000:.1f}s"
+        else:
+            extra = "  after timeout"
     elif status == "crash":
         extra = f"  {reason}" if reason else ""
     else:
@@ -315,10 +319,7 @@ def evolve(
 
     seed_score = seed_record["search"]["evaluation"].get("score")
     print(format_candidate_line(seed_record))
-    print(f"seed search score: {seed_score:.6f}" if seed_score is not None else "seed search score: -")
-    print(f"run directory: {run_dir}")
 
-    # Commit 1 stops here when budget == 0.
     if descendant_budget <= 0:
         summary = {
             "schema_version": 1,
@@ -351,7 +352,151 @@ def evolve(
         (run_dir / "summary.json").write_text(
             json.dumps(summary, indent=2) + "\n", encoding="utf-8"
         )
+        print(f"seed search score: {seed_score:.6f}" if seed_score is not None else "seed search score: -")
+        print(f"run directory: {run_dir}")
         return {"run_dir": run_dir, "records": records, "summary": summary}
 
-    # Placeholder for later commits — full population lives in subsequent slices.
-    raise RuntimeError("descendant budget > 0 requires commit-2 population support")
+    seen_hashes: set[str] = {seed_record["artifact"]["sha256"]}
+    valid_records: list[dict[str, Any]] = []
+    if seed_record["search"]["evaluation"]["status"] == "valid":
+        valid_records.append(seed_record)
+
+    counts = {"valid": 0, "invalid": 0, "crash": 0, "timeout": 0}
+
+    for proposal_index in range(descendant_budget):
+        parent = _select_parent(valid_records, proposal_index)
+        proposal = _propose_descendant(
+            proposal_index=proposal_index,
+            variation_seed=variation_seed,
+            parent=parent,
+            occupied_cells=[],
+            variation_command=variation_command,
+            timeout_seconds=timeout,
+            seen_hashes=seen_hashes,
+        )
+        source_text = proposal["source"]
+        # Guarantee source uniqueness for offline schedule collisions.
+        source_hash = tp.sha256_text(_normalize_source(source_text))
+        attempt = 0
+        while source_hash in seen_hashes:
+            attempt += 1
+            source_text = source_text.rstrip() + f"\n# unique_nudge_{proposal_index}_{attempt}\n"
+            source_hash = tp.sha256_text(_normalize_source(source_text))
+        seen_hashes.add(source_hash)
+
+        search_result = evaluate_candidate_source(
+            source_text, benchmark, search_faults, timeout
+        )
+        generation = (parent["generation"] + 1) if parent else 1
+        mutation = {
+            "provider": proposal.get("provider", "offline"),
+            "operator": proposal.get("operator", "mutate"),
+            "seed": variation_seed,
+            "description": proposal.get("description", ""),
+            "meta": proposal.get("meta"),
+        }
+        record = materialize_candidate(
+            run_dir=run_dir,
+            index=proposal_index + 1,
+            source_text=source_text,
+            generation=generation,
+            parent=parent,
+            mutation=mutation,
+            search_result=search_result,
+            archive_info=None,
+        )
+        status = record["search"]["evaluation"]["status"]
+        if status in counts:
+            counts[status] += 1
+        append_jsonl(jsonl_path, record)
+        records.append(record)
+        if status == "valid":
+            valid_records.append(record)
+        print(format_candidate_line(record))
+
+    descendant_records = records[1:]
+    unique_sources = len({r["artifact"]["sha256"] for r in descendant_records})
+    summary = {
+        "schema_version": 1,
+        "run_id": run_dir.name,
+        "executed_command": executed_command,
+        "variation_seed": variation_seed,
+        "python_version": sys.version.split()[0],
+        "paths": {
+            "run_dir": str(run_dir),
+            "candidates_jsonl": str(jsonl_path.relative_to(run_dir)),
+        },
+        "hashes": {
+            "mission": tp.sha256_file(mission["_mission_path"]),
+            "benchmark": tp.sha256_file(mission["_benchmark_path"]),
+            "search": tp.sha256_file(mission["_search_path"]),
+        },
+        "seed": {
+            "candidate_id": seed_record["candidate_id"],
+            "search_score": seed_score,
+        },
+        "descendants": {
+            "attempts": len(descendant_records),
+            "unique_sources": unique_sources,
+            "valid": counts["valid"],
+            "invalid": counts["invalid"],
+            "crash": counts["crash"],
+            "timeout": counts["timeout"],
+        },
+    }
+    (run_dir / "summary.json").write_text(
+        json.dumps(summary, indent=2) + "\n", encoding="utf-8"
+    )
+
+    print()
+    print(f"seed search score: {seed_score:.6f}" if seed_score is not None else "seed search score: -")
+    print(
+        "descendants: "
+        f"attempts={counts['valid'] + counts['invalid'] + counts['crash'] + counts['timeout']} "
+        f"valid={counts['valid']} invalid={counts['invalid']} "
+        f"crash={counts['crash']} timeout={counts['timeout']}"
+    )
+    print(f"run directory: {run_dir}")
+    return {"run_dir": run_dir, "records": records, "summary": summary}
+
+
+def _normalize_source(text: str) -> str:
+    normalized = text.replace("\r\n", "\n")
+    if not normalized.endswith("\n"):
+        normalized += "\n"
+    return normalized
+
+
+def _select_parent(valid_records: list[dict[str, Any]], proposal_index: int) -> dict[str, Any]:
+    """Pick a parent from valid candidates (seed included)."""
+    if not valid_records:
+        raise RuntimeError("no valid parents available")
+    # Early proposals explore from the seed; later ones cycle retained valids.
+    if proposal_index < 6:
+        return valid_records[0]
+    return valid_records[proposal_index % len(valid_records)]
+
+
+def _propose_descendant(
+    *,
+    proposal_index: int,
+    variation_seed: int,
+    parent: dict[str, Any],
+    occupied_cells: list[list[str]],
+    variation_command: str | None,
+    timeout_seconds: float,
+    seen_hashes: set[str],
+) -> dict[str, Any]:
+    if variation_command:
+        raise RuntimeError("external variation-command support lands in a later commit")
+    proposal = tp.generate_offline_descendant(
+        proposal_index=proposal_index,
+        variation_seed=variation_seed,
+        parent=parent,
+        occupied_cells=occupied_cells,
+    )
+    # Embed proposal index so distinct schedule slots never hash-collide.
+    source = proposal["source"].rstrip() + f"\n# variant_slot={proposal_index}\n"
+    proposal = dict(proposal)
+    proposal["source"] = source
+    return proposal

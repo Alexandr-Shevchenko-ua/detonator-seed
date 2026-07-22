@@ -47,3 +47,22 @@ def test_evolve_budget_zero(tmp_path: Path):
     jsonl = (out / "candidates.jsonl").read_text(encoding="utf-8").strip().splitlines()
     assert len(jsonl) == 1
     assert (out / "candidates" / "c0000.py").is_file()
+
+
+def test_evolve_population_exposes_breakage(tmp_path: Path):
+    out = tmp_path / "slice-2"
+    result = evolve(MISSION, budget=24, output=out)
+    records = result["records"]
+    descendants = records[1:]
+    assert len(descendants) == 24
+    statuses = [r["search"]["evaluation"]["status"] for r in descendants]
+    assert statuses.count("valid") >= 20
+    assert "invalid" in statuses
+    assert "crash" in statuses
+    assert "timeout" in statuses
+    hashes = {r["artifact"]["sha256"] for r in descendants}
+    assert len(hashes) == 24
+    for record in descendants:
+        assert (out / record["artifact"]["path"]).is_file()
+        assert record["parent_id"] is not None
+        assert record["search"]["execution"]["status"] in {"ok", "crash", "timeout"}

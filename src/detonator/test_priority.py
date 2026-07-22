@@ -181,15 +181,17 @@ def render_policy_source(
     tb = tie_breaker
 
     if family == "shortest_first":
-        body = f"""
+        sort_key = f"""
     def sort_key(test):
         covers = set(test.get("covers") or [])
         covers_change = 0 if covers & changed else 1
         tie = test["id"] if {tb!r} == "id" else -float(test.get("historical_failure_rate") or 0.0)
-        return (int(test["cost_units"]), covers_change * {cw!r}, tie)
+        return (int(test["cost_units"]) * {cost_w!r}, covers_change * {cw!r}, tie)
 """
-    elif family == "historical_risk_first":
-        body = f"""
+        return _render_sorted_policy(family, sort_key)
+
+    if family == "historical_risk_first":
+        sort_key = f"""
     def sort_key(test):
         covers = set(test.get("covers") or [])
         covers_change = 0 if covers & changed else 1
@@ -197,8 +199,10 @@ def render_policy_source(
         tie = test["id"] if {tb!r} == "id" else int(test["cost_units"])
         return (-risk * {rw!r}, covers_change * {cw!r}, int(test["cost_units"]) * {cost_w!r}, tie)
 """
-    elif family == "change_coverage_first":
-        body = f"""
+        return _render_sorted_policy(family, sort_key)
+
+    if family == "change_coverage_first":
+        sort_key = f"""
     def sort_key(test):
         covers = set(test.get("covers") or [])
         covers_change = 0 if covers & changed else 1
@@ -206,8 +210,10 @@ def render_policy_source(
         tie = test["id"] if {tb!r} == "id" else -risk
         return (covers_change, int(test["cost_units"]) * {cost_w!r}, -risk * {rw!r}, tie)
 """
-    elif family == "risk_per_cost":
-        body = f"""
+        return _render_sorted_policy(family, sort_key)
+
+    if family == "risk_per_cost":
+        sort_key = f"""
     def sort_key(test):
         covers = set(test.get("covers") or [])
         covers_change = 0 if covers & changed else 1
@@ -217,8 +223,10 @@ def render_policy_source(
         tie = test["id"] if {tb!r} == "id" else covers_change
         return (-rpc * {rw!r}, covers_change * {cw!r}, cost * {cost_w!r}, tie)
 """
-    elif family == "weighted_hybrid":
-        body = f"""
+        return _render_sorted_policy(family, sort_key)
+
+    if family == "weighted_hybrid":
+        sort_key = f"""
     def sort_key(test):
         covers = set(test.get("covers") or [])
         covers_change = 1.0 if covers & changed else 0.0
@@ -232,57 +240,58 @@ def render_policy_source(
         tie = test["id"] if {tb!r} == "id" else -risk
         return (-score, tie)
 """
-    elif family == "coverage_diverse":
-        body = f"""
-    remaining = list(tests)
-    ordered = []
-    seen_symbols = set()
-    while remaining:
-        def greedy_key(test):
-            covers = set(test.get("covers") or [])
-            novel = 0 if (covers - seen_symbols) else 1
-            covers_change = 0 if covers & changed else 1
-            risk = float(test.get("historical_failure_rate") or 0.0)
-            cost = int(test["cost_units"])
-            tie = test["id"] if {tb!r} == "id" else -risk
-            return (
-                novel,
-                covers_change,
-                -risk * {rw!r},
-                cost * {cost_w!r},
-                tie,
-            )
-        remaining.sort(key=greedy_key)
-        chosen = remaining.pop(0)
-        ordered.append(chosen["id"])
-        seen_symbols.update(chosen.get("covers") or [])
-    return ordered
-"""
-    else:
-        raise ValueError(f"unknown policy family: {family}")
+        return _render_sorted_policy(family, sort_key)
 
     if family == "coverage_diverse":
         return textwrap.dedent(
             f'''\
             """Offline-generated prioritization policy ({family})."""
 
+
             def prioritize(change: dict, tests: list[dict]) -> list[str]:
                 changed = set(change.get("changed_symbols") or [])
-            {body}
+                remaining = list(tests)
+                ordered = []
+                seen_symbols = set()
+                while remaining:
+                    def greedy_key(test):
+                        covers = set(test.get("covers") or [])
+                        novel = 0 if (covers - seen_symbols) else 1
+                        covers_change = 0 if covers & changed else 1
+                        risk = float(test.get("historical_failure_rate") or 0.0)
+                        cost = int(test["cost_units"])
+                        tie = test["id"] if {tb!r} == "id" else -risk
+                        return (
+                            novel,
+                            covers_change,
+                            -risk * {rw!r},
+                            cost * {cost_w!r},
+                            tie,
+                        )
+                    remaining.sort(key=greedy_key)
+                    chosen = remaining.pop(0)
+                    ordered.append(chosen["id"])
+                    seen_symbols.update(chosen.get("covers") or [])
+                return ordered
             '''
         )
-    return textwrap.dedent(
-        f'''\
-        """Offline-generated prioritization policy ({family})."""
 
-        import math
+    raise ValueError(f"unknown policy family: {family}")
 
-        def prioritize(change: dict, tests: list[dict]) -> list[str]:
-            changed = set(change.get("changed_symbols") or [])
-        {body}
-            ordered = sorted(tests, key=sort_key)
-            return [t["id"] for t in ordered]
-        '''
+
+def _render_sorted_policy(family: str, sort_key_block: str) -> str:
+    body = textwrap.indent(textwrap.dedent(sort_key_block).strip("\n"), "    ")
+    return (
+        f'"""Offline-generated prioritization policy ({family})."""\n'
+        "\n"
+        "import math\n"
+        "\n"
+        "\n"
+        "def prioritize(change: dict, tests: list[dict]) -> list[str]:\n"
+        '    changed = set(change.get("changed_symbols") or [])\n'
+        f"{body}\n"
+        "    ordered = sorted(tests, key=sort_key)\n"
+        '    return [t["id"] for t in ordered]\n'
     )
 
 
@@ -414,14 +423,16 @@ def generate_offline_descendant(
             "meta": {"family": "timeout"},
         }
 
-    # Exploration: first six valid slots cover each family at extreme settings.
+    # Exploration: cover policy families and all four behavior cells.
     exploration = [
         ("shortest_first", {"change_weight": 0.0, "risk_weight": 0.0, "cost_weight": 1.0}),
-        ("historical_risk_first", {"change_weight": 0.0, "risk_weight": 2.0, "cost_weight": 0.5}),
+        # Expensive-first, change-agnostic → cost_tolerant/general.
+        ("shortest_first", {"change_weight": 0.0, "risk_weight": 0.0, "cost_weight": -1.0}),
         ("change_coverage_first", {"change_weight": 2.0, "risk_weight": 0.5, "cost_weight": 1.0}),
         ("risk_per_cost", {"change_weight": 1.0, "risk_weight": 2.0, "cost_weight": 1.0}),
         ("weighted_hybrid", {"change_weight": 1.5, "risk_weight": 1.0, "cost_weight": 0.8}),
         ("coverage_diverse", {"change_weight": 1.0, "risk_weight": 1.0, "cost_weight": 1.0}),
+        ("historical_risk_first", {"change_weight": 0.0, "risk_weight": 2.0, "cost_weight": 0.5}),
     ]
 
     valid_index = proposal_index

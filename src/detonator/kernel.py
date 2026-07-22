@@ -214,8 +214,9 @@ def materialize_candidate(
 
 def append_jsonl(path: Path, record: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+    payload = {k: v for k, v in record.items() if not k.startswith("_")}
     with path.open("a", encoding="utf-8", newline="\n") as handle:
-        handle.write(json.dumps(record, ensure_ascii=True, sort_keys=False) + "\n")
+        handle.write(json.dumps(payload, ensure_ascii=True, sort_keys=False) + "\n")
 
 
 def format_candidate_line(record: dict[str, Any]) -> str:
@@ -314,6 +315,7 @@ def evolve(
         search_result=seed_result,
         archive_info=None,
     )
+    seed_record["_source_text"] = seed_source
     records = [seed_record]
 
     seed_score = seed_record["search"]["evaluation"].get("score")
@@ -399,7 +401,6 @@ def evolve(
             "description": proposal.get("description", ""),
             "meta": proposal.get("meta"),
         }
-        # Temporary record for archive decision.
         provisional = materialize_candidate(
             run_dir=run_dir,
             index=proposal_index + 1,
@@ -410,6 +411,7 @@ def evolve(
             search_result=search_result,
             archive_info=None,
         )
+        provisional["_source_text"] = source_text
         archive_info = _archive_consider(archive, provisional)
         provisional["archive"] = archive_info
         status = provisional["search"]["evaluation"]["status"]
@@ -730,7 +732,14 @@ def _propose_descendant(
     seen_hashes: set[str],
 ) -> dict[str, Any]:
     if variation_command:
-        raise RuntimeError("external variation-command support lands in a later commit")
+        return _propose_via_command(
+            variation_command=variation_command,
+            proposal_index=proposal_index,
+            variation_seed=variation_seed,
+            parent=parent,
+            occupied_cells=occupied_cells,
+            timeout_seconds=timeout_seconds,
+        )
     proposal = tp.generate_offline_descendant(
         proposal_index=proposal_index,
         variation_seed=variation_seed,
@@ -742,6 +751,96 @@ def _propose_descendant(
     proposal = dict(proposal)
     proposal["source"] = source
     return proposal
+
+
+def _propose_via_command(
+    *,
+    variation_command: str,
+    proposal_index: int,
+    variation_seed: int,
+    parent: dict[str, Any],
+    occupied_cells: list[list[str]],
+    timeout_seconds: float,
+) -> dict[str, Any]:
+    import shlex
+
+    parent_source = parent.get("_source_text")
+    if not parent_source:
+        raise RuntimeError(
+            f"parent {parent.get('candidate_id')} missing in-memory source for variation-command"
+        )
+
+    behavior = parent.get("search", {}).get("behavior") or {}
+    target_cell = behavior.get("cell")
+    if not target_cell and occupied_cells:
+        target_cell = occupied_cells[proposal_index % len(occupied_cells)]
+
+    evaluation = parent.get("search", {}).get("evaluation") or {}
+    request = {
+        "protocol_version": 1,
+        "proposal_index": proposal_index,
+        "run_seed": variation_seed,
+        "parent": {
+            "candidate_id": parent["candidate_id"],
+            "sha256": (parent.get("artifact") or {}).get("sha256"),
+            "source": parent_source,
+        },
+        "target_cell": target_cell,
+        "search_feedback": {
+            "score": evaluation.get("score"),
+            "fault_traces": evaluation.get("fault_traces") or [],
+            "behavior": behavior,
+        },
+        "archive": {"occupied_cells": occupied_cells},
+        "artifact_contract": {
+            "entrypoint": "prioritize",
+            "required_output": "exact permutation of test ids",
+        },
+    }
+    # Explicitly omit holdout fields.
+    assert "holdout" not in request
+
+    argv = shlex.split(variation_command)
+    try:
+        completed = subprocess.run(
+            argv,
+            input=json.dumps(request),
+            text=True,
+            capture_output=True,
+            timeout=max(timeout_seconds, 5.0),
+            check=False,
+            shell=False,
+        )
+    except subprocess.TimeoutExpired as exc:
+        raise RuntimeError(
+            f"variation-command timed out after {max(timeout_seconds, 5.0):.1f}s: "
+            f"{variation_command}"
+        ) from exc
+    except OSError as exc:
+        raise RuntimeError(f"variation-command failed to start: {exc}") from exc
+
+    if completed.returncode != 0:
+        stderr = (completed.stderr or "").strip()
+        raise RuntimeError(
+            f"variation-command exited {completed.returncode}: {stderr or completed.stdout}"
+        )
+    try:
+        response = json.loads(completed.stdout)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(
+            f"variation-command returned invalid JSON: {completed.stdout!r}"
+        ) from exc
+    source = response.get("source")
+    if not isinstance(source, str) or not source.strip():
+        raise RuntimeError("variation-command response missing source string")
+    description = response.get("mutation_description") or "external proposal"
+    return {
+        "source": source.rstrip() + f"\n# external_slot={proposal_index}\n",
+        "provider": "external",
+        "operator": "external_command",
+        "description": description,
+        "meta": {"family": "external", "command": variation_command},
+    }
 
 
 def load_run_records(run_dir: Path) -> list[dict[str, Any]]:

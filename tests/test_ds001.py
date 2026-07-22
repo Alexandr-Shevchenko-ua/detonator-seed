@@ -136,3 +136,20 @@ def test_inspect_verify_and_replay(tmp_path: Path):
     evolve(MISSION, budget=24, output=out)
     code = inspect_run(out, verify=True, replay_retained=True, mission_path=MISSION)
     assert code == 0
+
+
+def test_external_variation_command(tmp_path: Path):
+    out = tmp_path / "slice-5"
+    command = f"uv run python {ROOT / 'examples' / 'providers' / 'sample_provider.py'}"
+    result = evolve(MISSION, budget=4, output=out, variation_command=command)
+    descendants = result["records"][1:]
+    assert len(descendants) == 4
+    for record in descendants:
+        assert record["mutation"]["provider"] == "external"
+        assert (out / record["artifact"]["path"]).is_file()
+        assert record["search"]["evaluation"]["status"] in {
+            "valid",
+            "invalid",
+            "crash",
+            "timeout",
+        }

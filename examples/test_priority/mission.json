@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "domain": "test_priority",
+  "seed": "seed.py",
+  "benchmark": "benchmark.py",
+  "search_faults": "search.json",
+  "holdout_faults": "holdout.json",
+  "descendant_budget": 24,
+  "variation_seed": 1729,
+  "candidate_timeout_seconds": 2
+}

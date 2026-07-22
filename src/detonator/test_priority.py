@@ -480,3 +480,23 @@ ARCHIVE_CELLS: list[tuple[str, str]] = [
     ("cost_tolerant", "change_focused"),
     ("cost_tolerant", "general"),
 ]
+
+
+class HoldoutGate:
+    """Procedural gate: holdout bytes are readable only after archive freeze."""
+
+    def __init__(self, path: Path):
+        self.path = path
+        self._frozen = False
+
+    def mark_frozen(self) -> None:
+        self._frozen = True
+
+    @property
+    def is_frozen(self) -> bool:
+        return self._frozen
+
+    def load_fault_ids(self) -> list[str]:
+        if not self._frozen:
+            raise RuntimeError("holdout must not be loaded before archive freeze")
+        return load_fault_ids(self.path)

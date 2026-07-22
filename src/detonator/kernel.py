@@ -314,11 +314,15 @@ def evolve(
         search_result=seed_result,
         archive_info=None,
     )
-    append_jsonl(jsonl_path, seed_record)
     records = [seed_record]
 
     seed_score = seed_record["search"]["evaluation"].get("score")
+    archive: dict[tuple[str, str], dict[str, Any]] = {}
+    seed_record["archive"] = _archive_consider(archive, seed_record)
+    append_jsonl(jsonl_path, seed_record)
     print(format_candidate_line(seed_record))
+
+    holdout_gate = tp.HoldoutGate(mission["_holdout_path"])
 
     if descendant_budget <= 0:
         summary = {
@@ -364,18 +368,18 @@ def evolve(
     counts = {"valid": 0, "invalid": 0, "crash": 0, "timeout": 0}
 
     for proposal_index in range(descendant_budget):
-        parent = _select_parent(valid_records, proposal_index)
+        parent = _select_parent(archive, valid_records, proposal_index)
+        occupied = [[k[0], k[1]] for k in sorted(archive.keys())]
         proposal = _propose_descendant(
             proposal_index=proposal_index,
             variation_seed=variation_seed,
             parent=parent,
-            occupied_cells=[],
+            occupied_cells=occupied,
             variation_command=variation_command,
             timeout_seconds=timeout,
             seen_hashes=seen_hashes,
         )
         source_text = proposal["source"]
-        # Guarantee source uniqueness for offline schedule collisions.
         source_hash = tp.sha256_text(_normalize_source(source_text))
         attempt = 0
         while source_hash in seen_hashes:
@@ -395,7 +399,8 @@ def evolve(
             "description": proposal.get("description", ""),
             "meta": proposal.get("meta"),
         }
-        record = materialize_candidate(
+        # Temporary record for archive decision.
+        provisional = materialize_candidate(
             run_dir=run_dir,
             index=proposal_index + 1,
             source_text=source_text,
@@ -405,17 +410,103 @@ def evolve(
             search_result=search_result,
             archive_info=None,
         )
-        status = record["search"]["evaluation"]["status"]
+        archive_info = _archive_consider(archive, provisional)
+        provisional["archive"] = archive_info
+        status = provisional["search"]["evaluation"]["status"]
         if status in counts:
             counts[status] += 1
-        append_jsonl(jsonl_path, record)
-        records.append(record)
+        append_jsonl(jsonl_path, provisional)
+        records.append(provisional)
         if status == "valid":
-            valid_records.append(record)
-        print(format_candidate_line(record))
+            valid_records.append(provisional)
+        print(format_candidate_line(provisional))
+
+    # Freeze archive before any holdout access.
+    archive_body = _freeze_archive(archive, records[-1]["candidate_id"])
+    archive_body_bytes = json.dumps(archive_body, indent=2, sort_keys=True) + "\n"
+    archive_hash = tp.sha256_text(archive_body_bytes)
+    archive_doc = dict(archive_body)
+    archive_doc["archive_sha256"] = archive_hash
+    archive_path = run_dir / "archive.json"
+    archive_path.write_text(
+        json.dumps(archive_doc, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+
+    holdout_gate.mark_frozen()
+    holdout_faults = holdout_gate.load_fault_ids()
+    winner_ids = [cell["candidate_id"] for cell in archive_doc["cells"] if cell.get("candidate_id")]
+    evaluate_ids = []
+    seen_eval = set()
+    for cid in [seed_record["candidate_id"], *winner_ids]:
+        if cid not in seen_eval:
+            evaluate_ids.append(cid)
+            seen_eval.add(cid)
+
+    id_to_record = {r["candidate_id"]: r for r in records}
+    holdout_results = []
+    for cid in evaluate_ids:
+        record = id_to_record[cid]
+        source_text = (run_dir / record["artifact"]["path"]).read_text(encoding="utf-8")
+        result = evaluate_candidate_source(source_text, benchmark, holdout_faults, timeout)
+        evaluation = _normalize_eval_reason(result["evaluation"])
+        holdout_results.append(
+            {
+                "candidate_id": cid,
+                "execution": {
+                    "status": result["execution"]["status"],
+                    "exit_code": result["execution"]["exit_code"],
+                    "elapsed_ms": result["execution"]["elapsed_ms"],
+                    "stdout": result["execution"]["stdout"],
+                    "stderr": result["execution"]["stderr"],
+                },
+                "evaluation": {
+                    "status": evaluation["status"],
+                    "score": evaluation.get("score"),
+                    "reason": evaluation.get("reason"),
+                    "fault_traces": evaluation.get("fault_traces") or [],
+                },
+            }
+        )
+
+    seed_holdout = next(h for h in holdout_results if h["candidate_id"] == seed_record["candidate_id"])
+    seed_holdout_score = seed_holdout["evaluation"].get("score")
+    scored = [h for h in holdout_results if isinstance(h["evaluation"].get("score"), (int, float))]
+    if scored:
+        best = max(scored, key=lambda h: h["evaluation"]["score"])
+        best_id = best["candidate_id"]
+        best_score = float(best["evaluation"]["score"])
+    else:
+        best_id = seed_record["candidate_id"]
+        best_score = seed_holdout_score
+    delta = None
+    improved = False
+    if isinstance(best_score, (int, float)) and isinstance(seed_holdout_score, (int, float)):
+        delta = best_score - seed_holdout_score
+        improved = delta > 0
+
+    holdout_doc = {
+        "schema_version": 1,
+        "frozen_archive": {
+            "path": "archive.json",
+            "sha256": archive_doc["archive_sha256"],
+            "frozen_after_candidate_id": archive_doc["frozen_after_candidate_id"],
+        },
+        "evaluated_ids": evaluate_ids,
+        "candidates": holdout_results,
+        "seed_score": seed_holdout_score,
+        "best_observed_candidate_id": best_id,
+        "best_observed_score": best_score,
+        "delta": delta,
+        "improved_over_seed": improved,
+    }
+    holdout_path = run_dir / "holdout.json"
+    holdout_path.write_text(json.dumps(holdout_doc, indent=2) + "\n", encoding="utf-8")
 
     descendant_records = records[1:]
     unique_sources = len({r["artifact"]["sha256"] for r in descendant_records})
+    lineage = _lineage_ids(id_to_record, best_id)
     summary = {
         "schema_version": 1,
         "run_id": run_dir.name,
@@ -424,16 +515,21 @@ def evolve(
         "python_version": sys.version.split()[0],
         "paths": {
             "run_dir": str(run_dir),
-            "candidates_jsonl": str(jsonl_path.relative_to(run_dir)),
+            "candidates_jsonl": "candidates.jsonl",
+            "archive": "archive.json",
+            "holdout": "holdout.json",
         },
         "hashes": {
             "mission": tp.sha256_file(mission["_mission_path"]),
             "benchmark": tp.sha256_file(mission["_benchmark_path"]),
             "search": tp.sha256_file(mission["_search_path"]),
+            "holdout": tp.sha256_file(mission["_holdout_path"]),
+            "archive": archive_doc["archive_sha256"],
         },
         "seed": {
             "candidate_id": seed_record["candidate_id"],
             "search_score": seed_score,
+            "holdout_score": seed_holdout_score,
         },
         "descendants": {
             "attempts": len(descendant_records),
@@ -443,6 +539,28 @@ def evolve(
             "crash": counts["crash"],
             "timeout": counts["timeout"],
         },
+        "archive": {
+            "occupied_cells": [
+                {
+                    "cell": cell["cell"],
+                    "candidate_id": cell.get("candidate_id"),
+                    "search_score": cell.get("search_score"),
+                }
+                for cell in archive_doc["cells"]
+            ]
+        },
+        "holdout": {
+            "evaluated_ids": evaluate_ids,
+            "seed_score": seed_holdout_score,
+            "best_observed_candidate_id": best_id,
+            "best_observed_score": best_score,
+            "delta": delta,
+            "improved_over_seed": improved,
+            "conclusion": (
+                "improved over seed" if improved else "no holdout improvement found"
+            ),
+        },
+        "best_observed_lineage": lineage,
     }
     (run_dir / "summary.json").write_text(
         json.dumps(summary, indent=2) + "\n", encoding="utf-8"
@@ -456,8 +574,33 @@ def evolve(
         f"valid={counts['valid']} invalid={counts['invalid']} "
         f"crash={counts['crash']} timeout={counts['timeout']}"
     )
+    print("archive cells:")
+    for cell in archive_doc["cells"]:
+        cid = cell.get("candidate_id") or "-"
+        score = cell.get("search_score")
+        score_s = f"{score:.3f}" if isinstance(score, (int, float)) else "-"
+        print(f"  {cell['cell'][0]}/{cell['cell'][1]}: {cid} search={score_s}")
+    print("holdout:")
+    for item in holdout_results:
+        score = item["evaluation"].get("score")
+        score_s = f"{score:.6f}" if isinstance(score, (int, float)) else "-"
+        print(f"  {item['candidate_id']}: {score_s}")
+    if isinstance(best_score, (int, float)) and isinstance(delta, (int, float)):
+        print(
+            f"best observed holdout: {best_id} score={best_score:.6f} "
+            f"delta={delta:+.6f}"
+        )
+    print(summary["holdout"]["conclusion"])
+    print(f"lineage: {' -> '.join(lineage)}")
     print(f"run directory: {run_dir}")
-    return {"run_dir": run_dir, "records": records, "summary": summary}
+    return {
+        "run_dir": run_dir,
+        "records": records,
+        "summary": summary,
+        "archive": archive_doc,
+        "holdout": holdout_doc,
+        "holdout_gate": holdout_gate,
+    }
 
 
 def _normalize_source(text: str) -> str:
@@ -467,14 +610,113 @@ def _normalize_source(text: str) -> str:
     return normalized
 
 
-def _select_parent(valid_records: list[dict[str, Any]], proposal_index: int) -> dict[str, Any]:
-    """Pick a parent from valid candidates (seed included)."""
+def _archive_consider(
+    archive: dict[tuple[str, str], dict[str, Any]],
+    record: dict[str, Any],
+) -> dict[str, Any]:
+    evaluation = record["search"]["evaluation"]
+    behavior = record["search"].get("behavior")
+    if evaluation.get("status") != "valid" or not behavior or not behavior.get("cell"):
+        return {
+            "decision": "ineligible",
+            "cell": None,
+            "replaced_candidate_id": None,
+            "reason": evaluation.get("status") or "ineligible",
+        }
+    cell = (behavior["cell"][0], behavior["cell"][1])
+    score = float(evaluation["score"])
+    if cell not in archive:
+        archive[cell] = {"record": record, "score": score}
+        return {
+            "decision": "inserted",
+            "cell": [cell[0], cell[1]],
+            "replaced_candidate_id": None,
+            "reason": "empty_cell",
+        }
+    incumbent = archive[cell]
+    if score > incumbent["score"]:
+        replaced = incumbent["record"]["candidate_id"]
+        archive[cell] = {"record": record, "score": score}
+        return {
+            "decision": "replaced",
+            "cell": [cell[0], cell[1]],
+            "replaced_candidate_id": replaced,
+            "reason": "higher_search_score",
+        }
+    return {
+        "decision": "rejected",
+        "cell": [cell[0], cell[1]],
+        "replaced_candidate_id": None,
+        "reason": "not_strictly_better",
+    }
+
+
+def _freeze_archive(
+    archive: dict[tuple[str, str], dict[str, Any]],
+    frozen_after_candidate_id: str,
+) -> dict[str, Any]:
+    cells = []
+    for cell in tp.ARCHIVE_CELLS:
+        entry = archive.get(cell)
+        if entry is None:
+            cells.append(
+                {
+                    "cell": [cell[0], cell[1]],
+                    "candidate_id": None,
+                    "artifact": None,
+                    "search_score": None,
+                    "behavior": None,
+                }
+            )
+            continue
+        record = entry["record"]
+        cells.append(
+            {
+                "cell": [cell[0], cell[1]],
+                "candidate_id": record["candidate_id"],
+                "artifact": record["artifact"],
+                "search_score": entry["score"],
+                "behavior": record["search"]["behavior"],
+            }
+        )
+    return {
+        "schema_version": 1,
+        "frozen_after_candidate_id": frozen_after_candidate_id,
+        "cells": cells,
+    }
+
+
+def _lineage_ids(
+    id_to_record: dict[str, dict[str, Any]],
+    candidate_id: str,
+) -> list[str]:
+    chain: list[str] = []
+    current: str | None = candidate_id
+    seen: set[str] = set()
+    while current is not None and current not in seen:
+        seen.add(current)
+        chain.append(current)
+        record = id_to_record.get(current)
+        if record is None:
+            break
+        current = record.get("parent_id")
+    chain.reverse()
+    return chain
+
+
+def _select_parent(
+    archive: dict[tuple[str, str], dict[str, Any]],
+    valid_records: list[dict[str, Any]],
+    proposal_index: int,
+) -> dict[str, Any]:
+    """Round-robin parents from sorted occupied archive cells when available."""
+    occupied = sorted(archive.keys())
+    if occupied:
+        cell = occupied[proposal_index % len(occupied)]
+        return archive[cell]["record"]
     if not valid_records:
         raise RuntimeError("no valid parents available")
-    # Early proposals explore from the seed; later ones cycle retained valids.
-    if proposal_index < 6:
-        return valid_records[0]
-    return valid_records[proposal_index % len(valid_records)]
+    return valid_records[0]
 
 
 def _propose_descendant(

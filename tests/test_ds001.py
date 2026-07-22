@@ -66,3 +66,66 @@ def test_evolve_population_exposes_breakage(tmp_path: Path):
         assert (out / record["artifact"]["path"]).is_file()
         assert record["parent_id"] is not None
         assert record["search"]["execution"]["status"] in {"ok", "crash", "timeout"}
+
+
+def test_archive_and_holdout_discipline(tmp_path: Path):
+    out = tmp_path / "slice-3"
+    result = evolve(MISSION, budget=24, output=out)
+    archive = result["archive"]
+    holdout = result["holdout"]
+    occupied = [c for c in archive["cells"] if c["candidate_id"]]
+    assert len(occupied) == 4
+    cells = {tuple(c["cell"]) for c in occupied}
+    assert cells == {
+        ("fast", "change_focused"),
+        ("fast", "general"),
+        ("cost_tolerant", "change_focused"),
+        ("cost_tolerant", "general"),
+    }
+
+    # Winners are search-best inside their cell among valid records.
+    records = result["records"]
+    by_cell: dict[tuple[str, str], list] = {}
+    for record in records:
+        behavior = record["search"].get("behavior")
+        if record["search"]["evaluation"]["status"] != "valid" or not behavior:
+            continue
+        cell = tuple(behavior["cell"])
+        by_cell.setdefault(cell, []).append(record)
+    for cell_info in occupied:
+        cell = tuple(cell_info["cell"])
+        best = max(by_cell[cell], key=lambda r: r["search"]["evaluation"]["score"])
+        assert cell_info["candidate_id"] == best["candidate_id"]
+
+    # Lineage depth >= 2 for at least one winner.
+    id_to_record = {r["candidate_id"]: r for r in records}
+
+    def depth(cid: str) -> int:
+        d = 0
+        seen = set()
+        cur = cid
+        while cur is not None and cur not in seen:
+            seen.add(cur)
+            parent = id_to_record[cur].get("parent_id")
+            if parent is None:
+                break
+            d += 1
+            cur = parent
+        return d
+
+    assert max(depth(c["candidate_id"]) for c in occupied) >= 2
+
+    seed_id = records[0]["candidate_id"]
+    winner_ids = {c["candidate_id"] for c in occupied}
+    assert set(holdout["evaluated_ids"]) == {seed_id} | winner_ids
+    assert holdout["improved_over_seed"] is False or holdout["delta"] > 0
+    if not holdout["improved_over_seed"]:
+        assert result["summary"]["holdout"]["conclusion"] == "no holdout improvement found"
+
+    # Holdout loader must fail before freeze.
+    gate = tp.HoldoutGate(MISSION.parent / "holdout.json")
+    try:
+        gate.load_fault_ids()
+        assert False, "expected pre-freeze holdout access to fail"
+    except RuntimeError as exc:
+        assert "before archive freeze" in str(exc)

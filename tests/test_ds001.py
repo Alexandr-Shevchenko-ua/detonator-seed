@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from detonator import test_priority as tp
-from detonator.kernel import evolve, evaluate_candidate_source
+from detonator.kernel import evolve, evaluate_candidate_source, inspect_run
 
 ROOT = Path(__file__).resolve().parents[1]
 MISSION = ROOT / "examples" / "test_priority" / "mission.json"
@@ -129,3 +129,10 @@ def test_archive_and_holdout_discipline(tmp_path: Path):
         assert False, "expected pre-freeze holdout access to fail"
     except RuntimeError as exc:
         assert "before archive freeze" in str(exc)
+
+
+def test_inspect_verify_and_replay(tmp_path: Path):
+    out = tmp_path / "slice-3"
+    evolve(MISSION, budget=24, output=out)
+    code = inspect_run(out, verify=True, replay_retained=True, mission_path=MISSION)
+    assert code == 0

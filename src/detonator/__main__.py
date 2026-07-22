@@ -6,7 +6,7 @@ import argparse
 import sys
 from pathlib import Path
 
-from detonator.kernel import evolve
+from detonator.kernel import evolve, inspect_run
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -38,18 +38,20 @@ def main(argv: list[str] | None = None) -> None:
     parser = build_parser()
     args = parser.parse_args(argv)
     if args.command == "evolve":
-        result = evolve(
+        evolve(
             args.mission,
             budget=args.budget,
             output=args.output,
             variation_command=args.variation_command,
         )
-        # Seed-only success path prints details inside evolve.
-        _ = result
         return
     if args.command == "inspect":
-        print("inspect is not implemented yet", file=sys.stderr)
-        raise SystemExit(2)
+        code = inspect_run(
+            args.run_dir,
+            verify=args.verify,
+            replay_retained=args.replay_retained,
+        )
+        raise SystemExit(code)
     parser.error(f"unknown command: {args.command}")
 
 

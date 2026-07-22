@@ -742,3 +742,161 @@ def _propose_descendant(
     proposal = dict(proposal)
     proposal["source"] = source
     return proposal
+
+
+def load_run_records(run_dir: Path) -> list[dict[str, Any]]:
+    records = []
+    with (run_dir / "candidates.jsonl").open(encoding="utf-8") as handle:
+        for line in handle:
+            line = line.strip()
+            if line:
+                records.append(json.loads(line))
+    return records
+
+
+def inspect_run(
+    run_dir: Path,
+    *,
+    verify: bool = False,
+    replay_retained: bool = False,
+    mission_path: Path | None = None,
+) -> int:
+    """Inspect a prior run. Returns process exit code."""
+    run_dir = run_dir.resolve()
+    if not run_dir.is_dir():
+        print(f"run directory not found: {run_dir}", file=sys.stderr)
+        return 2
+
+    records = load_run_records(run_dir)
+    id_to_record = {r["candidate_id"]: r for r in records}
+    archive = json.loads((run_dir / "archive.json").read_text(encoding="utf-8"))
+    holdout = json.loads((run_dir / "holdout.json").read_text(encoding="utf-8"))
+    summary = json.loads((run_dir / "summary.json").read_text(encoding="utf-8"))
+
+    retained = [c for c in archive["cells"] if c.get("candidate_id")]
+    print(f"run: {run_dir}")
+    print(f"candidates: {len(records)} (seed + {max(0, len(records) - 1)} descendants)")
+    print("retained lineages:")
+    for cell in retained:
+        cid = cell["candidate_id"]
+        lineage = _lineage_ids(id_to_record, cid)
+        if lineage[0] != records[0]["candidate_id"]:
+            print(f"  ERROR: lineage for {cid} does not end at seed", file=sys.stderr)
+            return 1
+        print(f"  {cell['cell'][0]}/{cell['cell'][1]}: {' -> '.join(lineage)}")
+
+    mismatches: list[str] = []
+
+    if verify:
+        print("verify:")
+        for record in records:
+            path = run_dir / record["artifact"]["path"]
+            if not path.is_file():
+                mismatches.append(f"missing artifact {record['artifact']['path']}")
+                continue
+            digest = tp.sha256_file(path)
+            if digest != record["artifact"]["sha256"]:
+                mismatches.append(
+                    f"{record['candidate_id']} hash mismatch: "
+                    f"stored={record['artifact']['sha256']} actual={digest}"
+                )
+            else:
+                print(f"  {record['candidate_id']} ok {digest[:12]}…")
+
+        body = {k: v for k, v in archive.items() if k != "archive_sha256"}
+        body_bytes = json.dumps(body, indent=2, sort_keys=True) + "\n"
+        archive_digest = tp.sha256_text(body_bytes)
+        if archive_digest != archive.get("archive_sha256"):
+            mismatches.append(
+                f"archive hash mismatch: stored={archive.get('archive_sha256')} "
+                f"actual={archive_digest}"
+            )
+        else:
+            print(f"  archive.json ok {archive_digest[:12]}…")
+
+        if holdout["frozen_archive"]["sha256"] != archive.get("archive_sha256"):
+            mismatches.append("holdout frozen archive hash does not match archive.json")
+
+    if replay_retained:
+        print("replay-retained:")
+        mission_path = mission_path or Path("examples/test_priority/mission.json")
+        if not mission_path.is_file():
+            # Fall back to summary-relative default when invoked from repo root.
+            mismatches.append(f"mission not found for replay: {mission_path}")
+        else:
+            mission = tp.load_mission(mission_path.resolve())
+            benchmark = tp.load_benchmark_module(mission["_benchmark_path"])
+            search_faults = tp.load_fault_ids(mission["_search_path"])
+            holdout_faults = tp.load_fault_ids(mission["_holdout_path"])
+            timeout = float(mission["candidate_timeout_seconds"])
+
+            replay_ids = []
+            seen = set()
+            for cid in [records[0]["candidate_id"], *[c["candidate_id"] for c in retained]]:
+                if cid not in seen:
+                    replay_ids.append(cid)
+                    seen.add(cid)
+
+            holdout_by_id = {h["candidate_id"]: h for h in holdout["candidates"]}
+
+            for cid in replay_ids:
+                record = id_to_record[cid]
+                source = (run_dir / record["artifact"]["path"]).read_text(encoding="utf-8")
+                search_replay = evaluate_candidate_source(
+                    source, benchmark, search_faults, timeout
+                )
+                search_eval = _normalize_eval_reason(search_replay["evaluation"])
+                stored_search = record["search"]["evaluation"]
+                stored_behavior = record["search"].get("behavior")
+
+                if search_eval.get("status") != stored_search.get("status"):
+                    mismatches.append(
+                        f"{cid} search status: stored={stored_search.get('status')} "
+                        f"replay={search_eval.get('status')}"
+                    )
+                if search_eval.get("score") != stored_search.get("score"):
+                    # Allow tiny float noise; scores are rational over 43.
+                    s1 = search_eval.get("score")
+                    s2 = stored_search.get("score")
+                    if s1 is None or s2 is None or abs(float(s1) - float(s2)) > 1e-12:
+                        mismatches.append(
+                            f"{cid} search score: stored={s2} replay={s1}"
+                        )
+                replay_behavior = search_eval.get("behavior")
+                if replay_behavior != stored_behavior:
+                    mismatches.append(
+                        f"{cid} behavior: stored={stored_behavior} replay={replay_behavior}"
+                    )
+                if search_eval.get("orderings") != stored_search.get("orderings"):
+                    mismatches.append(f"{cid} search orderings differ")
+
+                holdout_replay = evaluate_candidate_source(
+                    source, benchmark, holdout_faults, timeout
+                )
+                holdout_eval = _normalize_eval_reason(holdout_replay["evaluation"])
+                stored_holdout = holdout_by_id[cid]["evaluation"]
+                if holdout_eval.get("score") != stored_holdout.get("score"):
+                    s1 = holdout_eval.get("score")
+                    s2 = stored_holdout.get("score")
+                    if s1 is None or s2 is None or abs(float(s1) - float(s2)) > 1e-12:
+                        mismatches.append(
+                            f"{cid} holdout score: stored={s2} replay={s1}"
+                        )
+                print(
+                    f"  {cid} search={search_eval.get('score')} "
+                    f"holdout={holdout_eval.get('score')} "
+                    f"cell={replay_behavior.get('cell') if replay_behavior else None}"
+                )
+
+    print("summary:")
+    print(f"  conclusion: {summary['holdout']['conclusion']}")
+    print(f"  best observed: {summary['holdout']['best_observed_candidate_id']}")
+    print(f"  lineage: {' -> '.join(summary.get('best_observed_lineage') or [])}")
+
+    if mismatches:
+        print("mismatches:", file=sys.stderr)
+        for item in mismatches:
+            print(f"  - {item}", file=sys.stderr)
+        return 1
+    print("inspect ok")
+    return 0

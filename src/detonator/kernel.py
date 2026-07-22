@@ -189,6 +189,8 @@ def materialize_candidate(
             "seed": mutation.get("seed"),
             "description": mutation.get("description", "seed policy"),
             "meta": mutation.get("meta"),
+            "lineage_mode": mutation.get("lineage_mode"),
+            "injected_probe": mutation.get("injected_probe"),
         },
         "search": {
             "execution": {
@@ -268,32 +270,73 @@ def format_candidate_line(record: dict[str, Any]) -> str:
     return f"{cid} <- {arrow_parent}  {status:<8} {score_part}  {cell_part}{archive_part}{extra}"
 
 
+def resolve_run_dir(output: Path | None) -> Path:
+    """Resolve output directory without destroying existing paths."""
+    if output is None:
+        run_dir = (Path("runs") / _utc_run_id()).resolve()
+        # Uniqueness if the same second is reused.
+        suffix = 1
+        base = run_dir
+        while run_dir.exists():
+            run_dir = base.parent / f"{base.name}-{suffix}"
+            suffix += 1
+        return run_dir
+
+    run_dir = output.expanduser().resolve()
+    if run_dir.exists():
+        raise FileExistsError(
+            f"refusing to overwrite existing output path: {run_dir}"
+        )
+    return run_dir
+
+
 def evolve(
     mission_path: Path,
     *,
     budget: int | None = None,
     output: Path | None = None,
     variation_command: str | None = None,
+    provider_timeout_seconds: float | None = None,
 ) -> dict[str, Any]:
     mission = tp.load_mission(mission_path.resolve())
-    benchmark = tp.load_benchmark_module(mission["_benchmark_path"])
+    benchmark = tp.load_benchmark_module(mission["_benchmark_path"], validate="search")
+    benchmark.reset_holdout_fault_access()
     search_faults = tp.load_fault_ids(mission["_search_path"])
     timeout = float(mission["candidate_timeout_seconds"])
+    provider_timeout = float(
+        provider_timeout_seconds
+        if provider_timeout_seconds is not None
+        else mission.get("provider_timeout_seconds", 120)
+    )
     variation_seed = int(mission["variation_seed"])
     descendant_budget = int(mission["descendant_budget"] if budget is None else budget)
 
-    run_id = output.name if output is not None else _utc_run_id()
-    run_dir = (output if output is not None else Path("runs") / run_id).resolve()
-    if run_dir.exists():
-        shutil.rmtree(run_dir)
+    try:
+        run_dir = resolve_run_dir(output)
+    except FileExistsError as exc:
+        print(str(exc), file=sys.stderr)
+        raise
     (run_dir / "candidates").mkdir(parents=True, exist_ok=True)
     jsonl_path = run_dir / "candidates.jsonl"
+
+    provider_descriptor = None
+    if variation_command:
+        provider_descriptor = {
+            "kind": "external_command",
+            "name": "variation-command",
+            "timeout_seconds": provider_timeout,
+        }
 
     executed_command = " ".join(
         ["detonator", "evolve", str(mission_path)]
         + ([f"--budget", str(descendant_budget)] if budget is not None else [])
         + ([f"--output", str(run_dir)] if output is not None else [])
-        + ([f"--variation-command", variation_command] if variation_command else [])
+        + (["--variation-command", "<redacted>"] if variation_command else [])
+        + (
+            [f"--provider-timeout-seconds", str(provider_timeout)]
+            if variation_command
+            else []
+        )
     )
 
     # --- seed ---
@@ -370,17 +413,27 @@ def evolve(
     counts = {"valid": 0, "invalid": 0, "crash": 0, "timeout": 0}
 
     for proposal_index in range(descendant_budget):
-        parent = _select_parent(archive, valid_records, proposal_index)
+        candidate_parent = _select_parent(archive, valid_records, proposal_index)
         occupied = [[k[0], k[1]] for k in sorted(archive.keys())]
         proposal = _propose_descendant(
             proposal_index=proposal_index,
             variation_seed=variation_seed,
-            parent=parent,
+            parent=candidate_parent,
             occupied_cells=occupied,
             variation_command=variation_command,
-            timeout_seconds=timeout,
+            provider_timeout_seconds=provider_timeout,
             seen_hashes=seen_hashes,
         )
+        lineage_mode = proposal.get("lineage_mode", "seed")
+        if lineage_mode == "derived":
+            parent = candidate_parent
+        elif lineage_mode == "seed":
+            parent = seed_record
+        elif lineage_mode == "none":
+            parent = None
+        else:
+            raise RuntimeError(f"unknown lineage_mode: {lineage_mode}")
+
         source_text = proposal["source"]
         source_hash = tp.sha256_text(_normalize_source(source_text))
         attempt = 0
@@ -393,13 +446,18 @@ def evolve(
         search_result = evaluate_candidate_source(
             source_text, benchmark, search_faults, timeout
         )
-        generation = (parent["generation"] + 1) if parent else 1
+        if parent is None:
+            generation = 0
+        else:
+            generation = parent["generation"] + 1
         mutation = {
             "provider": proposal.get("provider", "offline"),
             "operator": proposal.get("operator", "mutate"),
             "seed": variation_seed,
             "description": proposal.get("description", ""),
             "meta": proposal.get("meta"),
+            "lineage_mode": lineage_mode,
+            "injected_probe": proposal.get("injected_probe"),
         }
         provisional = materialize_candidate(
             run_dir=run_dir,
@@ -423,6 +481,18 @@ def evolve(
             valid_records.append(provisional)
         print(format_candidate_line(provisional))
 
+    # Capture pre-freeze holdout access evidence for truthfulness checks.
+    pre_freeze_holdout_fault_access = benchmark.holdout_fault_access_log()
+    pre_freeze_holdout_reads = holdout_gate.read_count
+    pre_freeze_holdout_specs = benchmark.holdout_specs_loaded()
+    holdout_module_path = mission["_benchmark_path"].parent / "holdout_faults.py"
+    pre_freeze_holdout_module_loaded = False
+    for module in list(sys.modules.values()):
+        mod_file = getattr(module, "__file__", None)
+        if mod_file and Path(mod_file).resolve() == holdout_module_path.resolve():
+            pre_freeze_holdout_module_loaded = True
+            break
+
     # Freeze archive before any holdout access.
     archive_body = _freeze_archive(archive, records[-1]["candidate_id"])
     archive_body_bytes = json.dumps(archive_body, indent=2, sort_keys=True) + "\n"
@@ -436,8 +506,27 @@ def evolve(
         newline="\n",
     )
 
+    if pre_freeze_holdout_fault_access:
+        raise RuntimeError(
+            "holdout faults were constructed/executed before archive freeze: "
+            f"{pre_freeze_holdout_fault_access}"
+        )
+    if pre_freeze_holdout_reads != 0:
+        raise RuntimeError("holdout file was read before archive freeze")
+    if pre_freeze_holdout_specs:
+        raise RuntimeError(
+            "holdout fault specs were present before archive freeze: "
+            f"{pre_freeze_holdout_specs}"
+        )
+    if pre_freeze_holdout_module_loaded:
+        raise RuntimeError("holdout definitions module already loaded before freeze")
+    if benchmark.holdout_definitions_attached():
+        raise RuntimeError("holdout definitions were attached before archive freeze")
+
     holdout_gate.mark_frozen()
     holdout_faults = holdout_gate.load_fault_ids()
+    benchmark.attach_holdout_definitions(holdout_module_path)
+    benchmark.validate_holdout_benchmark(holdout_faults)
     winner_ids = [cell["candidate_id"] for cell in archive_doc["cells"] if cell.get("candidate_id")]
     evaluate_ids = []
     seen_eval = set()
@@ -507,7 +596,7 @@ def evolve(
     holdout_path.write_text(json.dumps(holdout_doc, indent=2) + "\n", encoding="utf-8")
 
     descendant_records = records[1:]
-    unique_sources = len({r["artifact"]["sha256"] for r in descendant_records})
+    metrics = compute_run_metrics(records, archive_doc, counts)
     lineage = _lineage_ids(id_to_record, best_id)
     summary = {
         "schema_version": 1,
@@ -515,6 +604,7 @@ def evolve(
         "executed_command": executed_command,
         "variation_seed": variation_seed,
         "python_version": sys.version.split()[0],
+        "provider": provider_descriptor,
         "paths": {
             "run_dir": str(run_dir),
             "candidates_jsonl": "candidates.jsonl",
@@ -533,13 +623,17 @@ def evolve(
             "search_score": seed_score,
             "holdout_score": seed_holdout_score,
         },
+        "metrics": metrics,
         "descendants": {
-            "attempts": len(descendant_records),
-            "unique_sources": unique_sources,
-            "valid": counts["valid"],
-            "invalid": counts["invalid"],
-            "crash": counts["crash"],
-            "timeout": counts["timeout"],
+            "executed": metrics["executed_descendants"],
+            "byte_hash_distinct_sources": metrics["byte_hash_distinct_sources"],
+            "ast_distinct_valid_sources": metrics["ast_distinct_valid_sources"],
+            "distinct_observed_ordering_maps": metrics["distinct_observed_ordering_maps"],
+            "valid": metrics["valid"],
+            "invalid": metrics["invalid"],
+            "crash": metrics["crash"],
+            "timeout": metrics["timeout"],
+            "injected_failure_probes": metrics["injected_failure_probes"],
         },
         "archive": {
             "occupied_cells": [
@@ -549,7 +643,9 @@ def evolve(
                     "search_score": cell.get("search_score"),
                 }
                 for cell in archive_doc["cells"]
-            ]
+                if cell.get("candidate_id")
+            ],
+            "occupied_cell_count": metrics["occupied_archive_cells"],
         },
         "holdout": {
             "evaluated_ids": evaluate_ids,
@@ -572,16 +668,24 @@ def evolve(
     print(f"seed search score: {seed_score:.6f}" if seed_score is not None else "seed search score: -")
     print(
         "descendants: "
-        f"attempts={counts['valid'] + counts['invalid'] + counts['crash'] + counts['timeout']} "
-        f"valid={counts['valid']} invalid={counts['invalid']} "
-        f"crash={counts['crash']} timeout={counts['timeout']}"
+        f"executed={metrics['executed_descendants']} "
+        f"valid={metrics['valid']} invalid={metrics['invalid']} "
+        f"crash={metrics['crash']} timeout={metrics['timeout']}"
     )
+    print(
+        "diversity: "
+        f"byte_hash_distinct={metrics['byte_hash_distinct_sources']} "
+        f"ast_distinct_valid={metrics['ast_distinct_valid_sources']} "
+        f"ordering_maps={metrics['distinct_observed_ordering_maps']}"
+    )
+    print(f"injected failure probes: {metrics['injected_failure_probes']}")
     print("archive cells:")
     for cell in archive_doc["cells"]:
         cid = cell.get("candidate_id") or "-"
         score = cell.get("search_score")
         score_s = f"{score:.3f}" if isinstance(score, (int, float)) else "-"
         print(f"  {cell['cell'][0]}/{cell['cell'][1]}: {cid} search={score_s}")
+    print(f"occupied archive cells: {metrics['occupied_archive_cells']}")
     print("holdout:")
     for item in holdout_results:
         score = item["evaluation"].get("score")
@@ -602,6 +706,60 @@ def evolve(
         "archive": archive_doc,
         "holdout": holdout_doc,
         "holdout_gate": holdout_gate,
+        "pre_freeze_holdout_fault_access": pre_freeze_holdout_fault_access,
+        "pre_freeze_holdout_reads": pre_freeze_holdout_reads,
+        "pre_freeze_holdout_specs": pre_freeze_holdout_specs,
+        "pre_freeze_holdout_module_loaded": pre_freeze_holdout_module_loaded,
+        "post_freeze_holdout_specs": benchmark.holdout_specs_loaded(),
+    }
+
+
+def compute_run_metrics(
+    records: list[dict[str, Any]],
+    archive_doc: dict[str, Any],
+    counts: dict[str, int],
+) -> dict[str, Any]:
+    import ast
+
+    descendants = records[1:]
+    byte_hashes = {r["artifact"]["sha256"] for r in descendants}
+    ast_hashes: set[str] = set()
+    ordering_hashes: set[str] = set()
+    for record in descendants:
+        if record["search"]["evaluation"]["status"] != "valid":
+            continue
+        source = record.get("_source_text")
+        if source is None:
+            # Fall back is unavailable in summary-only contexts; callers pass in-memory records.
+            continue
+        try:
+            tree = ast.parse(source)
+            ast_hashes.add(tp.sha256_text(ast.dump(tree, annotate_fields=True)))
+        except SyntaxError:
+            pass
+        orderings = record["search"]["evaluation"].get("orderings") or {}
+        ordering_hashes.add(
+            tp.sha256_text(json.dumps(orderings, sort_keys=True, separators=(",", ":")))
+        )
+
+    probes = {"invalid": 0, "crash": 0, "timeout": 0}
+    for record in descendants:
+        probe = (record.get("mutation") or {}).get("injected_probe")
+        if probe in probes:
+            probes[probe] += 1
+
+    occupied = sum(1 for cell in archive_doc["cells"] if cell.get("candidate_id"))
+    return {
+        "executed_descendants": len(descendants),
+        "valid": counts["valid"],
+        "invalid": counts["invalid"],
+        "crash": counts["crash"],
+        "timeout": counts["timeout"],
+        "byte_hash_distinct_sources": len(byte_hashes),
+        "ast_distinct_valid_sources": len(ast_hashes),
+        "distinct_observed_ordering_maps": len(ordering_hashes),
+        "occupied_archive_cells": occupied,
+        "injected_failure_probes": probes,
     }
 
 
@@ -728,7 +886,7 @@ def _propose_descendant(
     parent: dict[str, Any],
     occupied_cells: list[list[str]],
     variation_command: str | None,
-    timeout_seconds: float,
+    provider_timeout_seconds: float,
     seen_hashes: set[str],
 ) -> dict[str, Any]:
     if variation_command:
@@ -738,7 +896,7 @@ def _propose_descendant(
             variation_seed=variation_seed,
             parent=parent,
             occupied_cells=occupied_cells,
-            timeout_seconds=timeout_seconds,
+            provider_timeout_seconds=provider_timeout_seconds,
         )
     proposal = tp.generate_offline_descendant(
         proposal_index=proposal_index,
@@ -750,6 +908,7 @@ def _propose_descendant(
     source = proposal["source"].rstrip() + f"\n# variant_slot={proposal_index}\n"
     proposal = dict(proposal)
     proposal["source"] = source
+    proposal.setdefault("lineage_mode", "seed")
     return proposal
 
 
@@ -760,7 +919,7 @@ def _propose_via_command(
     variation_seed: int,
     parent: dict[str, Any],
     occupied_cells: list[list[str]],
-    timeout_seconds: float,
+    provider_timeout_seconds: float,
 ) -> dict[str, Any]:
     import shlex
 
@@ -797,7 +956,6 @@ def _propose_via_command(
             "required_output": "exact permutation of test ids",
         },
     }
-    # Explicitly omit holdout fields.
     assert "holdout" not in request
 
     argv = shlex.split(variation_command)
@@ -807,29 +965,27 @@ def _propose_via_command(
             input=json.dumps(request),
             text=True,
             capture_output=True,
-            timeout=max(timeout_seconds, 5.0),
+            timeout=provider_timeout_seconds,
             check=False,
             shell=False,
         )
-    except subprocess.TimeoutExpired as exc:
+    except subprocess.TimeoutExpired:
+        # Do not chain TimeoutExpired — its message includes argv.
         raise RuntimeError(
-            f"variation-command timed out after {max(timeout_seconds, 5.0):.1f}s: "
-            f"{variation_command}"
-        ) from exc
+            f"variation-command timed out after {provider_timeout_seconds:.1f}s"
+        )
     except OSError as exc:
-        raise RuntimeError(f"variation-command failed to start: {exc}") from exc
+        raise RuntimeError(f"variation-command failed to start: {type(exc).__name__}") from None
 
     if completed.returncode != 0:
-        stderr = (completed.stderr or "").strip()
         raise RuntimeError(
-            f"variation-command exited {completed.returncode}: {stderr or completed.stdout}"
+            f"variation-command exited {completed.returncode} "
+            "(provider stderr/stdout omitted)"
         )
     try:
         response = json.loads(completed.stdout)
-    except json.JSONDecodeError as exc:
-        raise RuntimeError(
-            f"variation-command returned invalid JSON: {completed.stdout!r}"
-        ) from exc
+    except json.JSONDecodeError:
+        raise RuntimeError("variation-command returned invalid JSON") from None
     source = response.get("source")
     if not isinstance(source, str) or not source.strip():
         raise RuntimeError("variation-command response missing source string")
@@ -839,7 +995,9 @@ def _propose_via_command(
         "provider": "external",
         "operator": "external_command",
         "description": description,
-        "meta": {"family": "external", "command": variation_command},
+        "meta": {"family": "external"},
+        "lineage_mode": "derived",
+        "injected_probe": None,
     }
 
 
@@ -876,11 +1034,15 @@ def inspect_run(
     print(f"run: {run_dir}")
     print(f"candidates: {len(records)} (seed + {max(0, len(records) - 1)} descendants)")
     print("retained lineages:")
+    seed_id = records[0]["candidate_id"]
     for cell in retained:
         cid = cell["candidate_id"]
         lineage = _lineage_ids(id_to_record, cid)
-        if lineage[0] != records[0]["candidate_id"]:
-            print(f"  ERROR: lineage for {cid} does not end at seed", file=sys.stderr)
+        if lineage and lineage[0] != seed_id:
+            print(
+                f"  ERROR: lineage for {cid} does not reach seed ({seed_id})",
+                file=sys.stderr,
+            )
             return 1
         print(f"  {cell['cell'][0]}/{cell['cell'][1]}: {' -> '.join(lineage)}")
 
@@ -888,6 +1050,7 @@ def inspect_run(
 
     if verify:
         print("verify:")
+        order_index = {r["candidate_id"]: i for i, r in enumerate(records)}
         for record in records:
             path = run_dir / record["artifact"]["path"]
             if not path.is_file():
@@ -901,6 +1064,44 @@ def inspect_run(
                 )
             else:
                 print(f"  {record['candidate_id']} ok {digest[:12]}…")
+
+            parent_id = record.get("parent_id")
+            parent_sha = record.get("parent_sha256")
+            if parent_id is None:
+                if record["generation"] != 0:
+                    mismatches.append(
+                        f"{record['candidate_id']} has no parent but generation="
+                        f"{record['generation']}"
+                    )
+                continue
+            parent = id_to_record.get(parent_id)
+            if parent is None:
+                mismatches.append(f"{record['candidate_id']} missing parent {parent_id}")
+                continue
+            if order_index[parent_id] >= order_index[record["candidate_id"]]:
+                mismatches.append(
+                    f"{record['candidate_id']} parent {parent_id} appears after child"
+                )
+            if record["generation"] != parent["generation"] + 1:
+                mismatches.append(
+                    f"{record['candidate_id']} generation {record['generation']} != "
+                    f"parent generation + 1 ({parent['generation'] + 1})"
+                )
+            expected_parent_sha = parent["artifact"]["sha256"]
+            if parent_sha != expected_parent_sha:
+                mismatches.append(
+                    f"{record['candidate_id']} parent hash mismatch: "
+                    f"stored={parent_sha} actual={expected_parent_sha}"
+                )
+            # Cycle detection via lineage walk.
+            seen: set[str] = set()
+            cur: str | None = record["candidate_id"]
+            while cur is not None:
+                if cur in seen:
+                    mismatches.append(f"lineage cycle involving {record['candidate_id']}")
+                    break
+                seen.add(cur)
+                cur = id_to_record.get(cur, {}).get("parent_id")
 
         body = {k: v for k, v in archive.items() if k != "archive_sha256"}
         body_bytes = json.dumps(body, indent=2, sort_keys=True) + "\n"
@@ -917,16 +1118,17 @@ def inspect_run(
             mismatches.append("holdout frozen archive hash does not match archive.json")
 
     if replay_retained:
-        print("replay-retained:")
+        print("artifact-evaluation-replay:")
         mission_path = mission_path or Path("examples/test_priority/mission.json")
         if not mission_path.is_file():
-            # Fall back to summary-relative default when invoked from repo root.
-            mismatches.append(f"mission not found for replay: {mission_path}")
+            mismatches.append(f"mission not found for artifact replay: {mission_path}")
         else:
             mission = tp.load_mission(mission_path.resolve())
-            benchmark = tp.load_benchmark_module(mission["_benchmark_path"])
+            benchmark = tp.load_benchmark_module(mission["_benchmark_path"], validate="search")
             search_faults = tp.load_fault_ids(mission["_search_path"])
             holdout_faults = tp.load_fault_ids(mission["_holdout_path"])
+            holdout_module_path = mission["_benchmark_path"].parent / "holdout_faults.py"
+            benchmark.attach_holdout_definitions(holdout_module_path)
             timeout = float(mission["candidate_timeout_seconds"])
 
             replay_ids = []
@@ -954,7 +1156,6 @@ def inspect_run(
                         f"replay={search_eval.get('status')}"
                     )
                 if search_eval.get("score") != stored_search.get("score"):
-                    # Allow tiny float noise; scores are rational over 43.
                     s1 = search_eval.get("score")
                     s2 = stored_search.get("score")
                     if s1 is None or s2 is None or abs(float(s1) - float(s2)) > 1e-12:

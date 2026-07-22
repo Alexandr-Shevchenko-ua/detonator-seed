@@ -22,6 +22,12 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="external variation command (JSON stdin/stdout)",
     )
+    evolve_p.add_argument(
+        "--provider-timeout-seconds",
+        type=float,
+        default=None,
+        help="timeout for external variation-command (default: mission or 120)",
+    )
 
     inspect_p = sub.add_parser("inspect", help="inspect a previous run")
     inspect_p.add_argument("run_dir", type=Path, help="path to run directory")
@@ -29,7 +35,7 @@ def build_parser() -> argparse.ArgumentParser:
     inspect_p.add_argument(
         "--replay-retained",
         action="store_true",
-        help="replay retained candidates and compare scores",
+        help="re-execute retained artifacts and compare evaluation results",
     )
     return parser
 
@@ -38,12 +44,19 @@ def main(argv: list[str] | None = None) -> None:
     parser = build_parser()
     args = parser.parse_args(argv)
     if args.command == "evolve":
-        evolve(
-            args.mission,
-            budget=args.budget,
-            output=args.output,
-            variation_command=args.variation_command,
-        )
+        try:
+            evolve(
+                args.mission,
+                budget=args.budget,
+                output=args.output,
+                variation_command=args.variation_command,
+                provider_timeout_seconds=args.provider_timeout_seconds,
+            )
+        except FileExistsError:
+            raise SystemExit(2)
+        except RuntimeError as exc:
+            print(str(exc), file=sys.stderr)
+            raise SystemExit(1)
         return
     if args.command == "inspect":
         code = inspect_run(

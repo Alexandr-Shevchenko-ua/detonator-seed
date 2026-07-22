@@ -7,6 +7,7 @@ public metadata — never fault IDs, implementations, or outcomes.
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Any, Callable
 
 # ---------------------------------------------------------------------------
@@ -84,15 +85,6 @@ def _np_upper(path: str) -> str:
     return normalize_path(path).upper()
 
 
-def _np_drop_leading(path: str) -> str:
-    text = normalize_path(path)
-    return text[1:] if text.startswith("/") else text
-
-
-def _np_double_strip_only(path: str) -> str:
-    return path.strip()
-
-
 def _clamp_no_low(value: float, low: float, high: float) -> float:
     if low > high:
         low, high = high, low
@@ -121,14 +113,6 @@ def _clamp_always_mid(value: float, low: float, high: float) -> float:
     return (low + high) / 2
 
 
-def _clamp_identity(value: float, low: float, high: float) -> float:
-    return value
-
-
-def _clamp_floor_only(value: float, low: float, high: float) -> float:
-    return low if value < low else value
-
-
 def _merge_overwrite_left(left: dict, right: dict) -> dict:
     out = dict(right)
     out.update(left)
@@ -150,20 +134,6 @@ def _merge_stringify_right(left: dict, right: dict) -> dict:
     return out
 
 
-def _merge_increment_overlap(left: dict, right: dict) -> dict:
-    out = dict(left)
-    for key, value in right.items():
-        if isinstance(value, int) and isinstance(out.get(key), int):
-            out[key] = out[key] + value
-        else:
-            out[key] = value
-    return out
-
-
-def _merge_prefer_left(left: dict, right: dict) -> dict:
-    return {k: left.get(k, right.get(k)) for k in set(left) | set(right)}
-
-
 def _fmt_no_sign(value: float, currency: str = "UAH") -> str:
     return f"{abs(value):.2f} {currency}"
 
@@ -183,54 +153,31 @@ def _fmt_comma(value: float, currency: str = "UAH") -> str:
     return f"{sign}{abs(value):.2f}".replace(".", ",") + f" {currency}"
 
 
-def _fmt_space_currency(value: float, currency: str = "UAH") -> str:
-    sign = "-" if value < 0 else ""
-    return f"{sign}{abs(value):.2f}{currency}"
-
-
-def _fmt_int_only(value: float, currency: str = "UAH") -> str:
-    sign = "-" if value < 0 else ""
-    return f"{sign}{int(abs(value))} {currency}"
-
-
-# fault_id -> (changed_symbols, override map)
+# Search-only fault specs. Holdout specs live in holdout_faults.py and are
+# attached only after archive freeze.
 FAULT_SPECS: dict[str, dict[str, Any]] = {
-    # search — normalize_path
     "s01": {"changed_symbols": ["normalize_path"], "overrides": {"normalize_path": _np_no_strip}},
     "s02": {"changed_symbols": ["normalize_path"], "overrides": {"normalize_path": _np_no_collapse}},
     "s03": {"changed_symbols": ["normalize_path"], "overrides": {"normalize_path": _np_keep_trailing}},
     "s04": {"changed_symbols": ["normalize_path"], "overrides": {"normalize_path": _np_upper}},
-    # search — clamp
     "s05": {"changed_symbols": ["clamp"], "overrides": {"clamp": _clamp_no_low}},
     "s06": {"changed_symbols": ["clamp"], "overrides": {"clamp": _clamp_no_high}},
     "s07": {"changed_symbols": ["clamp"], "overrides": {"clamp": _clamp_swap_ignore}},
     "s08": {"changed_symbols": ["clamp"], "overrides": {"clamp": _clamp_always_mid}},
-    # search — merge_dicts
     "s09": {"changed_symbols": ["merge_dicts"], "overrides": {"merge_dicts": _merge_overwrite_left}},
     "s10": {"changed_symbols": ["merge_dicts"], "overrides": {"merge_dicts": _merge_no_right}},
     "s11": {"changed_symbols": ["merge_dicts"], "overrides": {"merge_dicts": _merge_no_left}},
     "s12": {"changed_symbols": ["merge_dicts"], "overrides": {"merge_dicts": _merge_stringify_right}},
-    # search — format_amount
     "s13": {"changed_symbols": ["format_amount"], "overrides": {"format_amount": _fmt_no_sign}},
     "s14": {"changed_symbols": ["format_amount"], "overrides": {"format_amount": _fmt_one_decimal}},
     "s15": {"changed_symbols": ["format_amount"], "overrides": {"format_amount": _fmt_no_currency}},
     "s16": {"changed_symbols": ["format_amount"], "overrides": {"format_amount": _fmt_comma}},
-    # holdout — normalize_path (boundary / operator)
-    "h01": {"changed_symbols": ["normalize_path"], "overrides": {"normalize_path": _np_drop_leading}},
-    "h02": {"changed_symbols": ["normalize_path"], "overrides": {"normalize_path": _np_double_strip_only}},
-    # holdout — clamp
-    "h03": {"changed_symbols": ["clamp"], "overrides": {"clamp": _clamp_identity}},
-    "h04": {"changed_symbols": ["clamp"], "overrides": {"clamp": _clamp_floor_only}},
-    # holdout — merge_dicts
-    "h05": {"changed_symbols": ["merge_dicts"], "overrides": {"merge_dicts": _merge_increment_overlap}},
-    "h06": {"changed_symbols": ["merge_dicts"], "overrides": {"merge_dicts": _merge_prefer_left}},
-    # holdout — format_amount
-    "h07": {"changed_symbols": ["format_amount"], "overrides": {"format_amount": _fmt_space_currency}},
-    "h08": {"changed_symbols": ["format_amount"], "overrides": {"format_amount": _fmt_int_only}},
 }
 
 SEARCH_FAULT_IDS = [f"s{i:02d}" for i in range(1, 17)]
-HOLDOUT_FAULT_IDS = [f"h{i:02d}" for i in range(1, 9)]
+HOLDOUT_FAULT_IDS: list[str] = []
+_HOLDOUT_DEFINITIONS_ATTACHED = False
+_HOLDOUT_MODULE_NAME: str | None = None
 
 
 # ---------------------------------------------------------------------------
@@ -319,6 +266,21 @@ PUBLIC_TESTS: list[dict[str, Any]] = [
 
 TOTAL_SUITE_COST = sum(t["cost_units"] for t in PUBLIC_TESTS)
 
+# Access log for integration tests that observe holdout construction/execution.
+_HOLDOUT_FAULT_ACCESS: list[tuple[str, str]] = []
+
+
+def reset_holdout_fault_access() -> None:
+    _HOLDOUT_FAULT_ACCESS.clear()
+
+
+def holdout_fault_access_log() -> list[tuple[str, str]]:
+    return list(_HOLDOUT_FAULT_ACCESS)
+
+
+def note_holdout_fault_access(fault_id: str, action: str) -> None:
+    _HOLDOUT_FAULT_ACCESS.append((fault_id, action))
+
 
 def public_tests() -> list[dict[str, Any]]:
     """Return candidate-visible test metadata (no callables)."""
@@ -338,11 +300,15 @@ def build_functions(fault_id: str | None = None) -> dict[str, Callable[..., Any]
     if fault_id is not None:
         if fault_id not in FAULT_SPECS:
             raise KeyError(f"unknown fault_id: {fault_id}")
+        if fault_id.startswith("h"):
+            note_holdout_fault_access(fault_id, "build_functions")
         funcs.update(FAULT_SPECS[fault_id]["overrides"])
     return funcs
 
 
 def change_for_fault(fault_id: str) -> dict[str, Any]:
+    if fault_id.startswith("h"):
+        note_holdout_fault_access(fault_id, "change_for_fault")
     return {"changed_symbols": list(FAULT_SPECS[fault_id]["changed_symbols"])}
 
 
@@ -386,26 +352,79 @@ def run_suite_until_failure(
     }
 
 
-def validate_benchmark() -> None:
-    """Upfront integrity checks required by DS-001."""
-    # Clean implementation passes every test.
+def validate_search_benchmark() -> None:
+    """Search-phase integrity checks only (no holdout construction/execution)."""
     clean = build_functions(None)
     for test_id in test_ids():
         if not run_test(test_id, clean):
             raise RuntimeError(f"clean implementation fails {test_id}")
 
-    # Every fault is caught by at least one test.
-    for fault_id in SEARCH_FAULT_IDS + HOLDOUT_FAULT_IDS:
+    for fault_id in SEARCH_FAULT_IDS:
         functions = build_functions(fault_id)
         if all(run_test(tid, functions) for tid in test_ids()):
             raise RuntimeError(f"fault {fault_id} is not caught by any test")
 
-    # Search and holdout IDs do not overlap.
-    overlap = set(SEARCH_FAULT_IDS) & set(HOLDOUT_FAULT_IDS)
+    for fault_id in SEARCH_FAULT_IDS:
+        if fault_id not in FAULT_SPECS:
+            raise RuntimeError(f"missing fault spec for {fault_id}")
+
+
+def validate_holdout_benchmark(holdout_ids: list[str]) -> None:
+    """Holdout integrity checks — only after archive freeze and attach."""
+    if not _HOLDOUT_DEFINITIONS_ATTACHED:
+        raise RuntimeError("holdout definitions must be attached before validation")
+    for fault_id in holdout_ids:
+        if fault_id not in FAULT_SPECS:
+            raise RuntimeError(f"missing holdout fault spec for {fault_id}")
+        functions = build_functions(fault_id)
+        if all(run_test(tid, functions) for tid in test_ids()):
+            raise RuntimeError(f"holdout fault {fault_id} is not caught by any test")
+
+    overlap = set(SEARCH_FAULT_IDS) & set(holdout_ids)
     if overlap:
         raise RuntimeError(f"search/holdout fault id overlap: {sorted(overlap)}")
 
-    # Specs exist for every declared fault.
-    for fault_id in SEARCH_FAULT_IDS + HOLDOUT_FAULT_IDS:
-        if fault_id not in FAULT_SPECS:
-            raise RuntimeError(f"missing fault spec for {fault_id}")
+
+def attach_holdout_definitions(holdout_module_path: Path) -> None:
+    """Import holdout fault definitions after archive freeze."""
+    global HOLDOUT_FAULT_IDS, _HOLDOUT_DEFINITIONS_ATTACHED, _HOLDOUT_MODULE_NAME
+    if _HOLDOUT_DEFINITIONS_ATTACHED:
+        return
+    import importlib.util
+    import sys
+
+    path = Path(holdout_module_path).resolve()
+    module_name = f"tp_holdout_faults_{path.stem}"
+    spec = importlib.util.spec_from_file_location(module_name, path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load holdout definitions from {path}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[module_name] = module
+    spec.loader.exec_module(module)
+    holdout_specs = getattr(module, "HOLDOUT_FAULT_SPECS", None)
+    if not isinstance(holdout_specs, dict) or not holdout_specs:
+        raise RuntimeError(f"holdout module missing HOLDOUT_FAULT_SPECS: {path}")
+    for fault_id, spec_row in holdout_specs.items():
+        if not str(fault_id).startswith("h"):
+            raise RuntimeError(f"holdout fault id must start with 'h': {fault_id}")
+        FAULT_SPECS[fault_id] = spec_row
+    HOLDOUT_FAULT_IDS = list(getattr(module, "HOLDOUT_FAULT_IDS", list(holdout_specs)))
+    _HOLDOUT_DEFINITIONS_ATTACHED = True
+    _HOLDOUT_MODULE_NAME = module_name
+    note_holdout_fault_access("module", f"attached:{path.name}")
+
+
+def holdout_definitions_attached() -> bool:
+    return _HOLDOUT_DEFINITIONS_ATTACHED
+
+
+def holdout_specs_loaded() -> list[str]:
+    return sorted(fid for fid in FAULT_SPECS if str(fid).startswith("h"))
+
+
+def validate_benchmark() -> None:
+    """Full integrity checks (search + holdout). Prefer split validators in evolve."""
+    validate_search_benchmark()
+    holdout_path = Path(__file__).resolve().parent / "holdout_faults.py"
+    attach_holdout_definitions(holdout_path)
+    validate_holdout_benchmark(HOLDOUT_FAULT_IDS)

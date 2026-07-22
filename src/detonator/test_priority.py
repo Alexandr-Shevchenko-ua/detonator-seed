@@ -32,14 +32,45 @@ def load_mission(mission_path: Path) -> dict[str, Any]:
     return mission
 
 
-def load_benchmark_module(benchmark_path: Path):
+def load_benchmark_module(benchmark_path: Path, *, validate: str = "search"):
+    """Load benchmark module.
+
+    validate:
+      - "search": run only search-visible integrity checks
+      - "none": skip validation
+      - "all": run search + holdout checks (tests/tools only)
+    """
+    # Purge before exec so a prior evolve's holdout module cannot be observed
+    # while the next search-phase benchmark module is created.
+    holdout_path = Path(benchmark_path).resolve().parent / "holdout_faults.py"
+    purge_holdout_modules(holdout_path)
+
     spec = importlib.util.spec_from_file_location("tp_benchmark", benchmark_path)
     if spec is None or spec.loader is None:
         raise RuntimeError(f"cannot load benchmark from {benchmark_path}")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-    module.validate_benchmark()
+    if validate == "search":
+        module.validate_search_benchmark()
+    elif validate == "all":
+        module.validate_benchmark()
+    elif validate != "none":
+        raise ValueError(f"unknown validate mode: {validate}")
     return module
+
+
+def purge_holdout_modules(holdout_module_path: Path) -> None:
+    """Drop previously imported holdout definition modules from sys.modules."""
+    import sys
+
+    target = Path(holdout_module_path).resolve()
+    to_drop = []
+    for name, module in sys.modules.items():
+        mod_file = getattr(module, "__file__", None)
+        if mod_file and Path(mod_file).resolve() == target:
+            to_drop.append(name)
+    for name in to_drop:
+        del sys.modules[name]
 
 
 def load_fault_ids(path: Path) -> list[str]:
@@ -395,6 +426,10 @@ def generate_offline_descendant(
     - proposal 11 → crash
     - proposal 17 → timeout
     - remaining → unique policy variants across families
+
+    Lineage modes:
+    - ``seed``: source does not depend on a selected archive parent
+    - ``derived``: source/parameters are mutated from the provided parent
     """
     rng = random.Random(variation_seed * 1_000_003 + proposal_index * 97)
 
@@ -405,6 +440,8 @@ def generate_offline_descendant(
             "operator": "inject_invalid",
             "description": "duplicate test ids",
             "meta": {"family": "invalid"},
+            "lineage_mode": "seed",
+            "injected_probe": "invalid",
         }
     if proposal_index == 11:
         return {
@@ -413,6 +450,8 @@ def generate_offline_descendant(
             "operator": "inject_crash",
             "description": "raise during prioritize",
             "meta": {"family": "crash"},
+            "lineage_mode": "seed",
+            "injected_probe": "crash",
         }
     if proposal_index == 17:
         return {
@@ -421,6 +460,8 @@ def generate_offline_descendant(
             "operator": "inject_timeout",
             "description": "sleep beyond timeout",
             "meta": {"family": "timeout"},
+            "lineage_mode": "seed",
+            "injected_probe": "timeout",
         }
 
     # Exploration: cover policy families and all four behavior cells.
@@ -435,7 +476,6 @@ def generate_offline_descendant(
         ("historical_risk_first", {"change_weight": 0.0, "risk_weight": 2.0, "cost_weight": 0.5}),
     ]
 
-    valid_index = proposal_index
     # Map proposal index to valid exploration/mutation slots, skipping reserved.
     reserved = {5, 11, 17}
     valid_slots = [i for i in range(24) if i not in reserved]
@@ -454,17 +494,23 @@ def generate_offline_descendant(
             "operator": "seed_family",
             "description": f"explore {family}",
             "meta": {"family": family, "tie_breaker": "id", **params},
+            "lineage_mode": "seed",
+            "injected_probe": None,
         }
 
-    # Later slots: mutate from parent when available, else cycle families.
+    # Later slots: mutate from parent when available, else seed-rooted families.
     if parent is not None and parent_meta and parent_meta.get("family") in POLICY_FAMILIES:
         mutation = mutate_params(rng, parent_meta["family"], parent_meta)
         mutation["provider"] = "offline"
+        mutation["lineage_mode"] = "derived"
+        mutation["injected_probe"] = None
         return mutation
 
     family = POLICY_FAMILIES[slot_pos % len(POLICY_FAMILIES)]
     mutation = mutate_params(rng, family, None)
     mutation["provider"] = "offline"
+    mutation["lineage_mode"] = "seed"
+    mutation["injected_probe"] = None
     return mutation
 
 
@@ -488,6 +534,7 @@ class HoldoutGate:
     def __init__(self, path: Path):
         self.path = path
         self._frozen = False
+        self.read_count = 0
 
     def mark_frozen(self) -> None:
         self._frozen = True
@@ -499,4 +546,5 @@ class HoldoutGate:
     def load_fault_ids(self) -> list[str]:
         if not self._frozen:
             raise RuntimeError("holdout must not be loaded before archive freeze")
+        self.read_count += 1
         return load_fault_ids(self.path)

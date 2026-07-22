@@ -37,7 +37,8 @@ Inspect and replay retained artifacts:
 uv run detonator inspect runs/<run-id> --verify --replay-retained
 ```
 
-Replay re-executes stored source files. It does not regenerate proposals.
+`--replay-retained` re-executes stored source artifacts and compares evaluation
+results. It does not regenerate proposals or replay mutations.
 
 ## Candidate contract
 
@@ -56,11 +57,28 @@ Any command that speaks the JSON stdin/stdout protocol can propose sources:
 
 ```bash
 uv run detonator evolve examples/test_priority/mission.json \
-  --variation-command "uv run python examples/providers/sample_provider.py"
+  --variation-command "uv run python examples/providers/sample_provider.py" \
+  --provider-timeout-seconds 120
 ```
 
+Live Cursor Agent provider (requires `agent` login; credentials from the CLI/env):
+
+```bash
+uv run detonator evolve examples/test_priority/mission.json \
+  --budget 6 \
+  --variation-command "uv run python examples/providers/live_agent_provider.py" \
+  --provider-timeout-seconds 180
+```
+
+Default provider timeout is `provider_timeout_seconds` from the mission (120s)
+and is independent of `candidate_timeout_seconds`. Override with
+`--provider-timeout-seconds`.
+
 The kernel assigns IDs, hashes, parents, and evaluation. Provider score claims
-are ignored. Holdout paths and results are never sent to the provider.
+are ignored. Holdout paths and results are never sent to the provider. The raw
+variation command is not persisted in run artifacts — only a sanitized provider
+descriptor (kind/name/timeout) is stored. Credentials must come from the
+environment or provider process, never from committed examples.
 
 ## Trust boundary
 

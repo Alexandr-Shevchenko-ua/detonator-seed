@@ -7,5 +7,6 @@
   "holdout_faults": "holdout.json",
   "descendant_budget": 24,
   "variation_seed": 1729,
-  "candidate_timeout_seconds": 2
+  "candidate_timeout_seconds": 2,
+  "provider_timeout_seconds": 120
 }

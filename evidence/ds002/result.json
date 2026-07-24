@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "verdict": "DOMAIN REJECTED",
+  "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff",
+  "formula_fingerprint": "01c8e4a02e12bf86784dbf8a94e44b01e19fa9ecb29667eb9f4647130190ed0e",
+  "provider_calls": 0,
+  "baseline_to_beat": "strong-human",
+  "baselines": {
+    "dependency-first": {
+      "composite": 0.6102892934185957,
+      "content_hash": "0236818faf595fb7b9e8b57bfe15aca0a239cb6638f53fd275cd93fe51ec05ec",
+      "detection_rate": 0.7093023255813954,
+      "distinct_ordering_maps": 4,
+      "median_kill_cost": 0.7906340000000001
+    },
+    "historical-kill": {
+      "composite": 0.6110294160116427,
+      "content_hash": "ba90d298d347caa8387fbcbeaf76eaa2b59de7384fb64b2889292ca56bc1ebe8",
+      "detection_rate": 0.6976744186046512,
+      "distinct_ordering_maps": 2,
+      "median_kill_cost": 0.9256145
+    },
+    "risk-per-cost": {
+      "composite": 0.6112041903417511,
+      "content_hash": "e37bc0a2fa9f80dc5a6cb4092b3b2c6621d21151873802993e0c6efed77677ac",
+      "detection_rate": 0.7093023255813954,
+      "distinct_ordering_maps": 1,
+      "median_kill_cost": 0.4431605
+    },
+    "shortest": {
+      "composite": 0.5954421587282397,
+      "content_hash": "51107df0f9e435c825a8890aec46f79d6164d77ca66d206e2a41dba1e8b02a59",
+      "detection_rate": 0.7093023255813954,
+      "distinct_ordering_maps": 1,
+      "median_kill_cost": 0.8654075000000001
+    },
+    "strong-human": {
+      "composite": 0.6195343345985056,
+      "content_hash": "d727054fec43cdbf366536f0252a303f7de1584c97418506ae6ec926116a4760",
+      "detection_rate": 0.7093023255813954,
+      "distinct_ordering_maps": 4,
+      "median_kill_cost": 0.4431605
+    }
+  },
+  "headroom": {
+    "baseline_composite_spread": 0.02409217587026591,
+    "baseline_to_beat": "strong-human",
+    "checks": {
+      "baseline_composite_spread": false,
+      "distinct_baseline_ordering_maps": true,
+      "oracle_advantage": false,
+      "pareto_nondominated_baselines": true
+    },
+    "distinct_ordering_maps": 10,
+    "oracle_median_kill_cost_improvement": -1.0886665214972904,
+    "oracle_relative_composite_advantage": 0.002667969414569358,
+    "pareto_nondominated": [
+      "risk-per-cost",
+      "strong-human"
+    ],
+    "passed": false
+  },
+  "domain_rejected_reasons": [
+    "headroom_gates"
+  ],
+  "preflight_source": "/home/shevchenkool/project/detonator-seed/runs/ds002-preflight/preflight.json",
+  "published_reference_policy": "strong-human"
+}

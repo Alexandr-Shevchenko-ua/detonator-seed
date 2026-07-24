@@ -10,6 +10,7 @@ from pathlib import Path
 from detonator.kernel import evolve, inspect_run
 from detonator.mutation_corpus import build_corpus, verify_corpus
 from detonator.real_mutations_preflight import run_preflight
+from detonator.real_mutations_publish import emit_strong_human_order, publish_evidence
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -47,6 +48,36 @@ def build_parser() -> argparse.ArgumentParser:
         type=float,
         default=None,
         help="timeout for external variation-command (default: mission or 120)",
+    )
+
+    publish_p = sub.add_parser(
+        "publish",
+        help="publish DS-002 preflight verdict to evidence (re-export only)",
+    )
+    publish_p.add_argument("mission", type=Path, help="path to mission.json")
+    publish_p.add_argument(
+        "--preflight",
+        type=Path,
+        default=Path("runs/ds002-preflight/preflight.json"),
+        help="preflight JSON to re-export",
+    )
+    publish_p.add_argument(
+        "--output",
+        type=Path,
+        default=Path("evidence/ds002"),
+        help="evidence output directory",
+    )
+
+    order_p = sub.add_parser(
+        "order",
+        help="emit test order from the published strong-human reference seed (not a search winner)",
+    )
+    order_p.add_argument("mission", type=Path, help="path to mission.json")
+    order_p.add_argument(
+        "--corpus",
+        type=Path,
+        default=Path("runs/ds002-corpus"),
+        help="verified DS-002 corpus directory",
     )
 
     inspect_p = sub.add_parser("inspect", help="inspect a previous run")
@@ -107,6 +138,22 @@ def main(argv: list[str] | None = None) -> None:
         except RuntimeError as exc:
             print(str(exc), file=sys.stderr)
             raise SystemExit(1)
+        return
+    if args.command == "publish":
+        try:
+            result = publish_evidence(args.mission, args.preflight, args.output)
+        except Exception as exc:
+            print(str(exc), file=sys.stderr)
+            raise SystemExit(1)
+        print(json.dumps({"verdict": result["verdict"], "output": str(args.output)}, indent=2))
+        return
+    if args.command == "order":
+        try:
+            payload = emit_strong_human_order(args.mission, args.corpus)
+        except Exception as exc:
+            print(str(exc), file=sys.stderr)
+            raise SystemExit(1)
+        print(json.dumps(payload, indent=2))
         return
     if args.command == "inspect":
         code = inspect_run(

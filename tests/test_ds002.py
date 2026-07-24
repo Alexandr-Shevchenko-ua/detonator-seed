@@ -8,6 +8,7 @@ from pathlib import Path
 
 import pytest
 
+from detonator.real_mutations_publish import publish_evidence
 from detonator.real_mutations import (
     COMPOSITE_WEIGHTS,
     MISS_COST_MULTIPLIER,
@@ -492,4 +493,74 @@ def test_seed_policy_matches_strong_human_baseline():
     ]
     order = mod.prioritize({"path": "src/x.py", "qualified_symbol": "sym"}, tests)
     assert order[0] == "tests/a.py::test_dep"
+
+
+PREFLIGHT_PATH = ROOT / "runs" / "ds002-preflight" / "preflight.json"
+
+
+def test_ds002_publish_writes_evidence_artifacts(tmp_path: Path):
+    if not PREFLIGHT_PATH.is_file():
+        pytest.skip("ds002 preflight not present")
+    out = tmp_path / "evidence"
+    publish_evidence(MISSION, PREFLIGHT_PATH, out)
+    assert (out / "result.json").is_file()
+    assert (out / "report.md").is_file()
+    result = json.loads((out / "result.json").read_text(encoding="utf-8"))
+    preflight = json.loads(PREFLIGHT_PATH.read_text(encoding="utf-8"))
+    assert result["verdict"] == "DOMAIN REJECTED"
+    assert result["provider_calls"] == 0
+    assert result["formula_fingerprint"] == preflight["formula_fingerprint"]
+    assert result["target_sha"] == preflight["target_sha"]
+    assert "best_policy" not in (out / "result.json").read_text(encoding="utf-8")
+    report = (out / "report.md").read_text(encoding="utf-8")
+    assert "# DS-002 published verdict" in report
+    assert "DOMAIN REJECTED" in report
+
+
+def test_ds002_publish_cli(tmp_path: Path):
+    if not PREFLIGHT_PATH.is_file():
+        pytest.skip("ds002 preflight not present")
+    out = tmp_path / "out"
+    proc = subprocess.run(
+        [
+            "uv",
+            "run",
+            "detonator",
+            "publish",
+            str(MISSION),
+            "--preflight",
+            str(PREFLIGHT_PATH),
+            "--output",
+            str(out),
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+    assert proc.returncode == 0, proc.stderr
+    assert json.loads((out / "result.json").read_text(encoding="utf-8"))["verdict"] == "DOMAIN REJECTED"
+
+
+def test_ds002_order_cli_strong_human():
+    if not DS002_CORPUS.is_dir():
+        pytest.skip("ds002 corpus not present")
+    proc = subprocess.run(
+        [
+            "uv",
+            "run",
+            "detonator",
+            "order",
+            str(MISSION),
+            "--corpus",
+            str(DS002_CORPUS),
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+    assert proc.returncode == 0, proc.stderr
+    payload = json.loads(proc.stdout)
+    assert payload["policy"] == "strong-human"
+    assert payload["mutant_id"]
+    assert len(payload["test_order"]) > 0
 

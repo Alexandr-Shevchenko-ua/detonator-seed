@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "domain": "real_mutations",
+  "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff",
+  "module_allowlist": [
+    "src/detonator/kernel.py",
+    "src/detonator/test_priority.py"
+  ],
+  "search_symbol_groups": [
+    [
+      "run_candidate_subprocess",
+      "evaluate_candidate_source",
+      "materialize_candidate",
+      "compute_run_metrics"
+    ],
+    [
+      "load_mission",
+      "load_benchmark_module",
+      "validate_ordering",
+      "evaluate_orderings",
+      "compute_behavior"
+    ]
+  ],
+  "holdout_symbol_groups": [
+    ["resolve_run_dir"],
+    ["evolve"],
+    [
+      "_archive_consider",
+      "_freeze_archive",
+      "_lineage_ids",
+      "_select_parent",
+      "_propose_via_command",
+      "inspect_run"
+    ],
+    ["purge_holdout_modules"],
+    [
+      "HoldoutGate.load_fault_ids",
+      "HoldoutGate.mark_frozen",
+      "HoldoutGate.is_frozen"
+    ]
+  ],
+  "workers": 4,
+  "cell_timeout_floor_seconds": 15,
+  "cell_timeout_cap_seconds": 45,
+  "selection_caps": {
+    "per_symbol_operator": 4,
+    "per_symbol_total": 12
+  },
+  "mutmut_version": "3.6.0"
+}

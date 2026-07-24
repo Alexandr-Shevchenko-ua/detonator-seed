@@ -3,15 +3,29 @@
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
 from detonator.kernel import evolve, inspect_run
+from detonator.mutation_corpus import build_corpus, verify_corpus
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="detonator", description="DS-001 mutation kernel")
     sub = parser.add_subparsers(dest="command", required=True)
+
+    corpus = sub.add_parser("corpus", help="build or verify real-mutation corpus")
+    corpus_sub = corpus.add_subparsers(dest="corpus_command", required=True)
+
+    corpus_build = corpus_sub.add_parser("build", help="build mutation corpus")
+    corpus_build.add_argument("mission", type=Path, help="path to mission.json")
+    corpus_build.add_argument("--target", required=True, help="target git SHA")
+    corpus_build.add_argument("--workers", type=int, default=4, help="worker count")
+    corpus_build.add_argument("--output", type=Path, required=True, help="output directory")
+
+    corpus_verify = corpus_sub.add_parser("verify", help="verify mutation corpus")
+    corpus_verify.add_argument("corpus_dir", type=Path, help="corpus directory")
 
     evolve_p = sub.add_parser("evolve", help="run a bounded evolution mission")
     evolve_p.add_argument("mission", type=Path, help="path to mission.json")
@@ -43,6 +57,28 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> None:
     parser = build_parser()
     args = parser.parse_args(argv)
+    if args.command == "corpus":
+        if args.corpus_command == "build":
+            try:
+                result = build_corpus(
+                    args.mission,
+                    args.target,
+                    args.output,
+                    workers=args.workers,
+                )
+            except FileExistsError as exc:
+                print(str(exc), file=sys.stderr)
+                raise SystemExit(2)
+            except Exception as exc:
+                print(str(exc), file=sys.stderr)
+                raise SystemExit(1)
+            print(json.dumps(result, indent=2))
+            return
+        if args.corpus_command == "verify":
+            result = verify_corpus(args.corpus_dir)
+            print(json.dumps(result, indent=2))
+            raise SystemExit(0 if result.get("status") == "ok" else 1)
+        parser.error(f"unknown corpus command: {args.corpus_command}")
     if args.command == "evolve":
         try:
             evolve(

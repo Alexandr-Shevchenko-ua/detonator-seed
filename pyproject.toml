@@ -10,7 +10,11 @@ dependencies = []
 dev = ["pytest>=8.0"]
 
 [dependency-groups]
-dev = ["pytest>=8.0"]
+dev = [
+    "pytest>=8.0",
+    "mutmut==3.6.0",
+    "pytest-testmon==2.2.0",
+]
 
 [project.scripts]
 detonator = "detonator.__main__:main"
@@ -22,6 +26,10 @@ build-backend = "hatchling.build"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+addopts = "-m 'not slow'"
+markers = [
+    "slow: expensive integration (mutmut worktree); run with pytest -m slow",
+]
 
 [tool.uv]
 package = true

@@ -9,6 +9,7 @@ from pathlib import Path
 
 from detonator.kernel import evolve, inspect_run
 from detonator.mutation_corpus import build_corpus, verify_corpus
+from detonator.real_mutations_preflight import run_preflight
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -26,6 +27,11 @@ def build_parser() -> argparse.ArgumentParser:
 
     corpus_verify = corpus_sub.add_parser("verify", help="verify mutation corpus")
     corpus_verify.add_argument("corpus_dir", type=Path, help="corpus directory")
+
+    preflight_p = sub.add_parser("preflight", help="DS-002 domain preflight (baselines, oracle, headroom)")
+    preflight_p.add_argument("mission", type=Path, help="path to mission.json")
+    preflight_p.add_argument("--corpus", type=Path, required=True, help="verified corpus directory")
+    preflight_p.add_argument("--output", type=Path, required=True, help="preflight output directory")
 
     evolve_p = sub.add_parser("evolve", help="run a bounded evolution mission")
     evolve_p.add_argument("mission", type=Path, help="path to mission.json")
@@ -79,6 +85,14 @@ def main(argv: list[str] | None = None) -> None:
             print(json.dumps(result, indent=2))
             raise SystemExit(0 if result.get("status") == "ok" else 1)
         parser.error(f"unknown corpus command: {args.corpus_command}")
+    if args.command == "preflight":
+        try:
+            result = run_preflight(args.mission, args.corpus, args.output)
+        except Exception as exc:
+            print(str(exc), file=sys.stderr)
+            raise SystemExit(1)
+        print(json.dumps({"verdict": result.get("verdict"), "output": str(args.output)}, indent=2))
+        return
     if args.command == "evolve":
         try:
             evolve(

@@ -8,6 +8,20 @@ from pathlib import Path
 
 import pytest
 
+from detonator.real_mutations import (
+    COMPOSITE_WEIGHTS,
+    MISS_COST_MULTIPLIER,
+    SearchCorpus,
+    budget_cap,
+    evaluate_permutation,
+    formula_fingerprint,
+    largest_prefix_within_budget,
+    load_search_corpus,
+    mutant_metrics,
+    prioritize,
+    total_clean_cost,
+    validate_permutation,
+)
 from detonator.mutation_corpus import (
     BuildContext,
     OutcomeOrderingViolation,
@@ -33,6 +47,8 @@ from detonator.mutation_corpus import (
 
 ROOT = Path(__file__).resolve().parents[1]
 MISSION = ROOT / "examples" / "real_mutations" / "mission.json"
+DS002_CORPUS = ROOT / "runs" / "ds002-corpus"
+FORMULA_FINGERPRINT_EXPECTED = "01c8e4a02e12bf86784dbf8a94e44b01e19fa9ecb29667eb9f4647130190ed0e"
 
 
 def _sample_mutant(
@@ -287,3 +303,193 @@ def test_extract_patches_batch_matches_show_patch():
             assert batch_patches[mutant_id] == reference, mutant_id
     finally:
         remove_worktree(worktree)
+
+
+def test_real_mutations_formula_fingerprint_frozen():
+    assert formula_fingerprint() == FORMULA_FINGERPRINT_EXPECTED
+    assert COMPOSITE_WEIGHTS == {
+        "detection": 0.60,
+        "mean_r": 0.15,
+        "median_r": 0.15,
+        "p90_r": 0.10,
+    }
+
+
+def test_real_mutations_miss_cost_is_two_c():
+    test_ids = ["t1", "t2"]
+    cost_by_id = {"t1": 1.0, "t2": 3.0}
+    total_c = total_clean_cost(cost_by_id, test_ids)
+    budget = budget_cap(cost_by_id, test_ids)
+    permutation = ["t1", "t2"]
+    prefix = largest_prefix_within_budget(permutation, cost_by_id, budget)
+    detected, c_m = mutant_metrics(prefix, killers=set(), cost_by_id=cost_by_id, total_c=total_c)
+    assert detected == 0
+    assert c_m == MISS_COST_MULTIPLIER * total_c
+
+
+def test_real_mutations_invalid_permutation_scores_zero():
+    test_ids = ["a", "b"]
+    cost_by_id = {"a": 1.0, "b": 1.0}
+    score_dup = evaluate_permutation(
+        ["a", "a"],
+        test_ids,
+        cost_by_id,
+        mutant_ids=["m1"],
+        kill_tests_by_mutant={"m1": {"a"}},
+    )
+    score_missing = evaluate_permutation(
+        ["a"],
+        test_ids,
+        cost_by_id,
+        mutant_ids=["m1"],
+        kill_tests_by_mutant={"m1": {"a"}},
+    )
+    assert score_dup == 0.0
+    assert score_missing == 0.0
+    assert validate_permutation(["a", "a"], test_ids) is False
+
+
+def test_real_mutations_holdout_matrix_never_opened(monkeypatch, tmp_path: Path):
+    corpus_dir = tmp_path / "mini-corpus"
+    corpus_dir.mkdir()
+    (corpus_dir / "tests.json").write_text(
+        json.dumps({"node_ids": ["tests/x.py::test_one"]}),
+        encoding="utf-8",
+    )
+    (corpus_dir / "split.json").write_text(
+        json.dumps({"search": ["mutant_a"], "holdout": ["mutant_h"]}),
+        encoding="utf-8",
+    )
+    (corpus_dir / "search-matrix.jsonl").write_text(
+        json.dumps(
+            {
+                "duration_seconds": 0.5,
+                "mutmut_id": "mutant_a",
+                "node_id": "tests/x.py::test_one",
+                "outcome": "pass",
+                "side": "search",
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    (corpus_dir / "holdout-matrix.jsonl").write_text("{}\n", encoding="utf-8")
+
+    real_open = Path.open
+
+    def guarded_open(self, *args, **kwargs):
+        if "holdout-matrix" in str(self):
+            raise AssertionError("holdout-matrix.jsonl must not be opened")
+        return real_open(self, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "open", guarded_open)
+    corpus = load_search_corpus(corpus_dir)
+    assert corpus.search_mutant_ids == ["mutant_a"]
+
+
+def test_real_mutations_search_only_loader_excludes_holdout_mutants():
+    if not DS002_CORPUS.is_dir():
+        pytest.skip("ds002 corpus not present")
+    corpus = load_search_corpus(DS002_CORPUS)
+    split = json.loads((DS002_CORPUS / "split.json").read_text(encoding="utf-8"))
+    assert set(corpus.search_mutant_ids) == set(split["search"])
+    assert set(corpus.search_mutant_ids).isdisjoint(set(split["holdout"]))
+
+
+def test_real_mutations_prioritize_shortest_baseline_first():
+    tests = [
+        {"id": "slow", "baseline_duration_ms": 300.0},
+        {"id": "fast", "baseline_duration_ms": 100.0},
+    ]
+    order = prioritize({"path": "p.py", "qualified_symbol": "sym"}, tests)
+    assert order == ["fast", "slow"]
+
+
+def test_oracle_weight_combo_count_is_624():
+    from detonator.real_mutations_preflight import enumerate_oracle_weight_combos
+
+    combos = enumerate_oracle_weight_combos()
+    assert len(combos) == 624
+    assert (0.0, 0.0, 0.0, 0.0) not in combos
+
+
+def test_baseline_tie_break_uses_fixed_list_order():
+    from detonator.real_mutations_preflight import PolicyMetrics, select_baseline_to_beat
+
+    tied = PolicyMetrics(composite=0.5, detection_rate=0.5, median_kill_cost=1.0, ordering_tuple=())
+    metrics = {
+        "shortest": tied,
+        "dependency-first": tied,
+        "historical-kill": tied,
+        "risk-per-cost": tied,
+        "strong-human": tied,
+    }
+    assert select_baseline_to_beat(metrics) == "shortest"
+
+
+def test_headroom_struct_excludes_holdout_fields():
+    from detonator.real_mutations_preflight import PolicyMetrics, compute_headroom
+
+    metrics = {
+        name: PolicyMetrics(composite=0.4 + i * 0.05, detection_rate=0.5, median_kill_cost=1.0, ordering_tuple=())
+        for i, name in enumerate(
+            [
+                "shortest",
+                "dependency-first",
+                "historical-kill",
+                "risk-per-cost",
+                "strong-human",
+            ]
+        )
+    }
+    oracle = PolicyMetrics(composite=0.7, detection_rate=0.6, median_kill_cost=0.5, ordering_tuple=())
+    payload = compute_headroom(metrics, "shortest", oracle, {"distinct": 4})
+    blob = json.dumps(payload)
+    assert "holdout" not in blob
+
+
+def test_testmon_mask_gates_fixture():
+    from detonator.real_mutations_preflight import evaluate_testmon_gates
+
+    all_tests = [f"tests/t.py::test_{i}" for i in range(5)]
+    full = set(all_tests)
+    masks = {
+        "m1": full,
+        "m2": full,
+        "m3": {"tests/t.py::test_0"},
+        "m4": {"tests/t.py::test_0", "tests/t.py::test_1"},
+        "m5": {"tests/t.py::test_2"},
+    }
+    report = evaluate_testmon_gates(masks, all_tests)
+    assert report["gates"]["distinct_masks"] is True
+    assert report["gates"]["proper_subset_fraction"] is True
+
+
+def test_seed_policy_matches_strong_human_baseline():
+    import importlib.util
+
+    seed_path = ROOT / "examples" / "real_mutations" / "seed.py"
+    spec = importlib.util.spec_from_file_location("ds002_seed", seed_path)
+    assert spec and spec.loader
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    assert mod.BASELINE_POLICY == "strong-human"
+    tests = [
+        {
+            "id": "tests/a.py::test_dep",
+            "baseline_duration_ms": 100.0,
+            "dependency_hit": True,
+            "historical_kill_rate": 0.1,
+            "history_observations": 10,
+        },
+        {
+            "id": "tests/a.py::test_other",
+            "baseline_duration_ms": 50.0,
+            "dependency_hit": False,
+            "historical_kill_rate": 0.9,
+            "history_observations": 10,
+        },
+    ]
+    order = mod.prioritize({"path": "src/x.py", "qualified_symbol": "sym"}, tests)
+    assert order[0] == "tests/a.py::test_dep"
+

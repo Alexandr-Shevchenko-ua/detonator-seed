@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -24,7 +24,7 @@
+     except FileExistsError as exc:
+         print(str(exc), file=sys.stderr)
+         raise
+-    (run_dir / "candidates").mkdir(parents=True, exist_ok=True)
++    (run_dir / "candidates").mkdir(exist_ok=True)
+     jsonl_path = run_dir / "candidates.jsonl"
+ 
+     provider_descriptor = None

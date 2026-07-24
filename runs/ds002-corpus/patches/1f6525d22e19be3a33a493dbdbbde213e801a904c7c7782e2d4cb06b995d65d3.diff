@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -26,7 +26,7 @@
+         "mutation": {
+             "provider": mutation.get("provider", "seed"),
+             "operator": mutation.get("operator", "seed"),
+-            "seed": mutation.get("seed"),
++            "XXseedXX": mutation.get("seed"),
+             "description": mutation.get("description", "seed policy"),
+             "meta": mutation.get("meta"),
+             "lineage_mode": mutation.get("lineage_mode"),

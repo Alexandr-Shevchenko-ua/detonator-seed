@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -170,7 +170,7 @@
+         provisional = materialize_candidate(
+             run_dir=run_dir,
+             index=proposal_index + 1,
+-            source_text=source_text,
++            source_text=None,
+             generation=generation,
+             parent=parent,
+             mutation=mutation,

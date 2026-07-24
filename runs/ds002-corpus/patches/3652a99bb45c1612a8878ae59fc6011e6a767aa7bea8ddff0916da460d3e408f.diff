@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -70,7 +70,7 @@
+             "status": "ok",
+             "exit_code": completed.returncode,
+             "elapsed_ms": elapsed_ms,
+-            "stdout": stdout,
++            "XXstdoutXX": stdout,
+             "stderr": stderr,
+             "orderings": orderings,
+         }

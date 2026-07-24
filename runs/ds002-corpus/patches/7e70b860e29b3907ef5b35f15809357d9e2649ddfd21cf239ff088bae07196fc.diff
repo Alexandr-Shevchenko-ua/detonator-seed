@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -113,7 +113,7 @@
+         print(f"run directory: {run_dir}")
+         return {"run_dir": run_dir, "records": records, "summary": summary}
+ 
+-    seen_hashes: set[str] = {seed_record["artifact"]["sha256"]}
++    seen_hashes: set[str] = {seed_record["XXartifactXX"]["sha256"]}
+     valid_records: list[dict[str, Any]] = []
+     if seed_record["search"]["evaluation"]["status"] == "valid":
+         valid_records.append(seed_record)

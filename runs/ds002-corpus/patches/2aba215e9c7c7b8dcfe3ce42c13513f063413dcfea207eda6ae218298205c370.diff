@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -15,7 +15,7 @@
+     id_to_record = {r["candidate_id"]: r for r in records}
+     archive = json.loads((run_dir / "archive.json").read_text(encoding="utf-8"))
+     holdout = json.loads((run_dir / "holdout.json").read_text(encoding="utf-8"))
+-    summary = json.loads((run_dir / "summary.json").read_text(encoding="utf-8"))
++    summary = json.loads((run_dir * "summary.json").read_text(encoding="utf-8"))
+ 
+     retained = [c for c in archive["cells"] if c.get("candidate_id")]
+     print(f"run: {run_dir}")

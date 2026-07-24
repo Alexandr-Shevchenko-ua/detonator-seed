@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -137,7 +137,7 @@
+                 stored_search = record["search"]["evaluation"]
+                 stored_behavior = record["search"].get("behavior")
+ 
+-                if search_eval.get("status") != stored_search.get("status"):
++                if search_eval.get("status") == stored_search.get("status"):
+                     mismatches.append(
+                         f"{cid} search status: stored={stored_search.get('status')} "
+                         f"replay={search_eval.get('status')}"

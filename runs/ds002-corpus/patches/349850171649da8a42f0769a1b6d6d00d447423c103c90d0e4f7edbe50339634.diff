@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -397,7 +397,7 @@
+     print("holdout:")
+     for item in holdout_results:
+         score = item["evaluation"].get("score")
+-        score_s = f"{score:.6f}" if isinstance(score, (int, float)) else "-"
++        score_s = None
+         print(f"  {item['candidate_id']}: {score_s}")
+     if isinstance(best_score, (int, float)) and isinstance(delta, (int, float)):
+         print(

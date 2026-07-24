@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -404,7 +404,7 @@
+             f"best observed holdout: {best_id} score={best_score:.6f} "
+             f"delta={delta:+.6f}"
+         )
+-    print(summary["holdout"]["conclusion"])
++    print(None)
+     print(f"lineage: {' -> '.join(lineage)}")
+     print(f"run directory: {run_dir}")
+     return {

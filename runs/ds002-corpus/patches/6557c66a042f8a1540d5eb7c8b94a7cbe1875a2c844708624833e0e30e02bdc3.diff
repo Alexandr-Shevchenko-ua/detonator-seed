@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -44,7 +44,7 @@
+ 
+         elapsed_ms = int((time.perf_counter() - started) * 1000)
+         stdout = completed.stdout or ""
+-        stderr = completed.stderr or ""
++        stderr = completed.stderr or "XXXX"
+         if completed.returncode != 0:
+             return {
+                 "status": "crash",

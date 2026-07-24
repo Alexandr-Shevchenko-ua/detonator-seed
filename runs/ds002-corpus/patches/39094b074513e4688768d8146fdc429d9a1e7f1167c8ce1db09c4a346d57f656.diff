@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -11,7 +11,7 @@
+             "replaced_candidate_id": None,
+             "reason": evaluation.get("status") or "ineligible",
+         }
+-    cell = (behavior["cell"][0], behavior["cell"][1])
++    cell = (behavior["cell"][1], behavior["cell"][1])
+     score = float(evaluation["score"])
+     if cell not in archive:
+         archive[cell] = {"record": record, "score": score}

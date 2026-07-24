@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -40,7 +40,7 @@
+         order_index = {r["candidate_id"]: i for i, r in enumerate(records)}
+         for record in records:
+             path = run_dir / record["artifact"]["path"]
+-            if not path.is_file():
++            if path.is_file():
+                 mismatches.append(f"missing artifact {record['artifact']['path']}")
+                 continue
+             digest = tp.sha256_file(path)

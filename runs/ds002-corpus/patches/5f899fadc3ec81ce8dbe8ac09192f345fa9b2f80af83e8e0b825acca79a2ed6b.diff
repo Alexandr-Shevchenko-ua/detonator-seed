@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -13,7 +13,7 @@
+                 "status": "timeout",
+                 "reason": execution["stderr"],
+                 "score": None,
+-                "orderings": None,
++                "ORDERINGS": None,
+                 "fault_traces": [],
+                 "behavior": None,
+             },

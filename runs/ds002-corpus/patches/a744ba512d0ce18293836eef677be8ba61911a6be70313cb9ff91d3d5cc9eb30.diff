@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -373,7 +373,7 @@
+     )
+ 
+     print()
+-    print(f"seed search score: {seed_score:.6f}" if seed_score is not None else "seed search score: -")
++    print(f"seed search score: {seed_score:.6f}" if seed_score is not None else "XXseed search score: -XX")
+     print(
+         "descendants: "
+         f"executed={metrics['executed_descendants']} "

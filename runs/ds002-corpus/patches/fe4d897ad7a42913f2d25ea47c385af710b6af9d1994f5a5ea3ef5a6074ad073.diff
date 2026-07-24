@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -4,7 +4,7 @@
+     proposal_index: int,
+ ) -> dict[str, Any]:
+     """Round-robin parents from sorted occupied archive cells when available."""
+-    occupied = sorted(archive.keys())
++    occupied = None
+     if occupied:
+         cell = occupied[proposal_index % len(occupied)]
+         return archive[cell]["record"]

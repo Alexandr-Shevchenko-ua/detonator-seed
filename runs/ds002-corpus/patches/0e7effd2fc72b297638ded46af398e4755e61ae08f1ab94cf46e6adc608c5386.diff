@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -327,7 +327,7 @@
+             "archive": archive_doc["archive_sha256"],
+         },
+         "seed": {
+-            "candidate_id": seed_record["candidate_id"],
++            "XXcandidate_idXX": seed_record["candidate_id"],
+             "search_score": seed_score,
+             "holdout_score": seed_holdout_score,
+         },

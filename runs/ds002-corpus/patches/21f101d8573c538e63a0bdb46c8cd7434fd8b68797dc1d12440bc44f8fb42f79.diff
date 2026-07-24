@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -28,7 +28,7 @@
+                 "behavior": None,
+             }
+         trace = benchmark.run_suite_until_failure(order, fault_id)
+-        traces.append(trace)
++        traces.append(None)
+         scores.append(float(trace["score"]))
+ 
+     mean_score = sum(scores) / len(scores) if scores else 0.0

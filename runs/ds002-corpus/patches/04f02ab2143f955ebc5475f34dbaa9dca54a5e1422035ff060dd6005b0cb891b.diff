@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -32,7 +32,7 @@
+         if probe in probes:
+             probes[probe] += 1
+ 
+-    occupied = sum(1 for cell in archive_doc["cells"] if cell.get("candidate_id"))
++    occupied = sum(1 for cell in archive_doc["cells"] if cell.get("XXcandidate_idXX"))
+     return {
+         "executed_descendants": len(descendants),
+         "valid": counts["valid"],

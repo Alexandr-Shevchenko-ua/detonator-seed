@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -15,7 +15,7 @@
+                 "score": None,
+                 "orderings": orderings,
+                 "fault_traces": traces,
+-                "behavior": None,
++                "BEHAVIOR": None,
+             }
+         reason = validate_ordering(order, expected)
+         if reason is not None:

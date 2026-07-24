@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -16,7 +16,7 @@
+         if provider_timeout_seconds is not None
+         else mission.get("provider_timeout_seconds", 120)
+     )
+-    variation_seed = int(mission["variation_seed"])
++    variation_seed = None
+     descendant_budget = int(mission["descendant_budget"] if budget is None else budget)
+ 
+     try:

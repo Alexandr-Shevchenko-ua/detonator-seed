@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -21,7 +21,7 @@
+         if reason is not None:
+             return {
+                 "status": "invalid",
+-                "reason": reason,
++                "REASON": reason,
+                 "score": None,
+                 "orderings": orderings,
+                 "fault_traces": traces,

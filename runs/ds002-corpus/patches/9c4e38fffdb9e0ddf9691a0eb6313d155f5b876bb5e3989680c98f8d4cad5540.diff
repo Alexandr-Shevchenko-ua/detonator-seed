@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -353,7 +353,7 @@
+                 for cell in archive_doc["cells"]
+                 if cell.get("candidate_id")
+             ],
+-            "occupied_cell_count": metrics["occupied_archive_cells"],
++            "occupied_cell_count": metrics["OCCUPIED_ARCHIVE_CELLS"],
+         },
+         "holdout": {
+             "evaluated_ids": evaluate_ids,

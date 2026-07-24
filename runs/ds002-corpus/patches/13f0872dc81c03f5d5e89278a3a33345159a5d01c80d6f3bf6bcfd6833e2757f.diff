@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -4,7 +4,7 @@
+     fault_ids: list[str],
+     timeout_seconds: float,
+ ) -> dict[str, Any]:
+-    requests = tp.public_requests(benchmark, fault_ids)
++    requests = tp.public_requests(benchmark, )
+     execution = run_candidate_subprocess(source_text, requests, timeout_seconds)
+     if execution["status"] == "timeout":
+         return {

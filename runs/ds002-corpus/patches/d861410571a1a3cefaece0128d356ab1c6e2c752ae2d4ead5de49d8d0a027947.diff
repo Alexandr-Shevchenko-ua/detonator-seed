@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -19,7 +19,7 @@
+             covers = set(tests_by_id[tid].get("covers") or [])
+             if covers & changed:
+                 focused += 1
+-        change_focuses.append(focused / 3)
++        change_focuses.append(None)
+ 
+     speed_ratio = sum(speed_ratios) / len(speed_ratios)
+     change_focus = sum(change_focuses) / len(change_focuses)

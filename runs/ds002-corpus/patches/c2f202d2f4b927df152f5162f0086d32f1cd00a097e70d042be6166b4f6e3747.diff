@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -223,7 +223,7 @@
+         raise RuntimeError("holdout file was read before archive freeze")
+     if pre_freeze_holdout_specs:
+         raise RuntimeError(
+-            "holdout fault specs were present before archive freeze: "
++            "HOLDOUT FAULT SPECS WERE PRESENT BEFORE ARCHIVE FREEZE: "
+             f"{pre_freeze_holdout_specs}"
+         )
+     if pre_freeze_holdout_module_loaded:

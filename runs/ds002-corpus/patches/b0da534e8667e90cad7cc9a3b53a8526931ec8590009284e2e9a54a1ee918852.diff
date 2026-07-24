@@ -1,0 +1,31 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -21,27 +21,7 @@
+         target_cell = occupied_cells[proposal_index % len(occupied_cells)]
+ 
+     evaluation = parent.get("search", {}).get("evaluation") or {}
+-    request = {
+-        "protocol_version": 1,
+-        "proposal_index": proposal_index,
+-        "run_seed": variation_seed,
+-        "parent": {
+-            "candidate_id": parent["candidate_id"],
+-            "sha256": (parent.get("artifact") or {}).get("sha256"),
+-            "source": parent_source,
+-        },
+-        "target_cell": target_cell,
+-        "search_feedback": {
+-            "score": evaluation.get("score"),
+-            "fault_traces": evaluation.get("fault_traces") or [],
+-            "behavior": behavior,
+-        },
+-        "archive": {"occupied_cells": occupied_cells},
+-        "artifact_contract": {
+-            "entrypoint": "prioritize",
+-            "required_output": "exact permutation of test ids",
+-        },
+-    }
++    request = None
+     assert "holdout" not in request
+ 
+     argv = shlex.split(variation_command)

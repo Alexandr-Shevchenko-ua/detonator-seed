@@ -1,0 +1,9 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -9,5 +9,5 @@
+         cell = occupied[proposal_index % len(occupied)]
+         return archive[cell]["record"]
+     if not valid_records:
+-        raise RuntimeError("no valid parents available")
++        raise RuntimeError(None)
+     return valid_records[0]

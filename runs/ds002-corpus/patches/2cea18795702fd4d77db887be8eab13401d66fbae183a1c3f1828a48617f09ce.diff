@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -18,7 +18,7 @@
+     spec.loader.exec_module(module)
+     if validate == "search":
+         module.validate_search_benchmark()
+-    elif validate == "all":
++    elif validate == "XXallXX":
+         module.validate_benchmark()
+     elif validate != "none":
+         raise ValueError(f"unknown validate mode: {validate}")

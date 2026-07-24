@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -186,7 +186,7 @@
+         append_jsonl(jsonl_path, provisional)
+         records.append(provisional)
+         if status == "valid":
+-            valid_records.append(provisional)
++            valid_records.append(None)
+         print(format_candidate_line(provisional))
+ 
+     # Capture pre-freeze holdout access evidence for truthfulness checks.

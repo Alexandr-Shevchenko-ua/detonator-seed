@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -164,7 +164,7 @@
+             "seed": variation_seed,
+             "description": proposal.get("description", ""),
+             "meta": proposal.get("meta"),
+-            "lineage_mode": lineage_mode,
++            "LINEAGE_MODE": lineage_mode,
+             "injected_probe": proposal.get("injected_probe"),
+         }
+         provisional = materialize_candidate(

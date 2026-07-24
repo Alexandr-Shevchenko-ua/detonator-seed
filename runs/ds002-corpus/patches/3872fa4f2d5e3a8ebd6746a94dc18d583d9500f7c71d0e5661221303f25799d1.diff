@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -33,7 +33,7 @@
+             "injected_probe": mutation.get("injected_probe"),
+         },
+         "search": {
+-            "execution": {
++            "EXECUTION": {
+                 "status": execution["status"],
+                 "exit_code": execution["exit_code"],
+                 "elapsed_ms": execution["elapsed_ms"],

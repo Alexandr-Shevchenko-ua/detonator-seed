@@ -1,0 +1,39 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -8,5 +8,35 @@
+             return "ordering must be an exact permutation of test ids"
+         return "ordering must be an exact permutation of test ids"
+     if len(order) != len(set(order)):
+-        return "duplicate test ids"
++        return "DUPLICATE TEST IDS"
+     return None
++
++mutants_x_validate_ordering__mutmut['_mutmut_orig'] = x_validate_ordering__mutmut_orig # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_1'] = x_validate_ordering__mutmut_1 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_2'] = x_validate_ordering__mutmut_2 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_3'] = x_validate_ordering__mutmut_3 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_4'] = x_validate_ordering__mutmut_4 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_5'] = x_validate_ordering__mutmut_5 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_6'] = x_validate_ordering__mutmut_6 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_7'] = x_validate_ordering__mutmut_7 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_8'] = x_validate_ordering__mutmut_8 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_9'] = x_validate_ordering__mutmut_9 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_10'] = x_validate_ordering__mutmut_10 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_11'] = x_validate_ordering__mutmut_11 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_12'] = x_validate_ordering__mutmut_12 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_13'] = x_validate_ordering__mutmut_13 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_14'] = x_validate_ordering__mutmut_14 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_15'] = x_validate_ordering__mutmut_15 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_16'] = x_validate_ordering__mutmut_16 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_17'] = x_validate_ordering__mutmut_17 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_18'] = x_validate_ordering__mutmut_18 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_19'] = x_validate_ordering__mutmut_19 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_20'] = x_validate_ordering__mutmut_20 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_21'] = x_validate_ordering__mutmut_21 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_22'] = x_validate_ordering__mutmut_22 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_23'] = x_validate_ordering__mutmut_23 # type: ignore # mutmut generated
++mutants_x_validate_ordering__mutmut['x_validate_ordering__mutmut_24'] = x_validate_ordering__mutmut_24 # type: ignore # mutmut generated
++mutants_x_evaluate_orderings__mutmut: MutantDict = {}  # type: ignore
++
++
++@_mutmut_mutated(mutants_x_evaluate_orderings__mutmut)

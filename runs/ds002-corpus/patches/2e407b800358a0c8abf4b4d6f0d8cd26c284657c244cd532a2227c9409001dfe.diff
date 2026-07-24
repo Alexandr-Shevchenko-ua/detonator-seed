@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -94,7 +94,7 @@
+                 "search": tp.sha256_file(mission["_search_path"]),
+             },
+             "seed": {
+-                "candidate_id": seed_record["candidate_id"],
++                "candidate_id": seed_record["XXcandidate_idXX"],
+                 "search_score": seed_score,
+             },
+             "descendants": {

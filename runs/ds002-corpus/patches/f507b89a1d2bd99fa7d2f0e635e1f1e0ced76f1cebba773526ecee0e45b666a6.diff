@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -18,7 +18,7 @@
+         try:
+             completed = subprocess.run(
+                 [sys.executable, str(worker_copy)],
+-                input=json.dumps(payload),
++                input=json.dumps(None),
+                 text=True,
+                 capture_output=True,
+                 timeout=timeout_seconds,

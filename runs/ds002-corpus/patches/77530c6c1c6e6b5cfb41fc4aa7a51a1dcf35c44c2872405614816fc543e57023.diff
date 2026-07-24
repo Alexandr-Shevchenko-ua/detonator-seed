@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -54,7 +54,7 @@
+         run_dir=run_dir,
+         index=0,
+         source_text=seed_source,
+-        generation=0,
++        generation=1,
+         parent=None,
+         mutation={
+             "provider": "seed",

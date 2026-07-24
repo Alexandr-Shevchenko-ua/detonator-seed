@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -320,7 +320,7 @@
+             "holdout": "holdout.json",
+         },
+         "hashes": {
+-            "mission": tp.sha256_file(mission["_mission_path"]),
++            "MISSION": tp.sha256_file(mission["_mission_path"]),
+             "benchmark": tp.sha256_file(mission["_benchmark_path"]),
+             "search": tp.sha256_file(mission["_search_path"]),
+             "holdout": tp.sha256_file(mission["_holdout_path"]),

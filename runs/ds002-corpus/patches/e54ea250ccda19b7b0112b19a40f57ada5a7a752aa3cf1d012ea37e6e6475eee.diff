@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -1,7 +1,7 @@
+ def resolve_run_dir(output: Path | None) -> Path:
+     """Resolve output directory without destroying existing paths."""
+     if output is None:
+-        run_dir = (Path("runs") / _utc_run_id()).resolve()
++        run_dir = (Path("XXrunsXX") / _utc_run_id()).resolve()
+         # Uniqueness if the same second is reused.
+         suffix = 1
+         base = run_dir

@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -138,7 +138,7 @@
+         elif lineage_mode == "seed":
+             parent = seed_record
+         elif lineage_mode == "none":
+-            parent = None
++            parent = ""
+         else:
+             raise RuntimeError(f"unknown lineage_mode: {lineage_mode}")

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -341,7 +341,7 @@
+             "invalid": metrics["invalid"],
+             "crash": metrics["crash"],
+             "timeout": metrics["timeout"],
+-            "injected_failure_probes": metrics["injected_failure_probes"],
++            "injected_failure_probes": metrics["INJECTED_FAILURE_PROBES"],
+         },
+         "archive": {
+             "occupied_cells": [

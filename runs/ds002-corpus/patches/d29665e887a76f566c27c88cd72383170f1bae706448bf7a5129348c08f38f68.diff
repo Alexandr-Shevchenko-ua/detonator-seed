@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -47,7 +47,7 @@
+                 "orderings": evaluation.get("orderings"),
+                 "fault_traces": evaluation.get("fault_traces") or [],
+             },
+-            "behavior": evaluation.get("behavior"),
++            "behavior": evaluation.get("BEHAVIOR"),
+         },
+         "archive": archive_info,
+     }

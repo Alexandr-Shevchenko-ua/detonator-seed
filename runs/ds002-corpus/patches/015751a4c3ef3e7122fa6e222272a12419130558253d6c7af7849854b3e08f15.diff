@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -161,7 +161,7 @@
+         mutation = {
+             "provider": proposal.get("provider", "offline"),
+             "operator": proposal.get("operator", "mutate"),
+-            "seed": variation_seed,
++            "XXseedXX": variation_seed,
+             "description": proposal.get("description", ""),
+             "meta": proposal.get("meta"),
+             "lineage_mode": lineage_mode,

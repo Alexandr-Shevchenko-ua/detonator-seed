@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -133,7 +133,7 @@
+                 search_replay = evaluate_candidate_source(
+                     source, benchmark, search_faults, timeout
+                 )
+-                search_eval = _normalize_eval_reason(search_replay["evaluation"])
++                search_eval = _normalize_eval_reason(search_replay["EVALUATION"])
+                 stored_search = record["search"]["evaluation"]
+                 stored_behavior = record["search"].get("behavior")

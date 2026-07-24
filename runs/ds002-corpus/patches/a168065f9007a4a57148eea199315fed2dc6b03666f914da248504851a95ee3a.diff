@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -210,7 +210,7 @@
+     archive_path = run_dir / "archive.json"
+     archive_path.write_text(
+         json.dumps(archive_doc, indent=2, sort_keys=True) + "\n",
+-        encoding="utf-8",
++        encoding="XXutf-8XX",
+         newline="\n",
+     )

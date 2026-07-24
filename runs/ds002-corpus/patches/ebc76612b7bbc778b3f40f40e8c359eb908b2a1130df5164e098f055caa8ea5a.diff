@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -4,7 +4,7 @@
+     mission["_mission_path"] = mission_path
+     mission["_base"] = base
+     mission["_seed_path"] = (base / mission["seed"]).resolve()
+-    mission["_benchmark_path"] = (base / mission["benchmark"]).resolve()
++    mission["_BENCHMARK_PATH"] = (base / mission["benchmark"]).resolve()
+     mission["_search_path"] = (base / mission["search_faults"]).resolve()
+     mission["_holdout_path"] = (base / mission["holdout_faults"]).resolve()
+     return mission

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -122,7 +122,7 @@
+             seen = set()
+             for cid in [records[0]["candidate_id"], *[c["candidate_id"] for c in retained]]:
+                 if cid not in seen:
+-                    replay_ids.append(cid)
++                    replay_ids.append(None)
+                     seen.add(cid)
+ 
+             holdout_by_id = {h["candidate_id"]: h for h in holdout["candidates"]}

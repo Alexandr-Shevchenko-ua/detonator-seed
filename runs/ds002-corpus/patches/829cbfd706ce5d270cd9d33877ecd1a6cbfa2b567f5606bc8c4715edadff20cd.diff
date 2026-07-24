@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -7,7 +7,7 @@
+     with tempfile.TemporaryDirectory(prefix="detonator-cand-") as tmp:
+         tmp_path = Path(tmp)
+         source_path = tmp_path / "candidate.py"
+-        _write_text(source_path, source_text)
++        _write_text(source_path, None)
+         worker_copy = tmp_path / "_worker.py"
+         shutil.copy2(WORKER_PATH, worker_copy)
+         payload = {

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -235,7 +235,7 @@
+     holdout_faults = holdout_gate.load_fault_ids()
+     benchmark.attach_holdout_definitions(holdout_module_path)
+     benchmark.validate_holdout_benchmark(holdout_faults)
+-    winner_ids = [cell["candidate_id"] for cell in archive_doc["cells"] if cell.get("candidate_id")]
++    winner_ids = [cell["candidate_id"] for cell in archive_doc["cells"] if cell.get("XXcandidate_idXX")]
+     evaluate_ids = []
+     seen_eval = set()
+     for cid in [seed_record["candidate_id"], *winner_ids]:

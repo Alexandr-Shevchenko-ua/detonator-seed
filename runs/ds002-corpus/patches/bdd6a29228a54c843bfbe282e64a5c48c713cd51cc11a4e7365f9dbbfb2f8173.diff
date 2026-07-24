@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -5,7 +5,7 @@
+     target = Path(holdout_module_path).resolve()
+     to_drop = []
+     for name, module in sys.modules.items():
+-        mod_file = getattr(module, "__file__", None)
++        mod_file = getattr(module, None, None)
+         if mod_file and Path(mod_file).resolve() == target:
+             to_drop.append(name)
+     for name in to_drop:

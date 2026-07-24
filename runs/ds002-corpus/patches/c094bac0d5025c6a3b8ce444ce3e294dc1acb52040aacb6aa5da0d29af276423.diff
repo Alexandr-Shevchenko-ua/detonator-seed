@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -2,7 +2,7 @@
+     id_to_record: dict[str, dict[str, Any]],
+     candidate_id: str,
+ ) -> list[str]:
+-    chain: list[str] = []
++    chain: list[str] = None
+     current: str | None = candidate_id
+     seen: set[str] = set()
+     while current is not None and current not in seen:

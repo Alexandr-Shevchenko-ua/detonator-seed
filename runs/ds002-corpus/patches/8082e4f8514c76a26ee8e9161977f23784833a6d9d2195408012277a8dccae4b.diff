@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -409,7 +409,7 @@
+     print(f"run directory: {run_dir}")
+     return {
+         "run_dir": run_dir,
+-        "records": records,
++        "RECORDS": records,
+         "summary": summary,
+         "archive": archive_doc,
+         "holdout": holdout_doc,

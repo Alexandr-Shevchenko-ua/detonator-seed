@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -190,7 +190,7 @@
+         print(format_candidate_line(provisional))
+ 
+     # Capture pre-freeze holdout access evidence for truthfulness checks.
+-    pre_freeze_holdout_fault_access = benchmark.holdout_fault_access_log()
++    pre_freeze_holdout_fault_access = None
+     pre_freeze_holdout_reads = holdout_gate.read_count
+     pre_freeze_holdout_specs = benchmark.holdout_specs_loaded()
+     holdout_module_path = mission["_benchmark_path"].parent / "holdout_faults.py"

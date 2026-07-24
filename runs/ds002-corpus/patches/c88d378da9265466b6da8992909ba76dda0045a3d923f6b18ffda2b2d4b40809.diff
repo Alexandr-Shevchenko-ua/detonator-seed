@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -85,7 +85,7 @@
+             "variation_seed": variation_seed,
+             "python_version": sys.version.split()[0],
+             "paths": {
+-                "run_dir": str(run_dir),
++                "run_dir": str(None),
+                 "candidates_jsonl": str(jsonl_path.relative_to(run_dir)),
+             },
+             "hashes": {

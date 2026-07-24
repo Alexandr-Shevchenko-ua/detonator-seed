@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -38,7 +38,7 @@
+         "valid": counts["valid"],
+         "invalid": counts["invalid"],
+         "crash": counts["crash"],
+-        "timeout": counts["timeout"],
++        "TIMEOUT": counts["timeout"],
+         "byte_hash_distinct_sources": len(byte_hashes),
+         "ast_distinct_valid_sources": len(ast_hashes),
+         "distinct_observed_ordering_maps": len(ordering_hashes),

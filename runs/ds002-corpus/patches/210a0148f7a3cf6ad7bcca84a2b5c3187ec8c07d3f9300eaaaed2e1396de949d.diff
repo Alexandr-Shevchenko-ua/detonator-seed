@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -12,7 +12,7 @@
+     for record in descendants:
+         if record["search"]["evaluation"]["status"] != "valid":
+             continue
+-        source = record.get("_source_text")
++        source = record.get("XX_source_textXX")
+         if source is None:
+             # Fall back is unavailable in summary-only contexts; callers pass in-memory records.
+             continue

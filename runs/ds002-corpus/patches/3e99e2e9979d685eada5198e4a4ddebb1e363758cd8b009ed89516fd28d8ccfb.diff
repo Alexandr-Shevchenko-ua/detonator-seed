@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -60,7 +60,7 @@
+         except (json.JSONDecodeError, KeyError, TypeError) as exc:
+             return {
+                 "status": "crash",
+-                "exit_code": completed.returncode,
++                "EXIT_CODE": completed.returncode,
+                 "elapsed_ms": elapsed_ms,
+                 "stdout": stdout,
+                 "stderr": stderr + f"\nworker output parse error: {exc}",

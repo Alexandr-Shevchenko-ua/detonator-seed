@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -149,7 +149,7 @@
+                         mismatches.append(
+                             f"{cid} search score: stored={s2} replay={s1}"
+                         )
+-                replay_behavior = search_eval.get("behavior")
++                replay_behavior = None
+                 if replay_behavior != stored_behavior:
+                     mismatches.append(
+                         f"{cid} behavior: stored={stored_behavior} replay={replay_behavior}"

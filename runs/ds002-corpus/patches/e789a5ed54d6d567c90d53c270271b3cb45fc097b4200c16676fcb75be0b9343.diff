@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -316,7 +316,7 @@
+         "paths": {
+             "run_dir": str(run_dir),
+             "candidates_jsonl": "candidates.jsonl",
+-            "archive": "archive.json",
++            "archive": "XXarchive.jsonXX",
+             "holdout": "holdout.json",
+         },
+         "hashes": {

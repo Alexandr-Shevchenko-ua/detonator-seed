@@ -1,0 +1,21 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -35,17 +35,7 @@
+             "timeout_seconds": provider_timeout,
+         }
+ 
+-    executed_command = " ".join(
+-        ["detonator", "evolve", str(mission_path)]
+-        + ([f"--budget", str(descendant_budget)] if budget is not None else [])
+-        + ([f"--output", str(run_dir)] if output is not None else [])
+-        + (["--variation-command", "<redacted>"] if variation_command else [])
+-        + (
+-            [f"--provider-timeout-seconds", str(provider_timeout)]
+-            if variation_command
+-            else []
+-        )
+-    )
++    executed_command = None
+ 
+     # --- seed ---
+     seed_source = mission["_seed_path"].read_text(encoding="utf-8")

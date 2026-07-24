@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -68,7 +68,7 @@
+             }
+         return {
+             "status": "ok",
+-            "exit_code": completed.returncode,
++            "EXIT_CODE": completed.returncode,
+             "elapsed_ms": elapsed_ms,
+             "stdout": stdout,
+             "stderr": stderr,

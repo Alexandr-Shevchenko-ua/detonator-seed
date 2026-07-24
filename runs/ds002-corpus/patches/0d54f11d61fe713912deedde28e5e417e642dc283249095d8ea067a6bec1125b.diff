@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -10,7 +10,7 @@
+             suffix += 1
+         return run_dir
+ 
+-    run_dir = output.expanduser().resolve()
++    run_dir = None
+     if run_dir.exists():
+         raise FileExistsError(
+             f"refusing to overwrite existing output path: {run_dir}"

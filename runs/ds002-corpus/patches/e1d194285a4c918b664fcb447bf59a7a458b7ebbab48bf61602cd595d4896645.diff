@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -93,7 +93,7 @@
+         body = {k: v for k, v in archive.items() if k != "archive_sha256"}
+         body_bytes = json.dumps(body, indent=2, sort_keys=True) + "\n"
+         archive_digest = tp.sha256_text(body_bytes)
+-        if archive_digest != archive.get("archive_sha256"):
++        if archive_digest == archive.get("archive_sha256"):
+             mismatches.append(
+                 f"archive hash mismatch: stored={archive.get('archive_sha256')} "
+                 f"actual={archive_digest}"

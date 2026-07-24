@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -4,7 +4,7 @@
+     fault_ids: list[str],
+ ) -> dict[str, Any]:
+     expected = benchmark.test_ids()
+-    traces: list[dict[str, Any]] = []
++    traces: list[dict[str, Any]] = None
+     scores: list[float] = []
+     for fault_id in fault_ids:
+         order = orderings.get(fault_id)

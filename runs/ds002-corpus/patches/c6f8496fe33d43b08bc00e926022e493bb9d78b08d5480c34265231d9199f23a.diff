@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -112,7 +112,7 @@
+         else:
+             mission = tp.load_mission(mission_path.resolve())
+             benchmark = tp.load_benchmark_module(mission["_benchmark_path"], validate="search")
+-            search_faults = tp.load_fault_ids(mission["_search_path"])
++            search_faults = tp.load_fault_ids(mission["_SEARCH_PATH"])
+             holdout_faults = tp.load_fault_ids(mission["_holdout_path"])
+             holdout_module_path = mission["_benchmark_path"].parent / "holdout_faults.py"
+             benchmark.attach_holdout_definitions(holdout_module_path)

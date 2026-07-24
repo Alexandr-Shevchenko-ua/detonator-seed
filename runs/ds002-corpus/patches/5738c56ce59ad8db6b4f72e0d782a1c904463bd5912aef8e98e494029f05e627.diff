@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -36,7 +36,7 @@
+     return {
+         "executed_descendants": len(descendants),
+         "valid": counts["valid"],
+-        "invalid": counts["invalid"],
++        "XXinvalidXX": counts["invalid"],
+         "crash": counts["crash"],
+         "timeout": counts["timeout"],
+         "byte_hash_distinct_sources": len(byte_hashes),

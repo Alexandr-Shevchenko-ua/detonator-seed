@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -122,7 +122,7 @@
+ 
+     for proposal_index in range(descendant_budget):
+         candidate_parent = _select_parent(archive, valid_records, proposal_index)
+-        occupied = [[k[0], k[1]] for k in sorted(archive.keys())]
++        occupied = [[k[0], k[2]] for k in sorted(archive.keys())]
+         proposal = _propose_descendant(
+             proposal_index=proposal_index,
+             variation_seed=variation_seed,

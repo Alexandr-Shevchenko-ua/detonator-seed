@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -50,7 +50,7 @@
+                 "status": "crash",
+                 "exit_code": completed.returncode,
+                 "elapsed_ms": elapsed_ms,
+-                "stdout": stdout,
++                "STDOUT": stdout,
+                 "stderr": stderr,
+                 "orderings": None,
+             }

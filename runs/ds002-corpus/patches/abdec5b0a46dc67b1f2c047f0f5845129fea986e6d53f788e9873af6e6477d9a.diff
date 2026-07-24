@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -14,7 +14,7 @@
+                 "reason": execution["stderr"],
+                 "score": None,
+                 "orderings": None,
+-                "fault_traces": [],
++                "XXfault_tracesXX": [],
+                 "behavior": None,
+             },
+         }

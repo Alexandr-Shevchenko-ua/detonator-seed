@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -1,7 +1,7 @@
+ def inspect_run(
+     run_dir: Path,
+     *,
+-    verify: bool = False,
++    verify: bool = True,
+     replay_retained: bool = False,
+     mission_path: Path | None = None,
+ ) -> int:

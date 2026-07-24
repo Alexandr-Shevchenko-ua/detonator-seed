@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -17,7 +17,7 @@
+     evaluation = _normalize_eval_reason(search_result["evaluation"])
+     execution = search_result["execution"]
+     record = {
+-        "schema_version": 1,
++        "schema_version": 2,
+         "candidate_id": cand_id,
+         "generation": generation,
+         "parent_id": parent["candidate_id"] if parent else None,

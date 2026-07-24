@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -148,7 +148,7 @@
+         while source_hash in seen_hashes:
+             attempt += 1
+             source_text = source_text.rstrip() + f"\n# unique_nudge_{proposal_index}_{attempt}\n"
+-            source_hash = tp.sha256_text(_normalize_source(source_text))
++            source_hash = None
+         seen_hashes.add(source_hash)
+ 
+         search_result = evaluate_candidate_source(

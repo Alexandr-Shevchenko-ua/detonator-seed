@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -77,7 +77,7 @@
+         raise RuntimeError("variation-command response missing source string")
+     description = response.get("mutation_description") or "external proposal"
+     return {
+-        "source": source.rstrip() + f"\n# external_slot={proposal_index}\n",
++        "source": source.rstrip() - f"\n# external_slot={proposal_index}\n",
+         "provider": "external",
+         "operator": "external_command",
+         "description": description,

@@ -1,0 +1,66 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -29,5 +29,62 @@
+     return {
+         "schema_version": 1,
+         "frozen_after_candidate_id": frozen_after_candidate_id,
+-        "cells": cells,
++        "CELLS": cells,
+     }
++
++mutants_x__freeze_archive__mutmut['_mutmut_orig'] = x__freeze_archive__mutmut_orig # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_1'] = x__freeze_archive__mutmut_1 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_2'] = x__freeze_archive__mutmut_2 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_3'] = x__freeze_archive__mutmut_3 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_4'] = x__freeze_archive__mutmut_4 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_5'] = x__freeze_archive__mutmut_5 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_6'] = x__freeze_archive__mutmut_6 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_7'] = x__freeze_archive__mutmut_7 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_8'] = x__freeze_archive__mutmut_8 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_9'] = x__freeze_archive__mutmut_9 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_10'] = x__freeze_archive__mutmut_10 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_11'] = x__freeze_archive__mutmut_11 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_12'] = x__freeze_archive__mutmut_12 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_13'] = x__freeze_archive__mutmut_13 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_14'] = x__freeze_archive__mutmut_14 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_15'] = x__freeze_archive__mutmut_15 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_16'] = x__freeze_archive__mutmut_16 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_17'] = x__freeze_archive__mutmut_17 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_18'] = x__freeze_archive__mutmut_18 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_19'] = x__freeze_archive__mutmut_19 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_20'] = x__freeze_archive__mutmut_20 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_21'] = x__freeze_archive__mutmut_21 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_22'] = x__freeze_archive__mutmut_22 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_23'] = x__freeze_archive__mutmut_23 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_24'] = x__freeze_archive__mutmut_24 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_25'] = x__freeze_archive__mutmut_25 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_26'] = x__freeze_archive__mutmut_26 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_27'] = x__freeze_archive__mutmut_27 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_28'] = x__freeze_archive__mutmut_28 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_29'] = x__freeze_archive__mutmut_29 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_30'] = x__freeze_archive__mutmut_30 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_31'] = x__freeze_archive__mutmut_31 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_32'] = x__freeze_archive__mutmut_32 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_33'] = x__freeze_archive__mutmut_33 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_34'] = x__freeze_archive__mutmut_34 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_35'] = x__freeze_archive__mutmut_35 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_36'] = x__freeze_archive__mutmut_36 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_37'] = x__freeze_archive__mutmut_37 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_38'] = x__freeze_archive__mutmut_38 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_39'] = x__freeze_archive__mutmut_39 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_40'] = x__freeze_archive__mutmut_40 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_41'] = x__freeze_archive__mutmut_41 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_42'] = x__freeze_archive__mutmut_42 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_43'] = x__freeze_archive__mutmut_43 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_44'] = x__freeze_archive__mutmut_44 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_45'] = x__freeze_archive__mutmut_45 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_46'] = x__freeze_archive__mutmut_46 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_47'] = x__freeze_archive__mutmut_47 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_48'] = x__freeze_archive__mutmut_48 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_49'] = x__freeze_archive__mutmut_49 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_50'] = x__freeze_archive__mutmut_50 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut['x__freeze_archive__mutmut_51'] = x__freeze_archive__mutmut_51 # type: ignore # mutmut generated
++mutants_x__lineage_ids__mutmut: MutantDict = {}  # type: ignore
++
++
++@_mutmut_mutated(mutants_x__lineage_ids__mutmut)

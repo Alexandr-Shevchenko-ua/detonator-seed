@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -258,7 +258,7 @@
+                     "exit_code": result["execution"]["exit_code"],
+                     "elapsed_ms": result["execution"]["elapsed_ms"],
+                     "stdout": result["execution"]["stdout"],
+-                    "stderr": result["execution"]["stderr"],
++                    "stderr": result["EXECUTION"]["stderr"],
+                 },
+                 "evaluation": {
+                     "status": evaluation["status"],

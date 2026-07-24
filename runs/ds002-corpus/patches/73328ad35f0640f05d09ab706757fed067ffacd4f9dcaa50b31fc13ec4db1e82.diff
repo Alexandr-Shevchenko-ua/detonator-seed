@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -273,7 +273,7 @@
+     seed_holdout_score = seed_holdout["evaluation"].get("score")
+     scored = [h for h in holdout_results if isinstance(h["evaluation"].get("score"), (int, float))]
+     if scored:
+-        best = max(scored, key=lambda h: h["evaluation"]["score"])
++        best = max(scored, key=lambda h: h["evaluation"]["XXscoreXX"])
+         best_id = best["candidate_id"]
+         best_score = float(best["evaluation"]["score"])
+     else:

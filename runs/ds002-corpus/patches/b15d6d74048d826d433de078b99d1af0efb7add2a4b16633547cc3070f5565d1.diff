@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -30,7 +30,7 @@
+     provider_descriptor = None
+     if variation_command:
+         provider_descriptor = {
+-            "kind": "external_command",
++            "kind": "XXexternal_commandXX",
+             "name": "variation-command",
+             "timeout_seconds": provider_timeout,
+         }

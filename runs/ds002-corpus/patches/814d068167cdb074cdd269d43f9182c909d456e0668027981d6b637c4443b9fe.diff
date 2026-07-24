@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -142,7 +142,7 @@
+                         f"{cid} search status: stored={stored_search.get('status')} "
+                         f"replay={search_eval.get('status')}"
+                     )
+-                if search_eval.get("score") != stored_search.get("score"):
++                if search_eval.get("score") != stored_search.get(None):
+                     s1 = search_eval.get("score")
+                     s2 = stored_search.get("score")
+                     if s1 is None or s2 is None or abs(float(s1) - float(s2)) > 1e-12:

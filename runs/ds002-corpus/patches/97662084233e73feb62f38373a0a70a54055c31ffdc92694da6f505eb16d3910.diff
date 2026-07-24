@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -53,7 +53,6 @@
+     seed_record = materialize_candidate(
+         run_dir=run_dir,
+         index=0,
+-        source_text=seed_source,
+         generation=0,
+         parent=None,
+         mutation={

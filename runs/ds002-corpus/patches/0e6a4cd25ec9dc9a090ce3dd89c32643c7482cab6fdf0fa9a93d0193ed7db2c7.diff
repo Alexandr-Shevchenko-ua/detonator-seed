@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -18,7 +18,7 @@
+     summary = json.loads((run_dir / "summary.json").read_text(encoding="utf-8"))
+ 
+     retained = [c for c in archive["cells"] if c.get("candidate_id")]
+-    print(f"run: {run_dir}")
++    print(None)
+     print(f"candidates: {len(records)} (seed + {max(0, len(records) - 1)} descendants)")
+     print("retained lineages:")
+     seed_id = records[0]["candidate_id"]

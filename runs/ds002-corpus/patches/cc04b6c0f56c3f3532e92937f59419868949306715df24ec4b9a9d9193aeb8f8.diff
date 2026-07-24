@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -32,7 +32,7 @@
+             if isinstance(stdout, bytes):
+                 stdout = stdout.decode("utf-8", errors="replace")
+             if isinstance(stderr, bytes):
+-                stderr = stderr.decode("utf-8", errors="replace")
++                stderr = stderr.decode("utf-8", errors="XXreplaceXX")
+             return {
+                 "status": "timeout",
+                 "exit_code": None,

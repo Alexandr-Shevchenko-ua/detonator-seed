@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -17,7 +17,7 @@
+             # Fall back is unavailable in summary-only contexts; callers pass in-memory records.
+             continue
+         try:
+-            tree = ast.parse(source)
++            tree = None
+             ast_hashes.add(tp.sha256_text(ast.dump(tree, annotate_fields=True)))
+         except SyntaxError:
+             pass

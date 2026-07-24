@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -139,7 +139,7 @@
+ 
+                 if search_eval.get("status") != stored_search.get("status"):
+                     mismatches.append(
+-                        f"{cid} search status: stored={stored_search.get('status')} "
++                        f"{cid} search status: stored={stored_search.get(None)} "
+                         f"replay={search_eval.get('status')}"
+                     )
+                 if search_eval.get("score") != stored_search.get("score"):

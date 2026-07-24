@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -168,7 +168,6 @@
+             "injected_probe": proposal.get("injected_probe"),
+         }
+         provisional = materialize_candidate(
+-            run_dir=run_dir,
+             index=proposal_index + 1,
+             source_text=source_text,
+             generation=generation,

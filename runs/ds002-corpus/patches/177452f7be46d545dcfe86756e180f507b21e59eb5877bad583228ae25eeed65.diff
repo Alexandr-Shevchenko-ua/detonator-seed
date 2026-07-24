@@ -1,0 +1,14 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -10,10 +10,7 @@
+         _write_text(source_path, source_text)
+         worker_copy = tmp_path / "_worker.py"
+         shutil.copy2(WORKER_PATH, worker_copy)
+-        payload = {
+-            "source_path": str(source_path),
+-            "requests": requests,
+-        }
++        payload = None
+         started = time.perf_counter()
+         try:
+             completed = subprocess.run(

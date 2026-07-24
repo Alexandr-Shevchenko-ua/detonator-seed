@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -130,7 +130,7 @@
+             occupied_cells=occupied,
+             variation_command=variation_command,
+             provider_timeout_seconds=provider_timeout,
+-            seen_hashes=seen_hashes,
++            seen_hashes=None,
+         )
+         lineage_mode = proposal.get("lineage_mode", "seed")
+         if lineage_mode == "derived":

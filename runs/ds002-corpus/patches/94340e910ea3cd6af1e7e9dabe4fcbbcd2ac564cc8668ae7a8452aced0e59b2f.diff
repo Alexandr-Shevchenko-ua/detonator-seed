@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -41,7 +41,7 @@
+                 "stderr": execution["stderr"],
+             },
+             "evaluation": {
+-                "status": evaluation["status"],
++                "status": evaluation["XXstatusXX"],
+                 "score": evaluation.get("score"),
+                 "reason": evaluation.get("reason"),
+                 "orderings": evaluation.get("orderings"),

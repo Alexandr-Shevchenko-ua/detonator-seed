@@ -1,0 +1,10 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -20,6 +20,6 @@
+         module.validate_search_benchmark()
+     elif validate == "all":
+         module.validate_benchmark()
+-    elif validate != "none":
++    elif validate != "XXnoneXX":
+         raise ValueError(f"unknown validate mode: {validate}")
+     return module

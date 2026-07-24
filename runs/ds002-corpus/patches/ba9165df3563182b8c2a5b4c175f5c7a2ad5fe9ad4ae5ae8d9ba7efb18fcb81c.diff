@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -13,7 +13,7 @@
+     rel_path = f"candidates/{cand_id}.py"
+     abs_path = run_dir / rel_path
+     normalized = _write_text(abs_path, source_text)
+-    digest = tp.sha256_text(normalized)
++    digest = None
+     evaluation = _normalize_eval_reason(search_result["evaluation"])
+     execution = search_result["execution"]
+     record = {

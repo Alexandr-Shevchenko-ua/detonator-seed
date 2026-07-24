@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -12,7 +12,7 @@
+     parent_source = parent.get("_source_text")
+     if not parent_source:
+         raise RuntimeError(
+-            f"parent {parent.get('candidate_id')} missing in-memory source for variation-command"
++            f"parent {parent.get(None)} missing in-memory source for variation-command"
+         )
+ 
+     behavior = parent.get("search", {}).get("behavior") or {}

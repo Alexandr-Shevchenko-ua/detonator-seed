@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -39,7 +39,7 @@
+         "archive": {"occupied_cells": occupied_cells},
+         "artifact_contract": {
+             "entrypoint": "prioritize",
+-            "required_output": "exact permutation of test ids",
++            "required_output": "XXexact permutation of test idsXX",
+         },
+     }
+     assert "holdout" not in request

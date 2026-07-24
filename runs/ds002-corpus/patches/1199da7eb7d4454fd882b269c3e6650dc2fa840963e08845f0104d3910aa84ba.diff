@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -18,7 +18,7 @@
+     execution = search_result["execution"]
+     record = {
+         "schema_version": 1,
+-        "candidate_id": cand_id,
++        "XXcandidate_idXX": cand_id,
+         "generation": generation,
+         "parent_id": parent["candidate_id"] if parent else None,
+         "parent_sha256": (parent.get("artifact") or {}).get("sha256") if parent else None,

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -300,7 +300,7 @@
+         "delta": delta,
+         "improved_over_seed": improved,
+     }
+-    holdout_path = run_dir / "holdout.json"
++    holdout_path = run_dir * "holdout.json"
+     holdout_path.write_text(json.dumps(holdout_doc, indent=2) + "\n", encoding="utf-8")
+ 
+     descendant_records = records[1:]

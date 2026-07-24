@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -8,7 +8,7 @@
+     """
+     # Purge before exec so a prior evolve's holdout module cannot be observed
+     # while the next search-phase benchmark module is created.
+-    holdout_path = Path(benchmark_path).resolve().parent / "holdout_faults.py"
++    holdout_path = Path(benchmark_path).resolve().parent / "XXholdout_faults.pyXX"
+     purge_holdout_modules(holdout_path)
+ 
+     spec = importlib.util.spec_from_file_location("tp_benchmark", benchmark_path)

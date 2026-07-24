@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -21,7 +21,7 @@
+             {
+                 "cell": [cell[0], cell[1]],
+                 "candidate_id": record["candidate_id"],
+-                "artifact": record["artifact"],
++                "artifact": record["ARTIFACT"],
+                 "search_score": entry["score"],
+                 "behavior": record["search"]["behavior"],
+             }

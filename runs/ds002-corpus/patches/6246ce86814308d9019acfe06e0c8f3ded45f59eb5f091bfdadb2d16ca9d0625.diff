@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -50,7 +50,7 @@
+                     f"stored={record['artifact']['sha256']} actual={digest}"
+                 )
+             else:
+-                print(f"  {record['candidate_id']} ok {digest[:12]}…")
++                print(None)
+ 
+             parent_id = record.get("parent_id")
+             parent_sha = record.get("parent_sha256")

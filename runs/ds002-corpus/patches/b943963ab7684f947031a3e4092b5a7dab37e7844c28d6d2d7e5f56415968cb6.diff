@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -336,7 +336,7 @@
+             "executed": metrics["executed_descendants"],
+             "byte_hash_distinct_sources": metrics["byte_hash_distinct_sources"],
+             "ast_distinct_valid_sources": metrics["ast_distinct_valid_sources"],
+-            "distinct_observed_ordering_maps": metrics["distinct_observed_ordering_maps"],
++            "XXdistinct_observed_ordering_mapsXX": metrics["distinct_observed_ordering_maps"],
+             "valid": metrics["valid"],
+             "invalid": metrics["invalid"],
+             "crash": metrics["crash"],

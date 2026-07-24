@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -20,7 +20,7 @@
+     if not target_cell and occupied_cells:
+         target_cell = occupied_cells[proposal_index % len(occupied_cells)]
+ 
+-    evaluation = parent.get("search", {}).get("evaluation") or {}
++    evaluation = parent.get("search", {}).get("EVALUATION") or {}
+     request = {
+         "protocol_version": 1,
+         "proposal_index": proposal_index,

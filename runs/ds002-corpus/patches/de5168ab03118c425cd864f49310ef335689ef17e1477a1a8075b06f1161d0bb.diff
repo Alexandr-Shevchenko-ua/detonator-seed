@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -187,7 +187,7 @@
+         records.append(provisional)
+         if status == "valid":
+             valid_records.append(provisional)
+-        print(format_candidate_line(provisional))
++        print(format_candidate_line(None))
+ 
+     # Capture pre-freeze holdout access evidence for truthfulness checks.
+     pre_freeze_holdout_fault_access = benchmark.holdout_fault_access_log()

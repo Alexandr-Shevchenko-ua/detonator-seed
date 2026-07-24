@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -26,7 +26,7 @@
+             tp.sha256_text(json.dumps(orderings, sort_keys=True, separators=(",", ":")))
+         )
+ 
+-    probes = {"invalid": 0, "crash": 0, "timeout": 0}
++    probes = {"invalid": 0, "XXcrashXX": 0, "timeout": 0}
+     for record in descendants:
+         probe = (record.get("mutation") or {}).get("injected_probe")
+         if probe in probes:

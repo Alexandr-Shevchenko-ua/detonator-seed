@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -71,7 +71,7 @@
+ 
+     seed_score = seed_record["search"]["evaluation"].get("score")
+     archive: dict[tuple[str, str], dict[str, Any]] = {}
+-    seed_record["archive"] = _archive_consider(archive, seed_record)
++    seed_record["archive"] = _archive_consider(archive, None)
+     append_jsonl(jsonl_path, seed_record)
+     print(format_candidate_line(seed_record))

@@ -1,0 +1,12 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -401,8 +401,7 @@
+         print(f"  {item['candidate_id']}: {score_s}")
+     if isinstance(best_score, (int, float)) and isinstance(delta, (int, float)):
+         print(
+-            f"best observed holdout: {best_id} score={best_score:.6f} "
+-            f"delta={delta:+.6f}"
++            None
+         )
+     print(summary["holdout"]["conclusion"])
+     print(f"lineage: {' -> '.join(lineage)}")

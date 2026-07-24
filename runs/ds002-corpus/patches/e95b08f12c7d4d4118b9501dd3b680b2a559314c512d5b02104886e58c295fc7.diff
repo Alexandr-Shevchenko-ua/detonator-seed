@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -36,7 +36,7 @@
+             "fault_traces": evaluation.get("fault_traces") or [],
+             "behavior": behavior,
+         },
+-        "archive": {"occupied_cells": occupied_cells},
++        "XXarchiveXX": {"occupied_cells": occupied_cells},
+         "artifact_contract": {
+             "entrypoint": "prioritize",
+             "required_output": "exact permutation of test ids",

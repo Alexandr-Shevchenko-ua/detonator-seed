@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -34,7 +34,7 @@
+         "search_feedback": {
+             "score": evaluation.get("score"),
+             "fault_traces": evaluation.get("fault_traces") or [],
+-            "behavior": behavior,
++            "XXbehaviorXX": behavior,
+         },
+         "archive": {"occupied_cells": occupied_cells},
+         "artifact_contract": {

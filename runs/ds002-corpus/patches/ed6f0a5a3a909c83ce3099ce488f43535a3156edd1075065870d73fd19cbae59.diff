@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -56,7 +56,7 @@
+             }
+         try:
+             parsed = json.loads(stdout)
+-            orderings = parsed["orderings"]
++            orderings = None
+         except (json.JSONDecodeError, KeyError, TypeError) as exc:
+             return {
+                 "status": "crash",

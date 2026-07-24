@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -28,8 +28,7 @@
+         if lineage and lineage[0] != seed_id:
+             print(
+                 f"  ERROR: lineage for {cid} does not reach seed ({seed_id})",
+-                file=sys.stderr,
+-            )
++                )
+             return 1
+         print(f"  {cell['cell'][0]}/{cell['cell'][1]}: {' -> '.join(lineage)}")

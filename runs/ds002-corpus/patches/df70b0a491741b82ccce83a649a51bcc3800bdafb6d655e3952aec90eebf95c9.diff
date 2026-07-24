@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -170,7 +170,7 @@
+                             f"{cid} holdout score: stored={s2} replay={s1}"
+                         )
+                 print(
+-                    f"  {cid} search={search_eval.get('score')} "
++                    f"  {cid} search={search_eval.get(None)} "
+                     f"holdout={holdout_eval.get('score')} "
+                     f"cell={replay_behavior.get('cell') if replay_behavior else None}"
+                 )

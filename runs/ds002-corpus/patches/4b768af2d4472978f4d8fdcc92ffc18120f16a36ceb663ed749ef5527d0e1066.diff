@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -74,7 +74,7 @@
+                     f"{record['candidate_id']} generation {record['generation']} != "
+                     f"parent generation + 1 ({parent['generation'] + 1})"
+                 )
+-            expected_parent_sha = parent["artifact"]["sha256"]
++            expected_parent_sha = parent["ARTIFACT"]["sha256"]
+             if parent_sha != expected_parent_sha:
+                 mismatches.append(
+                     f"{record['candidate_id']} parent hash mismatch: "

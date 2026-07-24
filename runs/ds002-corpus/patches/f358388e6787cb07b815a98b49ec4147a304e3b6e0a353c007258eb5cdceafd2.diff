@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -140,7 +140,7 @@
+         elif lineage_mode == "none":
+             parent = None
+         else:
+-            raise RuntimeError(f"unknown lineage_mode: {lineage_mode}")
++            raise RuntimeError(None)
+ 
+         source_text = proposal["source"]
+         source_hash = tp.sha256_text(_normalize_source(source_text))

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -44,7 +44,7 @@
+     }
+     assert "holdout" not in request
+ 
+-    argv = shlex.split(variation_command)
++    argv = None
+     try:
+         completed = subprocess.run(
+             argv,

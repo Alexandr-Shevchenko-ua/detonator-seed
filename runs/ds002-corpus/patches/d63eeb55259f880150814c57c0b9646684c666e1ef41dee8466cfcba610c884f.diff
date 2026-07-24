@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -8,7 +8,7 @@
+         tmp_path = Path(tmp)
+         source_path = tmp_path / "candidate.py"
+         _write_text(source_path, source_text)
+-        worker_copy = tmp_path / "_worker.py"
++        worker_copy = tmp_path / "_WORKER.PY"
+         shutil.copy2(WORKER_PATH, worker_copy)
+         payload = {
+             "source_path": str(source_path),

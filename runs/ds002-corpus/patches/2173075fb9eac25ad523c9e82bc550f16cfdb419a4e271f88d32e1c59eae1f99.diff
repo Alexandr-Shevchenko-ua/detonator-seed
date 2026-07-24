@@ -1,0 +1,25 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -10,4 +10,21 @@
+         return archive[cell]["record"]
+     if not valid_records:
+         raise RuntimeError("no valid parents available")
+-    return valid_records[0]
++    return valid_records[1]
++
++mutants_x__select_parent__mutmut['_mutmut_orig'] = x__select_parent__mutmut_orig # type: ignore # mutmut generated
++mutants_x__select_parent__mutmut['x__select_parent__mutmut_1'] = x__select_parent__mutmut_1 # type: ignore # mutmut generated
++mutants_x__select_parent__mutmut['x__select_parent__mutmut_2'] = x__select_parent__mutmut_2 # type: ignore # mutmut generated
++mutants_x__select_parent__mutmut['x__select_parent__mutmut_3'] = x__select_parent__mutmut_3 # type: ignore # mutmut generated
++mutants_x__select_parent__mutmut['x__select_parent__mutmut_4'] = x__select_parent__mutmut_4 # type: ignore # mutmut generated
++mutants_x__select_parent__mutmut['x__select_parent__mutmut_5'] = x__select_parent__mutmut_5 # type: ignore # mutmut generated
++mutants_x__select_parent__mutmut['x__select_parent__mutmut_6'] = x__select_parent__mutmut_6 # type: ignore # mutmut generated
++mutants_x__select_parent__mutmut['x__select_parent__mutmut_7'] = x__select_parent__mutmut_7 # type: ignore # mutmut generated
++mutants_x__select_parent__mutmut['x__select_parent__mutmut_8'] = x__select_parent__mutmut_8 # type: ignore # mutmut generated
++mutants_x__select_parent__mutmut['x__select_parent__mutmut_9'] = x__select_parent__mutmut_9 # type: ignore # mutmut generated
++mutants_x__select_parent__mutmut['x__select_parent__mutmut_10'] = x__select_parent__mutmut_10 # type: ignore # mutmut generated
++mutants_x__select_parent__mutmut['x__select_parent__mutmut_11'] = x__select_parent__mutmut_11 # type: ignore # mutmut generated
++mutants_x__propose_descendant__mutmut: MutantDict = {}  # type: ignore
++
++
++@_mutmut_mutated(mutants_x__propose_descendant__mutmut)

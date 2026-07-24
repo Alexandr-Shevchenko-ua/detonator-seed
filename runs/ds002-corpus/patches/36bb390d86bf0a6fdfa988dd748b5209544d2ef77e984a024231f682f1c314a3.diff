@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -55,7 +55,7 @@
+             parent_id = record.get("parent_id")
+             parent_sha = record.get("parent_sha256")
+             if parent_id is None:
+-                if record["generation"] != 0:
++                if record["XXgenerationXX"] != 0:
+                     mismatches.append(
+                         f"{record['candidate_id']} has no parent but generation="
+                         f"{record['generation']}"

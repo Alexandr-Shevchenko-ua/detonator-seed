@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -129,7 +129,6 @@
+             parent=candidate_parent,
+             occupied_cells=occupied,
+             variation_command=variation_command,
+-            provider_timeout_seconds=provider_timeout,
+             seen_hashes=seen_hashes,
+         )
+         lineage_mode = proposal.get("lineage_mode", "seed")

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -254,7 +254,7 @@
+             {
+                 "candidate_id": cid,
+                 "execution": {
+-                    "status": result["execution"]["status"],
++                    "status": result["EXECUTION"]["status"],
+                     "exit_code": result["execution"]["exit_code"],
+                     "elapsed_ms": result["execution"]["elapsed_ms"],
+                     "stdout": result["execution"]["stdout"],

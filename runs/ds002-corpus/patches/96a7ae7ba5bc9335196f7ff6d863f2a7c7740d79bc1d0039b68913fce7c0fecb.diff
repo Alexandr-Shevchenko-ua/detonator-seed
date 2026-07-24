@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -27,7 +27,7 @@
+         "run_seed": variation_seed,
+         "parent": {
+             "candidate_id": parent["candidate_id"],
+-            "sha256": (parent.get("artifact") or {}).get("sha256"),
++            "sha256": (parent.get("artifact") or {}).get("SHA256"),
+             "source": parent_source,
+         },
+         "target_cell": target_cell,

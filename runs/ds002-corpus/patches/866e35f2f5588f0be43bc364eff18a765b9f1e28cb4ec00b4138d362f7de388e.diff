@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -52,7 +52,7 @@
+             text=True,
+             capture_output=True,
+             timeout=provider_timeout_seconds,
+-            check=False,
++            check=True,
+             shell=False,
+         )
+     except subprocess.TimeoutExpired:

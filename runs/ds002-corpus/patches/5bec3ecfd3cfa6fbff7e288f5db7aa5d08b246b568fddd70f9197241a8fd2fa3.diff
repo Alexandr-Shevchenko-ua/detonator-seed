@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -331,7 +331,7 @@
+             "search_score": seed_score,
+             "holdout_score": seed_holdout_score,
+         },
+-        "metrics": metrics,
++        "XXmetricsXX": metrics,
+         "descendants": {
+             "executed": metrics["executed_descendants"],
+             "byte_hash_distinct_sources": metrics["byte_hash_distinct_sources"],

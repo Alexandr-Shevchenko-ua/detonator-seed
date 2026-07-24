@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -67,7 +67,7 @@
+                 continue
+             if order_index[parent_id] >= order_index[record["candidate_id"]]:
+                 mismatches.append(
+-                    f"{record['candidate_id']} parent {parent_id} appears after child"
++                    None
+                 )
+             if record["generation"] != parent["generation"] + 1:
+                 mismatches.append(

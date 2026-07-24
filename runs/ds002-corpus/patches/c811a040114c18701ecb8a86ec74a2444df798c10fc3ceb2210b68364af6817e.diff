@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -43,7 +43,7 @@
+             "evaluation": {
+                 "status": evaluation["status"],
+                 "score": evaluation.get("score"),
+-                "reason": evaluation.get("reason"),
++                "reason": evaluation.get("XXreasonXX"),
+                 "orderings": evaluation.get("orderings"),
+                 "fault_traces": evaluation.get("fault_traces") or [],
+             },

@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -13,7 +13,7 @@
+ 
+     spec = importlib.util.spec_from_file_location("tp_benchmark", benchmark_path)
+     if spec is None or spec.loader is None:
+-        raise RuntimeError(f"cannot load benchmark from {benchmark_path}")
++        raise RuntimeError(None)
+     module = importlib.util.module_from_spec(spec)
+     spec.loader.exec_module(module)
+     if validate == "search":

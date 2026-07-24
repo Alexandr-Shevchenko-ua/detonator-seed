@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -27,7 +27,7 @@
+         archive[cell] = {"record": record, "score": score}
+         return {
+             "decision": "replaced",
+-            "cell": [cell[0], cell[1]],
++            "cell": [cell[1], cell[1]],
+             "replaced_candidate_id": replaced,
+             "reason": "higher_search_score",
+         }

@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -34,7 +34,7 @@
+     mean_score = sum(scores) / len(scores) if scores else 0.0
+     behavior = compute_behavior(benchmark, orderings, fault_ids)
+     return {
+-        "status": "valid",
++        "XXstatusXX": "valid",
+         "reason": None,
+         "score": mean_score,
+         "orderings": orderings,

@@ -1,0 +1,12 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -53,8 +53,7 @@
+             capture_output=True,
+             timeout=provider_timeout_seconds,
+             check=False,
+-            shell=False,
+-        )
++            )
+     except subprocess.TimeoutExpired:
+         # Do not chain TimeoutExpired — its message includes argv.
+         raise RuntimeError(

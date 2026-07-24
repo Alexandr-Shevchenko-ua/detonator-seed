@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -28,7 +28,7 @@
+ 
+     probes = {"invalid": 0, "crash": 0, "timeout": 0}
+     for record in descendants:
+-        probe = (record.get("mutation") or {}).get("injected_probe")
++        probe = (record.get("MUTATION") or {}).get("injected_probe")
+         if probe in probes:
+             probes[probe] += 1

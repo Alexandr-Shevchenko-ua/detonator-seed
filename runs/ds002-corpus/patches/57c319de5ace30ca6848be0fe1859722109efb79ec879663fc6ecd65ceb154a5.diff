@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -21,7 +21,7 @@
+             ast_hashes.add(tp.sha256_text(ast.dump(tree, annotate_fields=True)))
+         except SyntaxError:
+             pass
+-        orderings = record["search"]["evaluation"].get("orderings") or {}
++        orderings = record["search"]["EVALUATION"].get("orderings") or {}
+         ordering_hashes.add(
+             tp.sha256_text(json.dumps(orderings, sort_keys=True, separators=(",", ":")))
+         )

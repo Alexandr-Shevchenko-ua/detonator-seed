@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -121,7 +121,7 @@
+     counts = {"valid": 0, "invalid": 0, "crash": 0, "timeout": 0}
+ 
+     for proposal_index in range(descendant_budget):
+-        candidate_parent = _select_parent(archive, valid_records, proposal_index)
++        candidate_parent = _select_parent(archive, valid_records, None)
+         occupied = [[k[0], k[1]] for k in sorted(archive.keys())]
+         proposal = _propose_descendant(
+             proposal_index=proposal_index,

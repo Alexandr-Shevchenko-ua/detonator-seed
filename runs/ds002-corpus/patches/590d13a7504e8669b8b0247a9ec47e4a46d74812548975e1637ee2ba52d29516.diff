@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -129,7 +129,7 @@
+ 
+             for cid in replay_ids:
+                 record = id_to_record[cid]
+-                source = (run_dir / record["artifact"]["path"]).read_text(encoding="utf-8")
++                source = (run_dir / record["XXartifactXX"]["path"]).read_text(encoding="utf-8")
+                 search_replay = evaluate_candidate_source(
+                     source, benchmark, search_faults, timeout
+                 )

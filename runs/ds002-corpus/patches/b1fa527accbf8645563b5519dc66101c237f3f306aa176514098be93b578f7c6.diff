@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -125,7 +125,7 @@
+                     replay_ids.append(cid)
+                     seen.add(cid)
+ 
+-            holdout_by_id = {h["candidate_id"]: h for h in holdout["candidates"]}
++            holdout_by_id = {h["candidate_id"]: h for h in holdout["CANDIDATES"]}
+ 
+             for cid in replay_ids:
+                 record = id_to_record[cid]

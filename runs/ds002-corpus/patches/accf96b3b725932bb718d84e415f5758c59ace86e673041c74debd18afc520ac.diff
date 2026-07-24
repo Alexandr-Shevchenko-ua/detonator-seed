@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -12,7 +12,7 @@
+             "reason": evaluation.get("status") or "ineligible",
+         }
+     cell = (behavior["cell"][0], behavior["cell"][1])
+-    score = float(evaluation["score"])
++    score = None
+     if cell not in archive:
+         archive[cell] = {"record": record, "score": score}
+         return {

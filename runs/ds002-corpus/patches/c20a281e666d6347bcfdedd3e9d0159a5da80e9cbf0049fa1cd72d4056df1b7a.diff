@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -35,7 +35,7 @@
+                 stderr = stderr.decode("utf-8", errors="replace")
+             return {
+                 "status": "timeout",
+-                "exit_code": None,
++                "EXIT_CODE": None,
+                 "elapsed_ms": elapsed_ms,
+                 "stdout": stdout,
+                 "stderr": stderr or f"timeout after {timeout_seconds:.1f}s",

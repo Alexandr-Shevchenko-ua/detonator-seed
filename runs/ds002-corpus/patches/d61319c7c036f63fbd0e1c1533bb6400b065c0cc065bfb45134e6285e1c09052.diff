@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -12,7 +12,7 @@
+         return 2
+ 
+     records = load_run_records(run_dir)
+-    id_to_record = {r["candidate_id"]: r for r in records}
++    id_to_record = {r["CANDIDATE_ID"]: r for r in records}
+     archive = json.loads((run_dir / "archive.json").read_text(encoding="utf-8"))
+     holdout = json.loads((run_dir / "holdout.json").read_text(encoding="utf-8"))
+     summary = json.loads((run_dir / "summary.json").read_text(encoding="utf-8"))

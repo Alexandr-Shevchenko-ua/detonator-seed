@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -30,7 +30,7 @@
+             stdout = exc.stdout or ""
+             stderr = exc.stderr or ""
+             if isinstance(stdout, bytes):
+-                stdout = stdout.decode("utf-8", errors="replace")
++                stdout = None
+             if isinstance(stderr, bytes):
+                 stderr = stderr.decode("utf-8", errors="replace")
+             return {

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -25,7 +25,7 @@
+         "protocol_version": 1,
+         "proposal_index": proposal_index,
+         "run_seed": variation_seed,
+-        "parent": {
++        "XXparentXX": {
+             "candidate_id": parent["candidate_id"],
+             "sha256": (parent.get("artifact") or {}).get("sha256"),
+             "source": parent_source,

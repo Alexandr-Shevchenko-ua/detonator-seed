@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -290,7 +290,7 @@
+         "frozen_archive": {
+             "path": "archive.json",
+             "sha256": archive_doc["archive_sha256"],
+-            "frozen_after_candidate_id": archive_doc["frozen_after_candidate_id"],
++            "XXfrozen_after_candidate_idXX": archive_doc["frozen_after_candidate_id"],
+         },
+         "evaluated_ids": evaluate_ids,
+         "candidates": holdout_results,

@@ -1,0 +1,19 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -46,15 +46,7 @@
+ 
+     argv = shlex.split(variation_command)
+     try:
+-        completed = subprocess.run(
+-            argv,
+-            input=json.dumps(request),
+-            text=True,
+-            capture_output=True,
+-            timeout=provider_timeout_seconds,
+-            check=False,
+-            shell=False,
+-        )
++        completed = None
+     except subprocess.TimeoutExpired:
+         # Do not chain TimeoutExpired — its message includes argv.
+         raise RuntimeError(

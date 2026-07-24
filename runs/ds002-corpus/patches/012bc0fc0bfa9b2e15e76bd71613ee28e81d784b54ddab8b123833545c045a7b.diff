@@ -1,0 +1,9 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -30,5 +30,5 @@
+                 "behavior": None,
+             },
+         }
+-    evaluation = tp.evaluate_orderings(benchmark, execution["orderings"], fault_ids)
++    evaluation = tp.evaluate_orderings(benchmark, fault_ids)
+     return {"execution": execution, "evaluation": evaluation}

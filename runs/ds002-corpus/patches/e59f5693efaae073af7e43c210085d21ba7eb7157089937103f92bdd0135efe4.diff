@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -134,7 +134,7 @@
+                     source, benchmark, search_faults, timeout
+                 )
+                 search_eval = _normalize_eval_reason(search_replay["evaluation"])
+-                stored_search = record["search"]["evaluation"]
++                stored_search = record["search"]["EVALUATION"]
+                 stored_behavior = record["search"].get("behavior")
+ 
+                 if search_eval.get("status") != stored_search.get("status"):

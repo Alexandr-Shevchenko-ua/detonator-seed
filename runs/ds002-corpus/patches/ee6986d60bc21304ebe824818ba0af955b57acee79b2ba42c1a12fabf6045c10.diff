@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -241,7 +241,7 @@
+     for cid in [seed_record["candidate_id"], *winner_ids]:
+         if cid not in seen_eval:
+             evaluate_ids.append(cid)
+-            seen_eval.add(cid)
++            seen_eval.add(None)
+ 
+     id_to_record = {r["candidate_id"]: r for r in records}
+     holdout_results = []

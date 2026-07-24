@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -23,7 +23,7 @@
+             pass
+         orderings = record["search"]["evaluation"].get("orderings") or {}
+         ordering_hashes.add(
+-            tp.sha256_text(json.dumps(orderings, sort_keys=True, separators=(",", ":")))
++            tp.sha256_text(json.dumps(orderings, sort_keys=True, ))
+         )
+ 
+     probes = {"invalid": 0, "crash": 0, "timeout": 0}

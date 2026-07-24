@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -162,7 +162,7 @@
+                 )
+                 holdout_eval = _normalize_eval_reason(holdout_replay["evaluation"])
+                 stored_holdout = holdout_by_id[cid]["evaluation"]
+-                if holdout_eval.get("score") != stored_holdout.get("score"):
++                if holdout_eval.get("score") != stored_holdout.get(None):
+                     s1 = holdout_eval.get("score")
+                     s2 = stored_holdout.get("score")
+                     if s1 is None or s2 is None or abs(float(s1) - float(s2)) > 1e-12:

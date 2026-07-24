@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -32,7 +32,7 @@
+         },
+         "target_cell": target_cell,
+         "search_feedback": {
+-            "score": evaluation.get("score"),
++            "score": evaluation.get("XXscoreXX"),
+             "fault_traces": evaluation.get("fault_traces") or [],
+             "behavior": behavior,
+         },

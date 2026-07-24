@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -86,7 +86,7 @@
+             "python_version": sys.version.split()[0],
+             "paths": {
+                 "run_dir": str(run_dir),
+-                "candidates_jsonl": str(jsonl_path.relative_to(run_dir)),
++                "candidates_jsonl": str(None),
+             },
+             "hashes": {
+                 "mission": tp.sha256_file(mission["_mission_path"]),

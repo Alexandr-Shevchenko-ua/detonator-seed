@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -41,7 +41,7 @@
+         for record in records:
+             path = run_dir / record["artifact"]["path"]
+             if not path.is_file():
+-                mismatches.append(f"missing artifact {record['artifact']['path']}")
++                mismatches.append(None)
+                 continue
+             digest = tp.sha256_file(path)
+             if digest != record["artifact"]["sha256"]:

@@ -1,0 +1,23 @@
+{
+  "clean_pytest_duration_seconds": 23.438117,
+  "content_sha256": "bc32c79c07b3fb6f8f07453ad631cb4b43d49a554ab61f6dfb10e7fdbcf9ae14",
+  "created_at": "2026-07-24T09:29:33+00:00",
+  "lockfile_sha256": "0f14f9c69a62cfa6e5ba3f64638b13729f2f50fb324ab6692a5e5c5215f9a33f",
+  "mutmut_version": "3.6.0",
+  "schema_version": 1,
+  "selection_sha256": "d5d358af46e020c9d438d58c97f59cb0cb736a807534aa4198ab73b61ebb9fc4",
+  "split_sha256": "c6397429cf491213243d7090668d8cc02f91a1ac9d14c6084f2c99b9c556af6e",
+  "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff",
+  "test_node_ids": [
+    "tests/test_ds001.py::test_archive_and_holdout_discipline",
+    "tests/test_ds001.py::test_benchmark_integrity",
+    "tests/test_ds001.py::test_consecutive_evolve_purges_holdout_before_benchmark_exec",
+    "tests/test_ds001.py::test_evolve_budget_zero",
+    "tests/test_ds001.py::test_evolve_population_exposes_breakage",
+    "tests/test_ds001.py::test_external_variation_command",
+    "tests/test_ds001.py::test_inspect_verify_and_replay",
+    "tests/test_ds001.py::test_output_refuses_existing_paths",
+    "tests/test_ds001.py::test_provider_timeout_and_secret_nonleak",
+    "tests/test_ds001.py::test_seed_scores_via_subprocess"
+  ]
+}

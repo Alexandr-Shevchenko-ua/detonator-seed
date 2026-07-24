@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -229,7 +229,7 @@
+     if pre_freeze_holdout_module_loaded:
+         raise RuntimeError("holdout definitions module already loaded before freeze")
+     if benchmark.holdout_definitions_attached():
+-        raise RuntimeError("holdout definitions were attached before archive freeze")
++        raise RuntimeError("HOLDOUT DEFINITIONS WERE ATTACHED BEFORE ARCHIVE FREEZE")
+ 
+     holdout_gate.mark_frozen()
+     holdout_faults = holdout_gate.load_fault_ids()

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -66,7 +66,7 @@
+         search_result=seed_result,
+         archive_info=None,
+     )
+-    seed_record["_source_text"] = seed_source
++    seed_record["_source_text"] = None
+     records = [seed_record]
+ 
+     seed_score = seed_record["search"]["evaluation"].get("score")

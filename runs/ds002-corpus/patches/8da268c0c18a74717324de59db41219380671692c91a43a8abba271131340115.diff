@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -65,7 +65,7 @@
+             if parent is None:
+                 mismatches.append(f"{record['candidate_id']} missing parent {parent_id}")
+                 continue
+-            if order_index[parent_id] >= order_index[record["candidate_id"]]:
++            if order_index[parent_id] >= order_index[record["XXcandidate_idXX"]]:
+                 mismatches.append(
+                     f"{record['candidate_id']} parent {parent_id} appears after child"
+                 )

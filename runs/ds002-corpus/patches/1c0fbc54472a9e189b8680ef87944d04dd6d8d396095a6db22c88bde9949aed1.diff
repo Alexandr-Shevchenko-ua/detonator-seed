@@ -1,0 +1,31 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -7,6 +7,27 @@
+     for name, module in sys.modules.items():
+         mod_file = getattr(module, "__file__", None)
+         if mod_file and Path(mod_file).resolve() == target:
+-            to_drop.append(name)
++            to_drop.append(None)
+     for name in to_drop:
+         del sys.modules[name]
++
++mutants_x_purge_holdout_modules__mutmut['_mutmut_orig'] = x_purge_holdout_modules__mutmut_orig # type: ignore # mutmut generated
++mutants_x_purge_holdout_modules__mutmut['x_purge_holdout_modules__mutmut_1'] = x_purge_holdout_modules__mutmut_1 # type: ignore # mutmut generated
++mutants_x_purge_holdout_modules__mutmut['x_purge_holdout_modules__mutmut_2'] = x_purge_holdout_modules__mutmut_2 # type: ignore # mutmut generated
++mutants_x_purge_holdout_modules__mutmut['x_purge_holdout_modules__mutmut_3'] = x_purge_holdout_modules__mutmut_3 # type: ignore # mutmut generated
++mutants_x_purge_holdout_modules__mutmut['x_purge_holdout_modules__mutmut_4'] = x_purge_holdout_modules__mutmut_4 # type: ignore # mutmut generated
++mutants_x_purge_holdout_modules__mutmut['x_purge_holdout_modules__mutmut_5'] = x_purge_holdout_modules__mutmut_5 # type: ignore # mutmut generated
++mutants_x_purge_holdout_modules__mutmut['x_purge_holdout_modules__mutmut_6'] = x_purge_holdout_modules__mutmut_6 # type: ignore # mutmut generated
++mutants_x_purge_holdout_modules__mutmut['x_purge_holdout_modules__mutmut_7'] = x_purge_holdout_modules__mutmut_7 # type: ignore # mutmut generated
++mutants_x_purge_holdout_modules__mutmut['x_purge_holdout_modules__mutmut_8'] = x_purge_holdout_modules__mutmut_8 # type: ignore # mutmut generated
++mutants_x_purge_holdout_modules__mutmut['x_purge_holdout_modules__mutmut_9'] = x_purge_holdout_modules__mutmut_9 # type: ignore # mutmut generated
++mutants_x_purge_holdout_modules__mutmut['x_purge_holdout_modules__mutmut_10'] = x_purge_holdout_modules__mutmut_10 # type: ignore # mutmut generated
++mutants_x_purge_holdout_modules__mutmut['x_purge_holdout_modules__mutmut_11'] = x_purge_holdout_modules__mutmut_11 # type: ignore # mutmut generated
++mutants_x_purge_holdout_modules__mutmut['x_purge_holdout_modules__mutmut_12'] = x_purge_holdout_modules__mutmut_12 # type: ignore # mutmut generated
++mutants_x_purge_holdout_modules__mutmut['x_purge_holdout_modules__mutmut_13'] = x_purge_holdout_modules__mutmut_13 # type: ignore # mutmut generated
++mutants_x_purge_holdout_modules__mutmut['x_purge_holdout_modules__mutmut_14'] = x_purge_holdout_modules__mutmut_14 # type: ignore # mutmut generated
++mutants_x_purge_holdout_modules__mutmut['x_purge_holdout_modules__mutmut_15'] = x_purge_holdout_modules__mutmut_15 # type: ignore # mutmut generated
++mutants_x_load_fault_ids__mutmut: MutantDict = {}  # type: ignore
++
++
++@_mutmut_mutated(mutants_x_load_fault_ids__mutmut)

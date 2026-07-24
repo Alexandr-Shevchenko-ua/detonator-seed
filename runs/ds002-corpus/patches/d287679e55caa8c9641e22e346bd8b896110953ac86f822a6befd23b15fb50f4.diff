@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -269,7 +269,7 @@
+             }
+         )
+ 
+-    seed_holdout = next(h for h in holdout_results if h["candidate_id"] == seed_record["candidate_id"])
++    seed_holdout = next(h for h in holdout_results if h["XXcandidate_idXX"] == seed_record["candidate_id"])
+     seed_holdout_score = seed_holdout["evaluation"].get("score")
+     scored = [h for h in holdout_results if isinstance(h["evaluation"].get("score"), (int, float))]
+     if scored:

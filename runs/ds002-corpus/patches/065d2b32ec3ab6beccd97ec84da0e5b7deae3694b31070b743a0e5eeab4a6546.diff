@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -247,7 +247,7 @@
+     holdout_results = []
+     for cid in evaluate_ids:
+         record = id_to_record[cid]
+-        source_text = (run_dir / record["artifact"]["path"]).read_text(encoding="utf-8")
++        source_text = (run_dir / record["artifact"]["path"]).read_text(encoding=None)
+         result = evaluate_candidate_source(source_text, benchmark, holdout_faults, timeout)
+         evaluation = _normalize_eval_reason(result["evaluation"])
+         holdout_results.append(

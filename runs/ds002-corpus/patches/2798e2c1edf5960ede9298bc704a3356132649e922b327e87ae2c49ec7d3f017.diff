@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -26,7 +26,7 @@
+     speed_bin = "fast" if speed_ratio < 0.75 else "cost_tolerant"
+     change_bin = "change_focused" if change_focus >= (2 / 3) else "general"
+     return {
+-        "speed_ratio": speed_ratio,
++        "XXspeed_ratioXX": speed_ratio,
+         "change_focus": change_focus,
+         "cell": [speed_bin, change_bin],
+     }

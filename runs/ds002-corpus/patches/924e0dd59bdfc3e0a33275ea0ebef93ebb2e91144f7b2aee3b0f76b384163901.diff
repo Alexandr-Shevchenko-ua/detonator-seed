@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -366,7 +366,7 @@
+                 "improved over seed" if improved else "no holdout improvement found"
+             ),
+         },
+-        "best_observed_lineage": lineage,
++        "BEST_OBSERVED_LINEAGE": lineage,
+     }
+     (run_dir / "summary.json").write_text(
+         json.dumps(summary, indent=2) + "\n", encoding="utf-8"

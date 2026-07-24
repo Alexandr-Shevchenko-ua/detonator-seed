@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -49,7 +49,7 @@
+ 
+     # --- seed ---
+     seed_source = mission["_seed_path"].read_text(encoding="utf-8")
+-    seed_result = evaluate_candidate_source(seed_source, benchmark, search_faults, timeout)
++    seed_result = evaluate_candidate_source(benchmark, search_faults, timeout)
+     seed_record = materialize_candidate(
+         run_dir=run_dir,
+         index=0,

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -8,7 +8,7 @@
+         return {
+             "decision": "ineligible",
+             "cell": None,
+-            "replaced_candidate_id": None,
++            "REPLACED_CANDIDATE_ID": None,
+             "reason": evaluation.get("status") or "ineligible",
+         }
+     cell = (behavior["cell"][0], behavior["cell"][1])

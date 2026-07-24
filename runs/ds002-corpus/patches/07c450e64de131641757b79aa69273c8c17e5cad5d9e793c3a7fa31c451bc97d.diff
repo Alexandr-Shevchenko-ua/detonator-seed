@@ -1,0 +1,128 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -35,5 +35,124 @@
+         "decision": "rejected",
+         "cell": [cell[0], cell[1]],
+         "replaced_candidate_id": None,
+-        "reason": "not_strictly_better",
++        "reason": "NOT_STRICTLY_BETTER",
+     }
++
++mutants_x__archive_consider__mutmut['_mutmut_orig'] = x__archive_consider__mutmut_orig # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_1'] = x__archive_consider__mutmut_1 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_2'] = x__archive_consider__mutmut_2 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_3'] = x__archive_consider__mutmut_3 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_4'] = x__archive_consider__mutmut_4 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_5'] = x__archive_consider__mutmut_5 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_6'] = x__archive_consider__mutmut_6 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_7'] = x__archive_consider__mutmut_7 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_8'] = x__archive_consider__mutmut_8 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_9'] = x__archive_consider__mutmut_9 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_10'] = x__archive_consider__mutmut_10 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_11'] = x__archive_consider__mutmut_11 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_12'] = x__archive_consider__mutmut_12 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_13'] = x__archive_consider__mutmut_13 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_14'] = x__archive_consider__mutmut_14 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_15'] = x__archive_consider__mutmut_15 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_16'] = x__archive_consider__mutmut_16 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_17'] = x__archive_consider__mutmut_17 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_18'] = x__archive_consider__mutmut_18 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_19'] = x__archive_consider__mutmut_19 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_20'] = x__archive_consider__mutmut_20 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_21'] = x__archive_consider__mutmut_21 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_22'] = x__archive_consider__mutmut_22 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_23'] = x__archive_consider__mutmut_23 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_24'] = x__archive_consider__mutmut_24 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_25'] = x__archive_consider__mutmut_25 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_26'] = x__archive_consider__mutmut_26 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_27'] = x__archive_consider__mutmut_27 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_28'] = x__archive_consider__mutmut_28 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_29'] = x__archive_consider__mutmut_29 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_30'] = x__archive_consider__mutmut_30 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_31'] = x__archive_consider__mutmut_31 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_32'] = x__archive_consider__mutmut_32 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_33'] = x__archive_consider__mutmut_33 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_34'] = x__archive_consider__mutmut_34 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_35'] = x__archive_consider__mutmut_35 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_36'] = x__archive_consider__mutmut_36 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_37'] = x__archive_consider__mutmut_37 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_38'] = x__archive_consider__mutmut_38 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_39'] = x__archive_consider__mutmut_39 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_40'] = x__archive_consider__mutmut_40 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_41'] = x__archive_consider__mutmut_41 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_42'] = x__archive_consider__mutmut_42 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_43'] = x__archive_consider__mutmut_43 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_44'] = x__archive_consider__mutmut_44 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_45'] = x__archive_consider__mutmut_45 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_46'] = x__archive_consider__mutmut_46 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_47'] = x__archive_consider__mutmut_47 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_48'] = x__archive_consider__mutmut_48 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_49'] = x__archive_consider__mutmut_49 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_50'] = x__archive_consider__mutmut_50 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_51'] = x__archive_consider__mutmut_51 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_52'] = x__archive_consider__mutmut_52 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_53'] = x__archive_consider__mutmut_53 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_54'] = x__archive_consider__mutmut_54 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_55'] = x__archive_consider__mutmut_55 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_56'] = x__archive_consider__mutmut_56 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_57'] = x__archive_consider__mutmut_57 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_58'] = x__archive_consider__mutmut_58 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_59'] = x__archive_consider__mutmut_59 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_60'] = x__archive_consider__mutmut_60 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_61'] = x__archive_consider__mutmut_61 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_62'] = x__archive_consider__mutmut_62 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_63'] = x__archive_consider__mutmut_63 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_64'] = x__archive_consider__mutmut_64 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_65'] = x__archive_consider__mutmut_65 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_66'] = x__archive_consider__mutmut_66 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_67'] = x__archive_consider__mutmut_67 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_68'] = x__archive_consider__mutmut_68 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_69'] = x__archive_consider__mutmut_69 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_70'] = x__archive_consider__mutmut_70 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_71'] = x__archive_consider__mutmut_71 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_72'] = x__archive_consider__mutmut_72 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_73'] = x__archive_consider__mutmut_73 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_74'] = x__archive_consider__mutmut_74 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_75'] = x__archive_consider__mutmut_75 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_76'] = x__archive_consider__mutmut_76 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_77'] = x__archive_consider__mutmut_77 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_78'] = x__archive_consider__mutmut_78 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_79'] = x__archive_consider__mutmut_79 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_80'] = x__archive_consider__mutmut_80 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_81'] = x__archive_consider__mutmut_81 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_82'] = x__archive_consider__mutmut_82 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_83'] = x__archive_consider__mutmut_83 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_84'] = x__archive_consider__mutmut_84 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_85'] = x__archive_consider__mutmut_85 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_86'] = x__archive_consider__mutmut_86 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_87'] = x__archive_consider__mutmut_87 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_88'] = x__archive_consider__mutmut_88 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_89'] = x__archive_consider__mutmut_89 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_90'] = x__archive_consider__mutmut_90 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_91'] = x__archive_consider__mutmut_91 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_92'] = x__archive_consider__mutmut_92 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_93'] = x__archive_consider__mutmut_93 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_94'] = x__archive_consider__mutmut_94 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_95'] = x__archive_consider__mutmut_95 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_96'] = x__archive_consider__mutmut_96 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_97'] = x__archive_consider__mutmut_97 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_98'] = x__archive_consider__mutmut_98 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_99'] = x__archive_consider__mutmut_99 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_100'] = x__archive_consider__mutmut_100 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_101'] = x__archive_consider__mutmut_101 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_102'] = x__archive_consider__mutmut_102 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_103'] = x__archive_consider__mutmut_103 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_104'] = x__archive_consider__mutmut_104 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_105'] = x__archive_consider__mutmut_105 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_106'] = x__archive_consider__mutmut_106 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_107'] = x__archive_consider__mutmut_107 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_108'] = x__archive_consider__mutmut_108 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_109'] = x__archive_consider__mutmut_109 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_110'] = x__archive_consider__mutmut_110 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_111'] = x__archive_consider__mutmut_111 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_112'] = x__archive_consider__mutmut_112 # type: ignore # mutmut generated
++mutants_x__archive_consider__mutmut['x__archive_consider__mutmut_113'] = x__archive_consider__mutmut_113 # type: ignore # mutmut generated
++mutants_x__freeze_archive__mutmut: MutantDict = {}  # type: ignore
++
++
++@_mutmut_mutated(mutants_x__freeze_archive__mutmut)

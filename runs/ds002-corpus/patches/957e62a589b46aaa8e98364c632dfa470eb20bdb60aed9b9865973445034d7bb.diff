@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -15,7 +15,7 @@
+     normalized = _write_text(abs_path, source_text)
+     digest = tp.sha256_text(normalized)
+     evaluation = _normalize_eval_reason(search_result["evaluation"])
+-    execution = search_result["execution"]
++    execution = None
+     record = {
+         "schema_version": 1,
+         "candidate_id": cand_id,

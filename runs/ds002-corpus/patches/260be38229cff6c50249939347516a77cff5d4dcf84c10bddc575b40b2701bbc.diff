@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -369,7 +369,7 @@
+         "best_observed_lineage": lineage,
+     }
+     (run_dir / "summary.json").write_text(
+-        json.dumps(summary, indent=2) + "\n", encoding="utf-8"
++        json.dumps(summary, indent=2) - "\n", encoding="utf-8"
+     )
+ 
+     print()

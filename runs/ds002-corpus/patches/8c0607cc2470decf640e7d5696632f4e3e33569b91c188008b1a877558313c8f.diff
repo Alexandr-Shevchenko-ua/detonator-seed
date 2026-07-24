@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -405,7 +405,7 @@
+             f"delta={delta:+.6f}"
+         )
+     print(summary["holdout"]["conclusion"])
+-    print(f"lineage: {' -> '.join(lineage)}")
++    print(f"lineage: {' -> '.join(None)}")
+     print(f"run directory: {run_dir}")
+     return {
+         "run_dir": run_dir,

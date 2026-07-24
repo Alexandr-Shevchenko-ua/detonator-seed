@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -37,7 +37,7 @@
+         "status": "valid",
+         "reason": None,
+         "score": mean_score,
+-        "orderings": orderings,
++        "ORDERINGS": orderings,
+         "fault_traces": traces,
+         "behavior": behavior,
+     }

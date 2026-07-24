@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -23,7 +23,7 @@
+         }
+     incumbent = archive[cell]
+     if score > incumbent["score"]:
+-        replaced = incumbent["record"]["candidate_id"]
++        replaced = None
+         archive[cell] = {"record": record, "score": score}
+         return {
+             "decision": "replaced",

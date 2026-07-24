@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -12,7 +12,7 @@
+                     "candidate_id": None,
+                     "artifact": None,
+                     "search_score": None,
+-                    "behavior": None,
++                    "BEHAVIOR": None,
+                 }
+             )
+             continue

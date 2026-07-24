@@ -1,0 +1,9 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -29,5 +29,5 @@
+     return {
+         "schema_version": 1,
+         "frozen_after_candidate_id": frozen_after_candidate_id,
+-        "cells": cells,
++        "XXcellsXX": cells,
+     }

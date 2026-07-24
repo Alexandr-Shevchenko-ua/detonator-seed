@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -103,7 +103,7 @@
+                 "valid": 0,
+                 "invalid": 0,
+                 "crash": 0,
+-                "timeout": 0,
++                "TIMEOUT": 0,
+             },
+         }
+         (run_dir / "summary.json").write_text(

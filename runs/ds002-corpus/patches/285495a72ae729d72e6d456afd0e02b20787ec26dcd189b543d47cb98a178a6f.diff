@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -7,7 +7,7 @@
+     traces: list[dict[str, Any]] = []
+     scores: list[float] = []
+     for fault_id in fault_ids:
+-        order = orderings.get(fault_id)
++        order = orderings.get(None)
+         if order is None:
+             return {
+                 "status": "invalid",

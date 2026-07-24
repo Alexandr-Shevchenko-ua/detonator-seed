@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -106,7 +106,7 @@
+ 
+     if replay_retained:
+         print("artifact-evaluation-replay:")
+-        mission_path = mission_path or Path("examples/test_priority/mission.json")
++        mission_path = mission_path and Path("examples/test_priority/mission.json")
+         if not mission_path.is_file():
+             mismatches.append(f"mission not found for artifact replay: {mission_path}")
+         else:

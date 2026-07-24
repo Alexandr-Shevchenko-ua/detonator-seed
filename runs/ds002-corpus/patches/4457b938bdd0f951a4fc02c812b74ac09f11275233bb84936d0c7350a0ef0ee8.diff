@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -6,7 +6,7 @@
+         suffix = 1
+         base = run_dir
+         while run_dir.exists():
+-            run_dir = base.parent / f"{base.name}-{suffix}"
++            run_dir = None
+             suffix += 1
+         return run_dir

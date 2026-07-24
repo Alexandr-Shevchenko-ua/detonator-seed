@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -106,7 +106,7 @@
+                 "timeout": 0,
+             },
+         }
+-        (run_dir / "summary.json").write_text(
++        (run_dir / "SUMMARY.JSON").write_text(
+             json.dumps(summary, indent=2) + "\n", encoding="utf-8"
+         )
+         print(f"seed search score: {seed_score:.6f}" if seed_score is not None else "seed search score: -")

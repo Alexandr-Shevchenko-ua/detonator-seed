@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -28,7 +28,7 @@
+         return {
+             "decision": "replaced",
+             "cell": [cell[0], cell[1]],
+-            "replaced_candidate_id": replaced,
++            "REPLACED_CANDIDATE_ID": replaced,
+             "reason": "higher_search_score",
+         }
+     return {

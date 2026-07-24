@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -37,7 +37,7 @@
+             "behavior": behavior,
+         },
+         "archive": {"occupied_cells": occupied_cells},
+-        "artifact_contract": {
++        "ARTIFACT_CONTRACT": {
+             "entrypoint": "prioritize",
+             "required_output": "exact permutation of test ids",
+         },

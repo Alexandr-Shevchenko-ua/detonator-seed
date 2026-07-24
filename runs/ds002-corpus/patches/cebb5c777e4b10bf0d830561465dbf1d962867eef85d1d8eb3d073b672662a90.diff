@@ -1,0 +1,13 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -157,9 +157,7 @@
+                 if search_eval.get("orderings") != stored_search.get("orderings"):
+                     mismatches.append(f"{cid} search orderings differ")
+ 
+-                holdout_replay = evaluate_candidate_source(
+-                    source, benchmark, holdout_faults, timeout
+-                )
++                holdout_replay = None
+                 holdout_eval = _normalize_eval_reason(holdout_replay["evaluation"])
+                 stored_holdout = holdout_by_id[cid]["evaluation"]
+                 if holdout_eval.get("score") != stored_holdout.get("score"):

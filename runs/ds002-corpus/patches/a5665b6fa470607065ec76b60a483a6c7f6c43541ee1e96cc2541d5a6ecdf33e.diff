@@ -1,0 +1,10 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -17,7 +17,7 @@
+         focused = 0
+         for tid in first3:
+             covers = set(tests_by_id[tid].get("covers") or [])
+-            if covers & changed:
++            if covers | changed:
+                 focused += 1
+         change_focuses.append(focused / 3)

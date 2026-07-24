@@ -1,0 +1,1533 @@
+{
+  "content_sha256": "d5d358af46e020c9d438d58c97f59cb0cb736a807534aa4198ab73b61ebb9fc4",
+  "created_at": "2026-07-24T09:29:33+00:00",
+  "lockfile_sha256": "0f14f9c69a62cfa6e5ba3f64638b13729f2f50fb324ab6692a5e5c5215f9a33f",
+  "mutants": [
+    {
+      "mutmut_id": "detonator.test_priority.x_compute_behavior__mutmut_45",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "00220f5d6a2d02457f0984d5fd72da953bdf3275283b34937bb08981c39484a3",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "compute_behavior",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evolve__mutmut_1029",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "003ab01729902955742159c9cdf5500860077e852f1243b271fa751eb69cf840",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evolve",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_materialize_candidate__mutmut_71",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "003bd7823cec6f59808e955327c8f5574d5acb0f97168ecc704784a7ab2be3f9",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "materialize_candidate",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evolve__mutmut_533",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "00546b6c3efb6d7616653871cac3641fd5a323f475ac6764a15bec3cebec2ee6",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evolve",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evolve__mutmut_310",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "0057a230a4e581140b8fe0d674194e11c4ff6aa3df14dcf5fa8582a961ea2cf9",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evolve",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evolve__mutmut_950",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "005bbe97ab76153905e024cb0bcee8eaf43ceba8364fff738c1d319f71a5522f",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evolve",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__freeze_archive__mutmut_43",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "00647530e772183f1c241b35f03fc3b8783fbbe85e465a98ea7174675ad6dca4",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_freeze_archive",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__propose_via_command__mutmut_83",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "007aa4ca2ece61a12f2f79d456988216d9d28781a1eea6103119a51ab3ec0784",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_propose_via_command",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_evaluate_orderings__mutmut_14",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "00bf4f81004ae3e783fd698e4ed089e5f9f008ea144eee83dc9c21532151854f",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "evaluate_orderings",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evolve__mutmut_93",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "00bf84fc0054c48cb64d6af3de6208a894227dee99066c5835d8d71b48c9f4b6",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evolve",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evaluate_candidate_source__mutmut_73",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "012bc0fc0bfa9b2e15e76bd71613ee28e81d784b54ddab8b123833545c045a7b",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evaluate_candidate_source",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_purge_holdout_modules__mutmut_4",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "012ebd7248131998ed44e314da9746fd3e366380ed9d6313df07e999005c8e36",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "purge_holdout_modules",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__freeze_archive__mutmut_12",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "019c5498f074b1bf0eb2a34544dc6814d42478b6fd84c9cf90587b4f59a6c8e7",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_freeze_archive",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_inspect_run__mutmut_174",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "01ba48768a137ada6855fd842a2db9d9ce7e0f14b97e3609607fa68ae07a6012",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "inspect_run",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_inspect_run__mutmut_185",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "01c085650fcdcf0126ac7a7c5a784a182356061f09a966f407ff33af322fa0fa",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "inspect_run",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_resolve_run_dir__mutmut_6",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "020c84b4ad9e63bf02b151c14f64c73f38d0fdb3dfc86b7f9f52883016254396",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "resolve_run_dir",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_compute_behavior__mutmut_37",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "033019e9a5c25dd2d8bac90c2ca5a74684f4023cd76719a5de6da0e54c52d847",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "compute_behavior",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evaluate_candidate_source__mutmut_8",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "034bcef37d960d08a442efa0a67811fbce33f9821c595e70c8eb959bb1edd7d4",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evaluate_candidate_source",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_inspect_run__mutmut_157",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "035137834a3115d2f5928a6fc7f0950cfdcf9bdca17ba508c6b571a86294d7fc",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "inspect_run",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__propose_via_command__mutmut_64",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "03ca8a4def1c54f63e030b4267dcc4e206840ae407413544b2dd11473727d916",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_propose_via_command",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_materialize_candidate__mutmut_133",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "0423d61ed92ad1bca5873e5bc12950432856cf731db3a6de24e2562f921babac",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "materialize_candidate",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_materialize_candidate__mutmut_39",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "043eb3883d5b2324d5cfe3f7271c8897d61308b659cc6d5a373e6d64a5c8a217",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "materialize_candidate",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_run_candidate_subprocess__mutmut_119",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "0448167f171ab0768a85ee642306fdbb09a4ba723d13e3a8f3a2ab4c6a3b3a57",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "run_candidate_subprocess",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_compute_behavior__mutmut_5",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "044cde8fc15ce34e29ba698c642dd5a12578fbde49b388d21501204a37b41e19",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "compute_behavior",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evaluate_candidate_source__mutmut_16",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "046b961fbb6fc05fe7884a90cf2435f9e17e5e560f0c81b3c588512ed2b74a5d",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evaluate_candidate_source",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_compute_behavior__mutmut_23",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "04addb8854d548a37fe2a13c7eedecfabd056d7e70d83486b5e426aa440edc0b",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "compute_behavior",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__propose_via_command__mutmut_2",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "04bd18ffae58dca6540d227a50353be7ed0cc4ea817b9a5b7c2cdb4795c86177",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_propose_via_command",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_compute_run_metrics__mutmut_83",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "04f02ab2143f955ebc5475f34dbaa9dca54a5e1422035ff060dd6005b0cb891b",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "compute_run_metrics",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_run_candidate_subprocess__mutmut_50",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "04f2ba372e7f2daa826cbeb6df01ec0f41d6cd0d60163549f782c7ab4e4c1eb3",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "run_candidate_subprocess",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__archive_consider__mutmut_40",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "04f96f39bd953a0d9867a5dccf36c627b7eddd641cc5f5103d3a435ccfc8ce4a",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_archive_consider",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_inspect_run__mutmut_354",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "050d4b3152ad9803b6bd988a782c30a367697118f10c68b6bc1f0b337621fd45",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "inspect_run",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evaluate_candidate_source__mutmut_68",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "0545741cc1f4cd645f43551f773cb990550b0cdb9b74a4bb6c9e9c0c4b70342b",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evaluate_candidate_source",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_inspect_run__mutmut_191",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "0557594c97a6a663f01e2ef21796ca833941856d8bc45f94965491b137f3fc55",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "inspect_run",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__propose_via_command__mutmut_164",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "05666a3c75464bbfb46d4b3709025549b09335ce70000543f2c5a179ddc6c9da",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_propose_via_command",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_materialize_candidate__mutmut_30",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "056a6d506f223a948f0155b102928b40845119814b332d3df0099583a4aebb5b",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "materialize_candidate",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__select_parent__mutmut_8",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "0594b3c5e995140e44f404c8445b2c8e6ac2f25a52c5b2dc4ab1ea5a1b7a74ae",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_select_parent",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__propose_via_command__mutmut_57",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "05c08b7d764524eec84a2219d0f52aa23dacd905bfad09c475872a2493105f47",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_propose_via_command",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_evaluate_orderings__mutmut_25",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "05da6fb71179e6d079c67130fafea9ef777e1990c3605bcbd195e254cfe8c76f",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "evaluate_orderings",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_evaluate_orderings__mutmut_3",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "05e13430970390c0caf717c339939247fd1a8ea9eed69dd6c89c297a2434c129",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "evaluate_orderings",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_run_candidate_subprocess__mutmut_137",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "05ee1412f1f7da16dfc70ee25bcdc57176cf5c1240cae6b8a8b4fe3d7b18c5b8",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "run_candidate_subprocess",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__archive_consider__mutmut_63",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "05f9485664de7c90de07df8eee63eb6a3ca0810555b825a9e70970b4efc83807",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_archive_consider",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_inspect_run__mutmut_391",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "0645882a3004c7f7e3727a347746b57367d0694b9fa7d2fac2f9537918e52d41",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "inspect_run",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_materialize_candidate__mutmut_136",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "06b48537205ee9a49e4e3c541072cd36593f1782fd425586945cde5e1fea833e",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "materialize_candidate",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_compute_behavior__mutmut_14",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "06cf562210d2ed16d28fd87969440df16df2cbfa089bc96292506e11166f204f",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "compute_behavior",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_inspect_run__mutmut_204",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "07645e2e81229cd5f5d1a76d59fe53125ad66f35b4de36cc776c3fe8d9664cae",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "inspect_run",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__archive_consider__mutmut_1",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "079ad797ecd4d633029fd37ade2c7387193646dc52e374616991cda683fa14b9",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_archive_consider",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__archive_consider__mutmut_113",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "07c450e64de131641757b79aa69273c8c17e5cad5d9e793c3a7fa31c451bc97d",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_archive_consider",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_load_benchmark_module__mutmut_1",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "07cf7cf4d54a19a70e26993996ab878828d6b59aeab73107beaeff6fe6c6d3ec",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "load_benchmark_module",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evaluate_candidate_source__mutmut_49",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "08470e64c1af9127800a29244ae0eaf5f7187ed4a1dfe7dbd50597d80eeca4ee",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evaluate_candidate_source",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evolve__mutmut_22",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "08a5583ae35bab1602602b345ceed522bd7dd5ac31ab2413574b8e68384559ff",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evolve",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_compute_behavior__mutmut_30",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "090f1f3736e4dba88bfdaa245235a1d172d9fd9c7d6f488d6f98196dc04040ad",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "compute_behavior",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_load_benchmark_module__mutmut_5",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "0972f37bc0c2489bf7f806d2c04d70d98cbfc630439948052aa6190d5064bc5d",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "load_benchmark_module",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__propose_via_command__mutmut_16",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "0981e25a88432fd5d021793810659e53ab43f0dc1ecc832e47e3928af06ef063",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_propose_via_command",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_compute_behavior__mutmut_41",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "0a7dce09bcc9e7d2d3a99b326e10ac6f2c083e2804147e581f7ce04743ec826a",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "compute_behavior",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__archive_consider__mutmut_97",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "0b84a20ce6823abaee8d263a01a026fe20eb596ce08d21d785b67a805968e02e",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_archive_consider",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_run_candidate_subprocess__mutmut_42",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "0b938b67499aa032966aad3a54c02c81a9583d7ee2b4c6fa4aede390db20157b",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "run_candidate_subprocess",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_evaluate_orderings__mutmut_41",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "0bd2785bc0124149d8ae87d35e4a77f8f07b85cef0141bfeae01963b5d018cd0",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "evaluate_orderings",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evolve__mutmut_260",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "0bdfec5821983d86611bfa8cd54cc3e5f3bc00495232ee051c73144e1dc621a8",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evolve",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_inspect_run__mutmut_238",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "0be314993c88c3fd194553782e9f09f2517619ded9e4828a19f4b2bad4717922",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "inspect_run",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__propose_via_command__mutmut_148",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "0c6dc14981d1e14400eee7fe4ef6ff636e90116cf02bd658068cda2cfc8605d1",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_propose_via_command",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evolve__mutmut_592",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "0cebb871af5860f7c14a32ee8c2c7e6f5432308ae6e1788e591cd8416f9a0cc2",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evolve",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evolve__mutmut_522",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "0d175ffdbfbbc935c0ee2a0fc6c61c53acdbc7258c6d0748a55c77f998b627a3",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evolve",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_resolve_run_dir__mutmut_15",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "0d54f11d61fe713912deedde28e5e417e642dc283249095d8ea067a6bec1125b",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "resolve_run_dir",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evolve__mutmut_911",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "0d99ade9f5be89063fa03de498f78fb8a26ea3d66f578ae72ebe23caefc81464",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evolve",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_load_mission__mutmut_31",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "0da11151d1a4c8540d472bd2eefb0f054faf03a6e15de9f4f4b993ab71bbde10",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "load_mission",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_inspect_run__mutmut_229",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "0de56ff2a7e738463766c4af0bc6c23928640b140e7aa7e053a38c1d9b83b2bb",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "inspect_run",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__freeze_archive__mutmut_34",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "0e4158ccde740125efb88aeadb221675cb2d85e263364a5349ba2a337b61f086",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_freeze_archive",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_compute_run_metrics__mutmut_109",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "0e4962a3ce46375959da4b9308a9509183c3c2346ca0b601bf13e7dbc03ae2ea",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "compute_run_metrics",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_compute_behavior__mutmut_13",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "0e5aa453eb73fb501326bf7027d8a8ad38754fe00adb53f10e96512c5f4a1857",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "compute_behavior",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_load_benchmark_module__mutmut_4",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "0e7eab268fcb9ffa45a5277d51a4444fb67deaa3202be715e3db6afcf20d50f5",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "load_benchmark_module",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_compute_run_metrics__mutmut_95",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "0ea8d005864186ca3f7ab282bccba159b0fc2f13b92ccb420add422ee897ac25",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "compute_run_metrics",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_inspect_run__mutmut_416",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "0ef64c363c01f5ee4f8abcf41023649cfa3d60cffd603ed4acdeb12d155f1c46",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "inspect_run",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__propose_via_command__mutmut_56",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "0f4b6d2a9191d2822a6666737afa1c3f7b143035af2e8f37e33f2bd81312ce04",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_propose_via_command",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evolve__mutmut_53",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "0fcca8727fa307c9e4876c14425171048c710f6e346cd33d7a6fb56d6f85178c",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evolve",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__archive_consider__mutmut_18",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "112767045226e8403b5f36807b812dc2b99fed126c1ef54c9b7b93d222ec0d8c",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_archive_consider",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_resolve_run_dir__mutmut_8",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "1170b84cd6752d3afdeb2e8390567bb57c24c14ec31eb224798213d0a14a4432",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "resolve_run_dir",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_resolve_run_dir__mutmut_11",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "11861372055c5185b3a069e139faece7fcabd9e49bd56567e90d772b18b27041",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "resolve_run_dir",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_compute_run_metrics__mutmut_98",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "12127f1b9aeab99f2765c3baa16a16cacacb8e2408e443e609013f40bf61a4e5",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "compute_run_metrics",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_compute_run_metrics__mutmut_73",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "12d1db1837954ff4613f328828bc6a778953824f748500acf3776a684275ef6b",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "compute_run_metrics",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_validate_ordering__mutmut_5",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "1395e844e5977499519f0ba505a8bbc7d85b548fa7f996f9bc63aa8adca128e4",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "validate_ordering",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_inspect_run__mutmut_243",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "13bc058f945ff69aec95de33773697c07caf03b793545d30c60a439855bcb3e1",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "inspect_run",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_compute_run_metrics__mutmut_72",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "13dcfe96d92a672a66b2dde98314910996c9a070fc7d529ede7a7c7b2d3275a1",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "compute_run_metrics",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_compute_behavior__mutmut_44",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "1499c5fbcd4916dee5a4d90d4122f91ba00c0cba1b01ce6a419e3e84ea48a6c0",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "compute_behavior",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_load_benchmark_module__mutmut_24",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "14f90aaca57302ed197bed101ec01c1020c532cc41beef48fd98862590a69daf",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "load_benchmark_module",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_inspect_run__mutmut_211",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "1501d80c81f9c0a313825346c4f9cbbc49506f9d76a088e11915c9e44da93b4b",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "inspect_run",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__propose_via_command__mutmut_142",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "1513e4b82e4ed5eaeeb7b698262d737682f742b1cdf9962247140e8384b27f8d",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_propose_via_command",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_purge_holdout_modules__mutmut_2",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "15a4a6e0114104df1ac0f4db7281b853ee2d6f40555104f1a62a143a505a45b5",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "purge_holdout_modules",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_compute_run_metrics__mutmut_51",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "15da4d4a97881cd255211f958e58ddc3511797a18e82ab87a41ebbcb87ea2a16",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "compute_run_metrics",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__freeze_archive__mutmut_25",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "15f337a7365163c191020a54e664089e337aa4a3db8e72c557a8ce84defab559",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_freeze_archive",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_compute_run_metrics__mutmut_1",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "172c5b4826060b3f71f3ed0946472ffbb50746fee69beb4158d46349ae3e0370",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "compute_run_metrics",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_validate_ordering__mutmut_4",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "1807e9ab458034520fb6a81acd298172f03375a22b480bb4d30bdd283514a87e",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "validate_ordering",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_compute_run_metrics__mutmut_35",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "199ec4e73803486298fde7fdb1157737117234f1b7b0350f05cf977027cfca6d",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "compute_run_metrics",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__propose_via_command__mutmut_134",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "1a0cb70b1e58071180b6b8536f4733c63d17829747f826a15e6e9191dd1828e5",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_propose_via_command",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_purge_holdout_modules__mutmut_15",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "1c0fbc54472a9e189b8680ef87944d04dd6d8d396095a6db22c88bde9949aed1",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "purge_holdout_modules",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__select_parent__mutmut_3",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "1cd0a6d665641f5d3a07e9ddccbaa8c92e5bdcba946b81f8b25c1855577371e7",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_select_parent",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evolve__mutmut_547",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "1cdbccbdad6b7f82d3066a56f17011e6b80faeb024c6b633638147388d01faa6",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evolve",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__archive_consider__mutmut_74",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "1d71e4d6c1b9d852e944cb27466796bd6d6f45dc661d621384bebd480fac0c57",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_archive_consider",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__propose_via_command__mutmut_131",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "1dd12c8d7d527ee59bdae4aaeb5a8ccfbac3e0228b3afa85369643691a512f2b",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_propose_via_command",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_compute_run_metrics__mutmut_36",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "1e10bab9d4a49b88567f1060c95ec357f725f1113b52f2a021741a711be7be03",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "compute_run_metrics",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__archive_consider__mutmut_73",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "21244c6a05264941e1a6823b4fccf2e6f5044d57c726b3c8345760a9e8f52518",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_archive_consider",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__select_parent__mutmut_11",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "2173075fb9eac25ad523c9e82bc550f16cfdb419a4e271f88d32e1c59eae1f99",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_select_parent",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__archive_consider__mutmut_36",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "217d7c4c425cbfa0cda1cd971ad1c43cced62a26e4713b01d84a4b9438807a93",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_archive_consider",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__lineage_ids__mutmut_8",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "21c95c06cf82592f345dcf755fdf00ffd6666605f5f11dca340b8b64fafb8529",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_lineage_ids",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__archive_consider__mutmut_34",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "224bb3fb39f6ac286e2a16bb876376b33beafdf778e7895ce768a3d3db31eece",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_archive_consider",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_compute_run_metrics__mutmut_3",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "23f65c15d3d1ddd0157585c8d63b26f3518e117b055ac15725f3e245bc922705",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "compute_run_metrics",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__propose_via_command__mutmut_6",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "2473876e97b7c633367efe8efc114c8c988a8d280b66282d0efb7764d8747a30",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_propose_via_command",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_validate_ordering__mutmut_16",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "25cac2dcb188414c18dc20bd829118b8a45c3e7f3936c4b16d456bc9195e58b7",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "validate_ordering",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_load_mission__mutmut_15",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "263284d696051d8b36a92ea35a0b8b70cb238c620ac576b084668b97b1f7c7ac",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "load_mission",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__lineage_ids__mutmut_2",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "264f8a852cc8cece3a808d1556d08a70facc7d3c1f5b36aa965d5f822eaf96bd",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_lineage_ids",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__archive_consider__mutmut_13",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "269198113eadebe5663de80c80c69f6bd9087583fe6941dd2deb847e8dfaf905",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_archive_consider",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_compute_run_metrics__mutmut_13",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "2783677f7ecc1b840a2698ad79a3389dbcd76b832d6dc665b23481550c98b911",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "compute_run_metrics",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_run_candidate_subprocess__mutmut_101",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "27edb0c2337dc8c07c53e0ae40536e1cf47015f65590bd1c313a474a6b42d004",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "run_candidate_subprocess",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_load_benchmark_module__mutmut_16",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "290137501840b5c50e3d3d1152812a7c25766c6158ee0ce679a410aaf8496d07",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "load_benchmark_module",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_materialize_candidate__mutmut_37",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "2930dd459ecfde40643b84fb738c36212daffbc7a140d03d52cf15a32862df9d",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "materialize_candidate",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evaluate_candidate_source__mutmut_78",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "29a6c4bc7268c0e0badde12a21ba05e8a22878281426b380018a33fd7423b092",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evaluate_candidate_source",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_load_benchmark_module__mutmut_27",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "2cea18795702fd4d77db887be8eab13401d66fbae183a1c3f1828a48617f09ce",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "load_benchmark_module",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__select_parent__mutmut_7",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "2d40414d4f7a5cbb50b529d44436da67a8f470228524469a14aab8800debfeb1",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_select_parent",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_validate_ordering__mutmut_1",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "2ebcb2d745b31fb505812268a99f8b744d269c88125db3497c13e40fec68e259",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "validate_ordering",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_load_benchmark_module__mutmut_20",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "2efe9e029b61ee26ba6409f0a927c8b280b4bba205a9eaad9f3e98d127adc4ba",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "load_benchmark_module",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_materialize_candidate__mutmut_36",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "2fb7f60f2bd1b2df2377705d73f0878153085f316183b870a6ac261e1d96d2e9",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "materialize_candidate",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evaluate_candidate_source__mutmut_38",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "3199e2e9f71849f7cc0efca8028871610e1f42f3b85cd7e15e564351a408a8e3",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evaluate_candidate_source",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_validate_ordering__mutmut_18",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "31e4cea92eb55ccb54b107262f7dba6f519e45a1a8190165b1f08ac768af30e5",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "validate_ordering",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_validate_ordering__mutmut_11",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "320583b6cbc4e766eb5017ae8c1bd22e16ca7dd13123612ef6aa854c76ddb13f",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "validate_ordering",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_load_mission__mutmut_16",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "3235df872a5c21aebba74d325b033b76364645b4681514e739dd4bd06a7e498e",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "load_mission",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__lineage_ids__mutmut_3",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "344d030bc21a4822da46001aab0b6ddffa4aeefd5309e42ac78b3c055545ed87",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_lineage_ids",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evaluate_candidate_source__mutmut_40",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "346cc7d8bbe8fb8446eb352afe7074ab5f70320a070f86f5c31c623fa3c5f804",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evaluate_candidate_source",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_validate_ordering__mutmut_21",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "350cc44596ea5e1f4764eac505279768ad8ad18d3ad3924fa63f09d39e1cfc48",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "validate_ordering",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_load_mission__mutmut_19",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "35f9a1689fbd1e76d03a91ab3bff27010953b044a9028688fc67a8894b05056a",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "load_mission",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_run_candidate_subprocess__mutmut_29",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "374f43b0412cd7a5b3b5b6ea6e54dca683126ac1670febaf7f200593b3547b29",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "run_candidate_subprocess",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_validate_ordering__mutmut_19",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "3777620f4af67b51a55334c1cc7eb49cb44445ecdbfb644af304695b60336d9b",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "validate_ordering",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__select_parent__mutmut_4",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "3799f915c3acbdd9c239bfae477c9986e0cdd943ce63205154fe6d6f375f8093",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_select_parent",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evaluate_candidate_source__mutmut_79",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "39b0838a47ee6512f51d7fe5a24134e43e7188c8fcbd4330de71c4380ad9889a",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evaluate_candidate_source",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_purge_holdout_modules__mutmut_10",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "39ecf91962dfcd50af16a35ccc024b36b8ad258bd634d27e8b3ede20aded724a",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "purge_holdout_modules",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_run_candidate_subprocess__mutmut_59",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "3f5819ddca10dfcb0e2a6a006a9d93de1d1b7ed81d139a160011d76128747cbf",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "run_candidate_subprocess",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evaluate_candidate_source__mutmut_80",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "40927f41e585022c0e1ff956f8de60ff9f5ef70ee642316b6523819ea1df54c1",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evaluate_candidate_source",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_materialize_candidate__mutmut_35",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "42ced15a90ef385bbba561e3f153053e9be9ca6607e778a42826a6cba115a681",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "materialize_candidate",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_resolve_run_dir__mutmut_1",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "42e57c188d14feb29c05d2299375559671bbcfe31ff167db6d4968afbada93bf",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "resolve_run_dir",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__select_parent__mutmut_5",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "4384728fd367033547fb6ac6f03c6d98993edc1a11c044dd2a2059d37f80810b",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_select_parent",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_run_candidate_subprocess__mutmut_43",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "467c099c2610b88e3fdb90496d31acf7314f6612f7ec2ebd346b8d133a9d6c20",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "run_candidate_subprocess",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_validate_ordering__mutmut_9",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "4c45420ede2b192bc4b483a4ff752ed712ae88a2df804bb743f3ecaee8237345",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "validate_ordering",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_load_benchmark_module__mutmut_18",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "4d8551b694a47284c25b8564c2faf859ac82a951e702fa7a8ac15b16e0ff0027",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "load_benchmark_module",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_load_benchmark_module__mutmut_32",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "4e7a5105ba06a407915359c337b0bb5692ce2e86c6f9e69628955777bf43f366",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "load_benchmark_module",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__freeze_archive__mutmut_4",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "52b537e1d83e2d1824fa953ee095b222f65e3d3e32b7049d045e29852228144c",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_freeze_archive",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__archive_consider__mutmut_37",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "54b14243ab4c8dc2c6504ef81375c2134432fcea4d04286a88a7a9607bee502a",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_archive_consider",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_validate_ordering__mutmut_3",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "629e4e32d9acd9e200eeebd33f9b04f0bad7ccbc492bce9b1e47b1089e4c8b66",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "validate_ordering",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evaluate_candidate_source__mutmut_41",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "639bacd79be13ae450d9ab85fb1adaabf4b937dfd934115f5c4bd1b3aa35fef6",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evaluate_candidate_source",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__select_parent__mutmut_10",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "673222a3f7911a79d1d55191e22ff69682625ceab0941fe1abf52fc9cb685f00",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_select_parent",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__lineage_ids__mutmut_15",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "6cd64be3a7ff59f5b4d81684bd7cda78288e36cc8562409cfaaa2ffc18cbba48",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_lineage_ids",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_evaluate_candidate_source__mutmut_77",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "757fb2f0dc691475f709ba0af7342526d74d87617364d40a434afb85514e7f84",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "evaluate_candidate_source",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_validate_ordering__mutmut_17",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "7773426a5aa9f7835933fc278643f6608414a0828c90e319b30b535e8101ab94",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "validate_ordering",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_purge_holdout_modules__mutmut_12",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "7b7afc283d03076f0f417a8988e05854b380b5ecd8644815f5a34f75c091633d",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "purge_holdout_modules",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_evaluate_orderings__mutmut_26",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "7e2080875473db4171ea58d4d0d68687c4c8e93a66acd582a5e3bf6180cd0aca",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "evaluate_orderings",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__lineage_ids__mutmut_11",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "91c5efb762f329b2d7ef9707010b317f7f4411cd4e8d402d36b623cc726bf0ed",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_lineage_ids",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__lineage_ids__mutmut_12",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "956b404253dd4865fa0760bed51cf5d166df985d87875e64cfb2d57971a27025",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_lineage_ids",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_purge_holdout_modules__mutmut_13",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "a15b0a7854e149d899f0bcb45702ca2d85196331960882e8204b94f26a269eb8",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "purge_holdout_modules",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_compute_behavior__mutmut_26",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "a1a5533e5efef5299e73386fe5b1aa8e790e39e4cffc21080d505105acee1f18",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "compute_behavior",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_compute_behavior__mutmut_31",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "a5665b6fa470607065ec76b60a483a6c7f6c43541ee1e96cc2541d5a6ecdf33e",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "compute_behavior",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__select_parent__mutmut_2",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "a87df7343a3419197e62b89643557bbab4a1b5e00adb1f83d71c83ea16c20114",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_select_parent",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_validate_ordering__mutmut_22",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "afef2d22d2b1bd61cb2c90c9674dbc23ef155b27ca044caf37d9cfc72796a308",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "validate_ordering",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_run_candidate_subprocess__mutmut_106",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "c60954d0addc058a5b1bdbed113b389a098b4e54e85262fed4a552661aede8d4",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "run_candidate_subprocess",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_compute_behavior__mutmut_28",
+      "mutmut_version": "3.6.0",
+      "operator_family": "boolean_negation",
+      "patch_sha256": "c668938d88c20c2d9ba2a02f0067b78b61f8af6307522616cad4c353e564efbe",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "compute_behavior",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_purge_holdout_modules__mutmut_14",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "cb3154a4b8bfbf996a9dcf0b15a5a5df18b14c856fc1700c7f4aa96d37f1243d",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "purge_holdout_modules",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__lineage_ids__mutmut_5",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "cc3b1ff4b347058387502dd45f381b7c7176e635d19a483a6a74889a9b78e2fc",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_lineage_ids",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__lineage_ids__mutmut_4",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "cc47e9d5c8bc535fe2f243b355c56748c75daeeb52bf12018aab6bd36efe98c8",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_lineage_ids",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_evaluate_orderings__mutmut_6",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "d746edf100d03e978554757c88bbc19b0de8a4f5c8c7c93dcfa601535958a928",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "evaluate_orderings",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__lineage_ids__mutmut_6",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "da1bca9f034b9b63481b8ec678dbd0a1ca847689c753d659d6d399d5b4d0fd8c",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_lineage_ids",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x_run_candidate_subprocess__mutmut_105",
+      "mutmut_version": "3.6.0",
+      "operator_family": "comparison_boundary",
+      "patch_sha256": "daabc2b58ac7c9d546cd47a2bb9d672732d4ffc07e677b4575956a70fc721083",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "run_candidate_subprocess",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.test_priority.x_load_benchmark_module__mutmut_19",
+      "mutmut_version": "3.6.0",
+      "operator_family": "guard_return",
+      "patch_sha256": "fa87720bc63ff190d430ad1ffaec414f6f3bc79c12d78ba4f833067e9f2f148e",
+      "path": "src/detonator/test_priority.py",
+      "qualified_symbol": "load_benchmark_module",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    },
+    {
+      "mutmut_id": "detonator.kernel.x__select_parent__mutmut_1",
+      "mutmut_version": "3.6.0",
+      "operator_family": "arithmetic_index_counter",
+      "patch_sha256": "fe4d897ad7a42913f2d25ea47c385af710b6af9d1994f5a5ea3ef5a6074ad073",
+      "path": "src/detonator/kernel.py",
+      "qualified_symbol": "_select_parent",
+      "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+    }
+  ],
+  "mutmut_version": "3.6.0",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python_version": "3.12.3",
+  "schema_version": 1,
+  "target_sha": "bd17a50d22ccbabd40f1e230868e9dbb7b19c8ff"
+}

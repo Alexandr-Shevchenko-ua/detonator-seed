@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -282,7 +282,7 @@
+     delta = None
+     improved = False
+     if isinstance(best_score, (int, float)) and isinstance(seed_holdout_score, (int, float)):
+-        delta = best_score - seed_holdout_score
++        delta = best_score + seed_holdout_score
+         improved = delta > 0
+ 
+     holdout_doc = {

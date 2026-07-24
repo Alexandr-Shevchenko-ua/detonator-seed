@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -35,7 +35,7 @@
+     behavior = compute_behavior(benchmark, orderings, fault_ids)
+     return {
+         "status": "valid",
+-        "reason": None,
++        "XXreasonXX": None,
+         "score": mean_score,
+         "orderings": orderings,
+         "fault_traces": traces,

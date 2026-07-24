@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -387,7 +387,7 @@
+         f"ordering_maps={metrics['distinct_observed_ordering_maps']}"
+     )
+     print(f"injected failure probes: {metrics['injected_failure_probes']}")
+-    print("archive cells:")
++    print(None)
+     for cell in archive_doc["cells"]:
+         cid = cell.get("candidate_id") or "-"
+         score = cell.get("search_score")

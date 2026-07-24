@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -28,7 +28,7 @@
+         except subprocess.TimeoutExpired as exc:
+             elapsed_ms = int((time.perf_counter() - started) * 1000)
+             stdout = exc.stdout or ""
+-            stderr = exc.stderr or ""
++            stderr = exc.stderr or "XXXX"
+             if isinstance(stdout, bytes):
+                 stdout = stdout.decode("utf-8", errors="replace")
+             if isinstance(stderr, bytes):

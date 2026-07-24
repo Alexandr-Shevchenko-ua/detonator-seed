@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -275,7 +275,7 @@
+     if scored:
+         best = max(scored, key=lambda h: h["evaluation"]["score"])
+         best_id = best["candidate_id"]
+-        best_score = float(best["evaluation"]["score"])
++        best_score = float(best["EVALUATION"]["score"])
+     else:
+         best_id = seed_record["candidate_id"]
+         best_score = seed_holdout_score

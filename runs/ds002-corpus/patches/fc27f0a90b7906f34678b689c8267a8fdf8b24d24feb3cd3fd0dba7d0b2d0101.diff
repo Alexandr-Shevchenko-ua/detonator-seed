@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -49,7 +49,7 @@
+         completed = subprocess.run(
+             argv,
+             input=json.dumps(request),
+-            text=True,
++            text=None,
+             capture_output=True,
+             timeout=provider_timeout_seconds,
+             check=False,

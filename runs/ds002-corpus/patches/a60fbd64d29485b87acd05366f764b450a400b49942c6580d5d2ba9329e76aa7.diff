@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -23,7 +23,7 @@
+             "execution": execution,
+             "evaluation": {
+                 "status": "crash",
+-                "reason": (execution["stderr"] or "candidate crashed").strip().splitlines()[-1:],
++                "reason": (execution["stderr"] and "candidate crashed").strip().splitlines()[-1:],
+                 "score": None,
+                 "orderings": None,
+                 "fault_traces": [],

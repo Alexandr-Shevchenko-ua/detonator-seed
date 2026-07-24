@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -22,7 +22,7 @@
+ 
+     evaluation = parent.get("search", {}).get("evaluation") or {}
+     request = {
+-        "protocol_version": 1,
++        "XXprotocol_versionXX": 1,
+         "proposal_index": proposal_index,
+         "run_seed": variation_seed,
+         "parent": {

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -28,7 +28,7 @@
+         "parent": {
+             "candidate_id": parent["candidate_id"],
+             "sha256": (parent.get("artifact") or {}).get("sha256"),
+-            "source": parent_source,
++            "SOURCE": parent_source,
+         },
+         "target_cell": target_cell,
+         "search_feedback": {

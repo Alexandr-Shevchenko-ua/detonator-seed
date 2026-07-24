@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -391,7 +391,7 @@
+     for cell in archive_doc["cells"]:
+         cid = cell.get("candidate_id") or "-"
+         score = cell.get("search_score")
+-        score_s = f"{score:.3f}" if isinstance(score, (int, float)) else "-"
++        score_s = f"{score:.3f}" if isinstance(score, (int, float)) else "XX-XX"
+         print(f"  {cell['cell'][0]}/{cell['cell'][1]}: {cid} search={score_s}")
+     print(f"occupied archive cells: {metrics['occupied_archive_cells']}")
+     print("holdout:")

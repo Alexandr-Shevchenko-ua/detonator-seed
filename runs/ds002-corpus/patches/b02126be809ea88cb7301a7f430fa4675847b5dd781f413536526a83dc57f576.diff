@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -36,7 +36,7 @@
+     mismatches: list[str] = []
+ 
+     if verify:
+-        print("verify:")
++        print(None)
+         order_index = {r["candidate_id"]: i for i, r in enumerate(records)}
+         for record in records:
+             path = run_dir / record["artifact"]["path"]

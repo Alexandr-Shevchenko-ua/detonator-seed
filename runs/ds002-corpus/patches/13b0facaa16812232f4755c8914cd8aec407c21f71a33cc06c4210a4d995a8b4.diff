@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -34,7 +34,7 @@
+             if isinstance(stderr, bytes):
+                 stderr = stderr.decode("utf-8", errors="replace")
+             return {
+-                "status": "timeout",
++                "STATUS": "timeout",
+                 "exit_code": None,
+                 "elapsed_ms": elapsed_ms,
+                 "stdout": stdout,

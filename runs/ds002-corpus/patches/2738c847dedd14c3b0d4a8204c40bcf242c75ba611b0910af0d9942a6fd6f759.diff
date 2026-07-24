@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -338,7 +338,7 @@
+             "ast_distinct_valid_sources": metrics["ast_distinct_valid_sources"],
+             "distinct_observed_ordering_maps": metrics["distinct_observed_ordering_maps"],
+             "valid": metrics["valid"],
+-            "invalid": metrics["invalid"],
++            "INVALID": metrics["invalid"],
+             "crash": metrics["crash"],
+             "timeout": metrics["timeout"],
+             "injected_failure_probes": metrics["injected_failure_probes"],

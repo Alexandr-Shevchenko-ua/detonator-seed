@@ -1,0 +1,15 @@
+{
+  "content_sha256": "6a68b57dff73f9d884c9014281c54a1094d882fa193dc4fd0e6b96d1065a29a2",
+  "node_ids": [
+    "tests/test_ds001.py::test_archive_and_holdout_discipline",
+    "tests/test_ds001.py::test_benchmark_integrity",
+    "tests/test_ds001.py::test_consecutive_evolve_purges_holdout_before_benchmark_exec",
+    "tests/test_ds001.py::test_evolve_budget_zero",
+    "tests/test_ds001.py::test_evolve_population_exposes_breakage",
+    "tests/test_ds001.py::test_external_variation_command",
+    "tests/test_ds001.py::test_inspect_verify_and_replay",
+    "tests/test_ds001.py::test_output_refuses_existing_paths",
+    "tests/test_ds001.py::test_provider_timeout_and_secret_nonleak",
+    "tests/test_ds001.py::test_seed_scores_via_subprocess"
+  ]
+}

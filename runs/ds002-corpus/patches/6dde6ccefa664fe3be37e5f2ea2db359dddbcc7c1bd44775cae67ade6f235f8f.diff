@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -11,7 +11,7 @@
+         worker_copy = tmp_path / "_worker.py"
+         shutil.copy2(WORKER_PATH, worker_copy)
+         payload = {
+-            "source_path": str(source_path),
++            "source_path": str(None),
+             "requests": requests,
+         }
+         started = time.perf_counter()

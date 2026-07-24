@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -42,7 +42,7 @@
+             "required_output": "exact permutation of test ids",
+         },
+     }
+-    assert "holdout" not in request
++    assert "XXholdoutXX" not in request
+ 
+     argv = shlex.split(variation_command)
+     try:

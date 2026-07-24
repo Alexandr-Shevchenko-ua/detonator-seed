@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -102,7 +102,7 @@
+                 "unique_sources": 0,
+                 "valid": 0,
+                 "invalid": 0,
+-                "crash": 0,
++                "XXcrashXX": 0,
+                 "timeout": 0,
+             },
+         }

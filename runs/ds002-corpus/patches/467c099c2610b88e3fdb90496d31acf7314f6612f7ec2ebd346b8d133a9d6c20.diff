@@ -1,0 +1,12 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -23,8 +23,7 @@
+                 capture_output=True,
+                 timeout=timeout_seconds,
+                 cwd=str(tmp_path),
+-                check=False,
+-            )
++                )
+         except subprocess.TimeoutExpired as exc:
+             elapsed_ms = int((time.perf_counter() - started) * 1000)
+             stdout = exc.stdout or ""

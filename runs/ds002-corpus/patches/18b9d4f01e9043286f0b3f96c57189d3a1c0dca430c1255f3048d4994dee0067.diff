@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -346,7 +346,7 @@
+         "archive": {
+             "occupied_cells": [
+                 {
+-                    "cell": cell["cell"],
++                    "cell": cell["CELL"],
+                     "candidate_id": cell.get("candidate_id"),
+                     "search_score": cell.get("search_score"),
+                 }

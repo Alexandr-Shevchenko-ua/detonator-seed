@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -16,7 +16,7 @@
+         changed = set(benchmark.change_for_fault(fault_id)["changed_symbols"])
+         focused = 0
+         for tid in first3:
+-            covers = set(tests_by_id[tid].get("covers") or [])
++            covers = set(tests_by_id[tid].get("XXcoversXX") or [])
+             if covers & changed:
+                 focused += 1
+         change_focuses.append(focused / 3)

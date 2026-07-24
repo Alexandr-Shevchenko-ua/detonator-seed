@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -11,7 +11,7 @@
+ ) -> dict[str, Any]:
+     cand_id = _candidate_id(index)
+     rel_path = f"candidates/{cand_id}.py"
+-    abs_path = run_dir / rel_path
++    abs_path = None
+     normalized = _write_text(abs_path, source_text)
+     digest = tp.sha256_text(normalized)
+     evaluation = _normalize_eval_reason(search_result["evaluation"])

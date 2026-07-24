@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -7,7 +7,7 @@
+     tests_by_id = {t["id"]: t for t in benchmark.public_tests()}
+     mean_all = sum(costs.values()) / len(costs)
+ 
+-    speed_ratios: list[float] = []
++    speed_ratios: list[float] = None
+     change_focuses: list[float] = []
+     for fault_id in fault_ids:
+         order = orderings[fault_id]

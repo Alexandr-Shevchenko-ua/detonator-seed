@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -4,7 +4,7 @@
+ ) -> dict[str, Any]:
+     cells = []
+     for cell in tp.ARCHIVE_CELLS:
+-        entry = archive.get(cell)
++        entry = None
+         if entry is None:
+             cells.append(
+                 {

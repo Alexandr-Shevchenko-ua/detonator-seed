@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -74,7 +74,7 @@
+         raise RuntimeError("variation-command returned invalid JSON") from None
+     source = response.get("source")
+     if not isinstance(source, str) or not source.strip():
+-        raise RuntimeError("variation-command response missing source string")
++        raise RuntimeError(None)
+     description = response.get("mutation_description") or "external proposal"
+     return {
+         "source": source.rstrip() + f"\n# external_slot={proposal_index}\n",

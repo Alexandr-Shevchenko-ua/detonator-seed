@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -406,7 +406,7 @@
+         )
+     print(summary["holdout"]["conclusion"])
+     print(f"lineage: {' -> '.join(lineage)}")
+-    print(f"run directory: {run_dir}")
++    print(None)
+     return {
+         "run_dir": run_dir,
+         "records": records,

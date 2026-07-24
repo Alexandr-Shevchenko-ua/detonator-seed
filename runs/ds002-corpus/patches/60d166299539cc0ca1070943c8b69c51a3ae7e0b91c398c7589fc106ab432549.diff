@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -6,7 +6,7 @@
+     behavior = record["search"].get("behavior")
+     if evaluation.get("status") != "valid" or not behavior or not behavior.get("cell"):
+         return {
+-            "decision": "ineligible",
++            "decision": "INELIGIBLE",
+             "cell": None,
+             "replaced_candidate_id": None,
+             "reason": evaluation.get("status") or "ineligible",

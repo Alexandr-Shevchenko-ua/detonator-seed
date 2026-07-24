@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -386,7 +386,7 @@
+         f"ast_distinct_valid={metrics['ast_distinct_valid_sources']} "
+         f"ordering_maps={metrics['distinct_observed_ordering_maps']}"
+     )
+-    print(f"injected failure probes: {metrics['injected_failure_probes']}")
++    print(f"injected failure probes: {metrics['INJECTED_FAILURE_PROBES']}")
+     print("archive cells:")
+     for cell in archive_doc["cells"]:
+         cid = cell.get("candidate_id") or "-"

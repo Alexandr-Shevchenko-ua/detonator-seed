@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -5,7 +5,7 @@
+ ) -> dict[str, Any]:
+     """Copy candidate into a disposable cwd and invoke prioritize via worker."""
+     with tempfile.TemporaryDirectory(prefix="detonator-cand-") as tmp:
+-        tmp_path = Path(tmp)
++        tmp_path = Path(None)
+         source_path = tmp_path / "candidate.py"
+         _write_text(source_path, source_text)
+         worker_copy = tmp_path / "_worker.py"

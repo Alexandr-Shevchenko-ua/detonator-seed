@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -8,7 +8,7 @@
+     execution = run_candidate_subprocess(source_text, requests, timeout_seconds)
+     if execution["status"] == "timeout":
+         return {
+-            "execution": execution,
++            "EXECUTION": execution,
+             "evaluation": {
+                 "status": "timeout",
+                 "reason": execution["stderr"],

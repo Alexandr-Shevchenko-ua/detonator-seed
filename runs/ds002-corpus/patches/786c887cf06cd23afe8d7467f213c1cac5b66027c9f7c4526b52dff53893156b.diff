@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -80,7 +80,7 @@
+         "source": source.rstrip() + f"\n# external_slot={proposal_index}\n",
+         "provider": "external",
+         "operator": "external_command",
+-        "description": description,
++        "DESCRIPTION": description,
+         "meta": {"family": "external"},
+         "lineage_mode": "derived",
+         "injected_probe": None,

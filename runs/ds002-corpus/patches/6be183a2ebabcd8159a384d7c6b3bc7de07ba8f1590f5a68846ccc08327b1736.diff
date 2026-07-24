@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -27,7 +27,6 @@
+         lineage = _lineage_ids(id_to_record, cid)
+         if lineage and lineage[0] != seed_id:
+             print(
+-                f"  ERROR: lineage for {cid} does not reach seed ({seed_id})",
+                 file=sys.stderr,
+             )
+             return 1

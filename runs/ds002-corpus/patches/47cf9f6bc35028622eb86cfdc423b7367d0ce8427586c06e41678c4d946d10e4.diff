@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -239,7 +239,7 @@
+     evaluate_ids = []
+     seen_eval = set()
+     for cid in [seed_record["candidate_id"], *winner_ids]:
+-        if cid not in seen_eval:
++        if cid in seen_eval:
+             evaluate_ids.append(cid)
+             seen_eval.add(cid)

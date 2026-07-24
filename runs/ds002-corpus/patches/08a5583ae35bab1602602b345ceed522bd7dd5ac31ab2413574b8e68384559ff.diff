@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -13,7 +13,7 @@
+     timeout = float(mission["candidate_timeout_seconds"])
+     provider_timeout = float(
+         provider_timeout_seconds
+-        if provider_timeout_seconds is not None
++        if provider_timeout_seconds is None
+         else mission.get("provider_timeout_seconds", 120)
+     )
+     variation_seed = int(mission["variation_seed"])

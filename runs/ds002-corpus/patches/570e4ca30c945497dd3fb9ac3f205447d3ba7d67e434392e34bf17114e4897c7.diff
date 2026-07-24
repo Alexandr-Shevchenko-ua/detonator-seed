@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -381,7 +381,7 @@
+         f"crash={metrics['crash']} timeout={metrics['timeout']}"
+     )
+     print(
+-        "diversity: "
++        "XXdiversity: XX"
+         f"byte_hash_distinct={metrics['byte_hash_distinct_sources']} "
+         f"ast_distinct_valid={metrics['ast_distinct_valid_sources']} "
+         f"ordering_maps={metrics['distinct_observed_ordering_maps']}"

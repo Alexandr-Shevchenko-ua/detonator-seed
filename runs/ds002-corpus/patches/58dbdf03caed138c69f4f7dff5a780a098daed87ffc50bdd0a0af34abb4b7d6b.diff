@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -30,7 +30,7 @@
+             "sha256": (parent.get("artifact") or {}).get("sha256"),
+             "source": parent_source,
+         },
+-        "target_cell": target_cell,
++        "XXtarget_cellXX": target_cell,
+         "search_feedback": {
+             "score": evaluation.get("score"),
+             "fault_traces": evaluation.get("fault_traces") or [],

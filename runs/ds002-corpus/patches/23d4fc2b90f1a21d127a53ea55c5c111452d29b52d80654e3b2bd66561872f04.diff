@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -27,7 +27,7 @@
+     (run_dir / "candidates").mkdir(parents=True, exist_ok=True)
+     jsonl_path = run_dir / "candidates.jsonl"
+ 
+-    provider_descriptor = None
++    provider_descriptor = ""
+     if variation_command:
+         provider_descriptor = {
+             "kind": "external_command",

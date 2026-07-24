@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -7,7 +7,7 @@
+ 
+     descendants = records[1:]
+     byte_hashes = {r["artifact"]["sha256"] for r in descendants}
+-    ast_hashes: set[str] = set()
++    ast_hashes: set[str] = None
+     ordering_hashes: set[str] = set()
+     for record in descendants:
+         if record["search"]["evaluation"]["status"] != "valid":

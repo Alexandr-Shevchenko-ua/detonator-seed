@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -19,7 +19,7 @@
+             "decision": "inserted",
+             "cell": [cell[0], cell[1]],
+             "replaced_candidate_id": None,
+-            "reason": "empty_cell",
++            "reason": "XXempty_cellXX",
+         }
+     incumbent = archive[cell]
+     if score > incumbent["score"]:

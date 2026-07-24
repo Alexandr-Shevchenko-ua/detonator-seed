@@ -1,0 +1,72 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -306,68 +306,7 @@
+     descendant_records = records[1:]
+     metrics = compute_run_metrics(records, archive_doc, counts)
+     lineage = _lineage_ids(id_to_record, best_id)
+-    summary = {
+-        "schema_version": 1,
+-        "run_id": run_dir.name,
+-        "executed_command": executed_command,
+-        "variation_seed": variation_seed,
+-        "python_version": sys.version.split()[0],
+-        "provider": provider_descriptor,
+-        "paths": {
+-            "run_dir": str(run_dir),
+-            "candidates_jsonl": "candidates.jsonl",
+-            "archive": "archive.json",
+-            "holdout": "holdout.json",
+-        },
+-        "hashes": {
+-            "mission": tp.sha256_file(mission["_mission_path"]),
+-            "benchmark": tp.sha256_file(mission["_benchmark_path"]),
+-            "search": tp.sha256_file(mission["_search_path"]),
+-            "holdout": tp.sha256_file(mission["_holdout_path"]),
+-            "archive": archive_doc["archive_sha256"],
+-        },
+-        "seed": {
+-            "candidate_id": seed_record["candidate_id"],
+-            "search_score": seed_score,
+-            "holdout_score": seed_holdout_score,
+-        },
+-        "metrics": metrics,
+-        "descendants": {
+-            "executed": metrics["executed_descendants"],
+-            "byte_hash_distinct_sources": metrics["byte_hash_distinct_sources"],
+-            "ast_distinct_valid_sources": metrics["ast_distinct_valid_sources"],
+-            "distinct_observed_ordering_maps": metrics["distinct_observed_ordering_maps"],
+-            "valid": metrics["valid"],
+-            "invalid": metrics["invalid"],
+-            "crash": metrics["crash"],
+-            "timeout": metrics["timeout"],
+-            "injected_failure_probes": metrics["injected_failure_probes"],
+-        },
+-        "archive": {
+-            "occupied_cells": [
+-                {
+-                    "cell": cell["cell"],
+-                    "candidate_id": cell.get("candidate_id"),
+-                    "search_score": cell.get("search_score"),
+-                }
+-                for cell in archive_doc["cells"]
+-                if cell.get("candidate_id")
+-            ],
+-            "occupied_cell_count": metrics["occupied_archive_cells"],
+-        },
+-        "holdout": {
+-            "evaluated_ids": evaluate_ids,
+-            "seed_score": seed_holdout_score,
+-            "best_observed_candidate_id": best_id,
+-            "best_observed_score": best_score,
+-            "delta": delta,
+-            "improved_over_seed": improved,
+-            "conclusion": (
+-                "improved over seed" if improved else "no holdout improvement found"
+-            ),
+-        },
+-        "best_observed_lineage": lineage,
+-    }
++    summary = None
+     (run_dir / "summary.json").write_text(
+         json.dumps(summary, indent=2) + "\n", encoding="utf-8"
+     )

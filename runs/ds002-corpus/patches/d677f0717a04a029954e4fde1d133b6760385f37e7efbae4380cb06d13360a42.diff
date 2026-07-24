@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -203,7 +203,7 @@
+ 
+     # Freeze archive before any holdout access.
+     archive_body = _freeze_archive(archive, records[-1]["candidate_id"])
+-    archive_body_bytes = json.dumps(archive_body, indent=2, sort_keys=True) + "\n"
++    archive_body_bytes = json.dumps(archive_body, indent=2, ) + "\n"
+     archive_hash = tp.sha256_text(archive_body_bytes)
+     archive_doc = dict(archive_body)
+     archive_doc["archive_sha256"] = archive_hash

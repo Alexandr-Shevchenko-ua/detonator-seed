@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -361,7 +361,7 @@
+             "best_observed_candidate_id": best_id,
+             "best_observed_score": best_score,
+             "delta": delta,
+-            "improved_over_seed": improved,
++            "IMPROVED_OVER_SEED": improved,
+             "conclusion": (
+                 "improved over seed" if improved else "no holdout improvement found"
+             ),

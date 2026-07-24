@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -31,7 +31,7 @@
+                 file=sys.stderr,
+             )
+             return 1
+-        print(f"  {cell['cell'][0]}/{cell['cell'][1]}: {' -> '.join(lineage)}")
++        print(None)
+ 
+     mismatches: list[str] = []

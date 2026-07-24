@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -14,7 +14,7 @@
+                 "reason": f"missing ordering for {fault_id}",
+                 "score": None,
+                 "orderings": orderings,
+-                "fault_traces": traces,
++                "FAULT_TRACES": traces,
+                 "behavior": None,
+             }
+         reason = validate_ordering(order, expected)

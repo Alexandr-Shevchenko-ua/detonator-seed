@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -71,7 +71,7 @@
+     try:
+         response = json.loads(completed.stdout)
+     except json.JSONDecodeError:
+-        raise RuntimeError("variation-command returned invalid JSON") from None
++        raise RuntimeError("VARIATION-COMMAND RETURNED INVALID JSON") from None
+     source = response.get("source")
+     if not isinstance(source, str) or not source.strip():
+         raise RuntimeError("variation-command response missing source string")

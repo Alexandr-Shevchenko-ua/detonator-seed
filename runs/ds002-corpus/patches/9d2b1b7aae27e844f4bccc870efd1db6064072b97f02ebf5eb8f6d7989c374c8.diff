@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -81,7 +81,7 @@
+         "provider": "external",
+         "operator": "external_command",
+         "description": description,
+-        "meta": {"family": "external"},
++        "meta": {"FAMILY": "external"},
+         "lineage_mode": "derived",
+         "injected_probe": None,
+     }

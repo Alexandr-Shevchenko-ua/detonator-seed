@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -185,7 +185,7 @@
+             counts[status] += 1
+         append_jsonl(jsonl_path, provisional)
+         records.append(provisional)
+-        if status == "valid":
++        if status != "valid":
+             valid_records.append(provisional)
+         print(format_candidate_line(provisional))

@@ -1,0 +1,9 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -28,5 +28,5 @@
+     return {
+         "speed_ratio": speed_ratio,
+         "change_focus": change_focus,
+-        "cell": [speed_bin, change_bin],
++        "XXcellXX": [speed_bin, change_bin],
+     }

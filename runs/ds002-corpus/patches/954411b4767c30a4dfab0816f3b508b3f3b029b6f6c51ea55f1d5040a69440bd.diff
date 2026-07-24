@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -2,7 +2,7 @@
+     run_dir: Path,
+     *,
+     verify: bool = False,
+-    replay_retained: bool = False,
++    replay_retained: bool = True,
+     mission_path: Path | None = None,
+ ) -> int:
+     """Inspect a prior run. Returns process exit code."""

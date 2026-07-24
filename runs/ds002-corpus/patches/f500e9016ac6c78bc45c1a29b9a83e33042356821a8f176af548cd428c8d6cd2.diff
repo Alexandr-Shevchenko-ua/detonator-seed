@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -135,7 +135,7 @@
+         lineage_mode = proposal.get("lineage_mode", "seed")
+         if lineage_mode == "derived":
+             parent = candidate_parent
+-        elif lineage_mode == "seed":
++        elif lineage_mode != "seed":
+             parent = seed_record
+         elif lineage_mode == "none":
+             parent = None

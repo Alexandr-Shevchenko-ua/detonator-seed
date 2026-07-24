@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -40,7 +40,7 @@
+                 "stdout": execution["stdout"],
+                 "stderr": execution["stderr"],
+             },
+-            "evaluation": {
++            "EVALUATION": {
+                 "status": evaluation["status"],
+                 "score": evaluation.get("score"),
+                 "reason": evaluation.get("reason"),

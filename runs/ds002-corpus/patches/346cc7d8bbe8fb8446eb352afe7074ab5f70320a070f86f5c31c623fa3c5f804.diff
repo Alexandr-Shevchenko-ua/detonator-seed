@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -18,7 +18,7 @@
+                 "behavior": None,
+             },
+         }
+-    if execution["status"] == "crash":
++    if execution["status"] != "crash":
+         return {
+             "execution": execution,
+             "evaluation": {

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -82,7 +82,7 @@
+                 )
+             # Cycle detection via lineage walk.
+             seen: set[str] = set()
+-            cur: str | None = record["candidate_id"]
++            cur: str | None = None
+             while cur is not None:
+                 if cur in seen:
+                     mismatches.append(f"lineage cycle involving {record['candidate_id']}")

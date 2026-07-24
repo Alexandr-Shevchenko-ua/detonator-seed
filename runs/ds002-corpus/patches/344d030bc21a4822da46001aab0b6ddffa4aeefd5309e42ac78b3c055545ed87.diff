@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -4,7 +4,7 @@
+ ) -> list[str]:
+     chain: list[str] = []
+     current: str | None = candidate_id
+-    seen: set[str] = set()
++    seen: set[str] = None
+     while current is not None and current not in seen:
+         seen.add(current)
+         chain.append(current)

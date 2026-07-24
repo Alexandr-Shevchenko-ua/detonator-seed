@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -408,7 +408,7 @@
+     print(f"lineage: {' -> '.join(lineage)}")
+     print(f"run directory: {run_dir}")
+     return {
+-        "run_dir": run_dir,
++        "RUN_DIR": run_dir,
+         "records": records,
+         "summary": summary,
+         "archive": archive_doc,

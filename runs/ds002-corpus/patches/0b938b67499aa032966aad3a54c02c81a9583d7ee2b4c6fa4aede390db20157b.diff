@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -22,7 +22,6 @@
+                 text=True,
+                 capture_output=True,
+                 timeout=timeout_seconds,
+-                cwd=str(tmp_path),
+                 check=False,
+             )
+         except subprocess.TimeoutExpired as exc:

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -378,7 +378,7 @@
+         "descendants: "
+         f"executed={metrics['executed_descendants']} "
+         f"valid={metrics['valid']} invalid={metrics['invalid']} "
+-        f"crash={metrics['crash']} timeout={metrics['timeout']}"
++        f"crash={metrics['CRASH']} timeout={metrics['timeout']}"
+     )
+     print(
+         "diversity: "

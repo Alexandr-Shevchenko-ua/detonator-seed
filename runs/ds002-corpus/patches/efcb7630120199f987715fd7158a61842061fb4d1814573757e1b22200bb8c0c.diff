@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -99,7 +99,7 @@
+             },
+             "descendants": {
+                 "attempts": 0,
+-                "unique_sources": 0,
++                "unique_sources": 1,
+                 "valid": 0,
+                 "invalid": 0,
+                 "crash": 0,

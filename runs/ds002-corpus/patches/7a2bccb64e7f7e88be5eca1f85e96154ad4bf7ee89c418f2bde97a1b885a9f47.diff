@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -10,7 +10,7 @@
+     import shlex
+ 
+     parent_source = parent.get("_source_text")
+-    if not parent_source:
++    if parent_source:
+         raise RuntimeError(
+             f"parent {parent.get('candidate_id')} missing in-memory source for variation-command"
+         )

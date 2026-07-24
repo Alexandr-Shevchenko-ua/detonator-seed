@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -158,7 +158,7 @@
+                     mismatches.append(f"{cid} search orderings differ")
+ 
+                 holdout_replay = evaluate_candidate_source(
+-                    source, benchmark, holdout_faults, timeout
++                    source, benchmark, None, timeout
+                 )
+                 holdout_eval = _normalize_eval_reason(holdout_replay["evaluation"])
+                 stored_holdout = holdout_by_id[cid]["evaluation"]

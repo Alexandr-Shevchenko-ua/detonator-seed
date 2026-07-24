@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -10,7 +10,7 @@
+                 {
+                     "cell": [cell[0], cell[1]],
+                     "candidate_id": None,
+-                    "artifact": None,
++                    "ARTIFACT": None,
+                     "search_score": None,
+                     "behavior": None,
+                 }

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -286,7 +286,7 @@
+         improved = delta > 0
+ 
+     holdout_doc = {
+-        "schema_version": 1,
++        "schema_version": 2,
+         "frozen_archive": {
+             "path": "archive.json",
+             "sha256": archive_doc["archive_sha256"],

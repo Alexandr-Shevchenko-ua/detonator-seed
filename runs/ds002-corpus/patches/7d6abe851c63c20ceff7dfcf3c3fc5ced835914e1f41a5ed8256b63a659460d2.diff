@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -33,7 +33,7 @@
+         }
+     return {
+         "decision": "rejected",
+-        "cell": [cell[0], cell[1]],
++        "CELL": [cell[0], cell[1]],
+         "replaced_candidate_id": None,
+         "reason": "not_strictly_better",
+     }

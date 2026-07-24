@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -160,7 +160,7 @@
+                 holdout_replay = evaluate_candidate_source(
+                     source, benchmark, holdout_faults, timeout
+                 )
+-                holdout_eval = _normalize_eval_reason(holdout_replay["evaluation"])
++                holdout_eval = _normalize_eval_reason(holdout_replay["XXevaluationXX"])
+                 stored_holdout = holdout_by_id[cid]["evaluation"]
+                 if holdout_eval.get("score") != stored_holdout.get("score"):
+                     s1 = holdout_eval.get("score")

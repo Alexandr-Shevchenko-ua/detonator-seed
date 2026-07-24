@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -363,7 +363,7 @@
+             "delta": delta,
+             "improved_over_seed": improved,
+             "conclusion": (
+-                "improved over seed" if improved else "no holdout improvement found"
++                "improved over seed" if improved else "XXno holdout improvement foundXX"
+             ),
+         },
+         "best_observed_lineage": lineage,

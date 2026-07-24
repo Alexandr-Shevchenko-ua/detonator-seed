@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -172,7 +172,7 @@
+             index=proposal_index + 1,
+             source_text=source_text,
+             generation=generation,
+-            parent=parent,
++            parent=None,
+             mutation=mutation,
+             search_result=search_result,
+             archive_info=None,

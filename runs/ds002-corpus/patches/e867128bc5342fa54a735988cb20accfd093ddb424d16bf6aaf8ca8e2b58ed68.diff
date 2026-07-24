@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -5,7 +5,7 @@
+ ) -> dict[str, Any]:
+     import ast
+ 
+-    descendants = records[1:]
++    descendants = records[2:]
+     byte_hashes = {r["artifact"]["sha256"] for r in descendants}
+     ast_hashes: set[str] = set()
+     ordering_hashes: set[str] = set()

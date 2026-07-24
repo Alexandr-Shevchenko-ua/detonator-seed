@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -18,7 +18,7 @@
+             continue
+         try:
+             tree = ast.parse(source)
+-            ast_hashes.add(tp.sha256_text(ast.dump(tree, annotate_fields=True)))
++            ast_hashes.add(tp.sha256_text(ast.dump(tree, annotate_fields=False)))
+         except SyntaxError:
+             pass
+         orderings = record["search"]["evaluation"].get("orderings") or {}

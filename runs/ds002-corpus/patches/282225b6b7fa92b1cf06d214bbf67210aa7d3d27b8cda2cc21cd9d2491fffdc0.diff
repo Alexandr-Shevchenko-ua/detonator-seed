@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -20,7 +20,7 @@
+         cells.append(
+             {
+                 "cell": [cell[0], cell[1]],
+-                "candidate_id": record["candidate_id"],
++                "candidate_id": record["CANDIDATE_ID"],
+                 "artifact": record["artifact"],
+                 "search_score": entry["score"],
+                 "behavior": record["search"]["behavior"],

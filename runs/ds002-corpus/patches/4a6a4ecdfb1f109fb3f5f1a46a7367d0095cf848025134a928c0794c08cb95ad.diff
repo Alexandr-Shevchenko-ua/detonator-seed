@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -21,7 +21,7 @@
+     print(f"run: {run_dir}")
+     print(f"candidates: {len(records)} (seed + {max(0, len(records) - 1)} descendants)")
+     print("retained lineages:")
+-    seed_id = records[0]["candidate_id"]
++    seed_id = records[1]["candidate_id"]
+     for cell in retained:
+         cid = cell["candidate_id"]
+         lineage = _lineage_ids(id_to_record, cid)

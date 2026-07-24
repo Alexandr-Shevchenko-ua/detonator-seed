@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -12,7 +12,7 @@
+     for fault_id in fault_ids:
+         order = orderings[fault_id]
+         first3 = order[:3]
+-        speed_ratios.append((sum(costs[t] for t in first3) / 3) / mean_all)
++        speed_ratios.append((sum(costs[t] for t in first3) / 3) * mean_all)
+         changed = set(benchmark.change_for_fault(fault_id)["changed_symbols"])
+         focused = 0
+         for tid in first3:

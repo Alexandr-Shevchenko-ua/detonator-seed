@@ -1,0 +1,12 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -175,8 +175,7 @@
+             parent=parent,
+             mutation=mutation,
+             search_result=search_result,
+-            archive_info=None,
+-        )
++            )
+         provisional["_source_text"] = source_text
+         archive_info = _archive_consider(archive, provisional)
+         provisional["archive"] = archive_info

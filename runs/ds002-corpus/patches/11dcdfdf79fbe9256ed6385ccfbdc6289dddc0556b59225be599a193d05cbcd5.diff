@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -111,7 +111,7 @@
+             mismatches.append(f"mission not found for artifact replay: {mission_path}")
+         else:
+             mission = tp.load_mission(mission_path.resolve())
+-            benchmark = tp.load_benchmark_module(mission["_benchmark_path"], validate="search")
++            benchmark = tp.load_benchmark_module(mission["_benchmark_path"], validate="SEARCH")
+             search_faults = tp.load_fault_ids(mission["_search_path"])
+             holdout_faults = tp.load_fault_ids(mission["_holdout_path"])
+             holdout_module_path = mission["_benchmark_path"].parent / "holdout_faults.py"

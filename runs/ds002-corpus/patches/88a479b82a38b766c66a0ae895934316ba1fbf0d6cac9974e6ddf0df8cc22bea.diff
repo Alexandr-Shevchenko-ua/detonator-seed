@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -178,7 +178,7 @@
+     print("summary:")
+     print(f"  conclusion: {summary['holdout']['conclusion']}")
+     print(f"  best observed: {summary['holdout']['best_observed_candidate_id']}")
+-    print(f"  lineage: {' -> '.join(summary.get('best_observed_lineage') or [])}")
++    print(f"  lineage: {' -> '.join(summary.get('XXbest_observed_lineageXX') or [])}")
+ 
+     if mismatches:
+         print("mismatches:", file=sys.stderr)

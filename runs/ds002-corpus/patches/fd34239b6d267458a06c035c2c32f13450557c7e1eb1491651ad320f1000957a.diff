@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -61,7 +61,7 @@
+             return {
+                 "status": "crash",
+                 "exit_code": completed.returncode,
+-                "elapsed_ms": elapsed_ms,
++                "XXelapsed_msXX": elapsed_ms,
+                 "stdout": stdout,
+                 "stderr": stderr + f"\nworker output parse error: {exc}",
+                 "orderings": None,

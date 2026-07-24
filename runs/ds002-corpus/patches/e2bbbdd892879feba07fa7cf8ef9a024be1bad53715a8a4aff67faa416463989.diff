@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -182,7 +182,7 @@
+         provisional["archive"] = archive_info
+         status = provisional["search"]["evaluation"]["status"]
+         if status in counts:
+-            counts[status] += 1
++            counts[status] += 2
+         append_jsonl(jsonl_path, provisional)
+         records.append(provisional)
+         if status == "valid":

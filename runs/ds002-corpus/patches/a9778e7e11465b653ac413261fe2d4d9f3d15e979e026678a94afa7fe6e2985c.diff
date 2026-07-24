@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -24,7 +24,7 @@
+     speed_ratio = sum(speed_ratios) / len(speed_ratios)
+     change_focus = sum(change_focuses) / len(change_focuses)
+     speed_bin = "fast" if speed_ratio < 0.75 else "cost_tolerant"
+-    change_bin = "change_focused" if change_focus >= (2 / 3) else "general"
++    change_bin = "change_focused" if change_focus >= (2 / 3) else "XXgeneralXX"
+     return {
+         "speed_ratio": speed_ratio,
+         "change_focus": change_focus,

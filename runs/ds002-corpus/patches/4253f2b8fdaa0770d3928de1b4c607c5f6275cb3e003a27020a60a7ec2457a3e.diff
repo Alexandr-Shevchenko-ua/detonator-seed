@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -115,7 +115,7 @@
+ 
+     seen_hashes: set[str] = {seed_record["artifact"]["sha256"]}
+     valid_records: list[dict[str, Any]] = []
+-    if seed_record["search"]["evaluation"]["status"] == "valid":
++    if seed_record["search"]["evaluation"]["status"] != "valid":
+         valid_records.append(seed_record)
+ 
+     counts = {"valid": 0, "invalid": 0, "crash": 0, "timeout": 0}

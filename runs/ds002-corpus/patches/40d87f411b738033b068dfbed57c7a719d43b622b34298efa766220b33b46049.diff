@@ -1,0 +1,32 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -13,6 +13,28 @@
+     run_dir = output.expanduser().resolve()
+     if run_dir.exists():
+         raise FileExistsError(
+-            f"refusing to overwrite existing output path: {run_dir}"
++            None
+         )
+     return run_dir
++
++mutants_x_resolve_run_dir__mutmut['_mutmut_orig'] = x_resolve_run_dir__mutmut_orig # type: ignore # mutmut generated
++mutants_x_resolve_run_dir__mutmut['x_resolve_run_dir__mutmut_1'] = x_resolve_run_dir__mutmut_1 # type: ignore # mutmut generated
++mutants_x_resolve_run_dir__mutmut['x_resolve_run_dir__mutmut_2'] = x_resolve_run_dir__mutmut_2 # type: ignore # mutmut generated
++mutants_x_resolve_run_dir__mutmut['x_resolve_run_dir__mutmut_3'] = x_resolve_run_dir__mutmut_3 # type: ignore # mutmut generated
++mutants_x_resolve_run_dir__mutmut['x_resolve_run_dir__mutmut_4'] = x_resolve_run_dir__mutmut_4 # type: ignore # mutmut generated
++mutants_x_resolve_run_dir__mutmut['x_resolve_run_dir__mutmut_5'] = x_resolve_run_dir__mutmut_5 # type: ignore # mutmut generated
++mutants_x_resolve_run_dir__mutmut['x_resolve_run_dir__mutmut_6'] = x_resolve_run_dir__mutmut_6 # type: ignore # mutmut generated
++mutants_x_resolve_run_dir__mutmut['x_resolve_run_dir__mutmut_7'] = x_resolve_run_dir__mutmut_7 # type: ignore # mutmut generated
++mutants_x_resolve_run_dir__mutmut['x_resolve_run_dir__mutmut_8'] = x_resolve_run_dir__mutmut_8 # type: ignore # mutmut generated
++mutants_x_resolve_run_dir__mutmut['x_resolve_run_dir__mutmut_9'] = x_resolve_run_dir__mutmut_9 # type: ignore # mutmut generated
++mutants_x_resolve_run_dir__mutmut['x_resolve_run_dir__mutmut_10'] = x_resolve_run_dir__mutmut_10 # type: ignore # mutmut generated
++mutants_x_resolve_run_dir__mutmut['x_resolve_run_dir__mutmut_11'] = x_resolve_run_dir__mutmut_11 # type: ignore # mutmut generated
++mutants_x_resolve_run_dir__mutmut['x_resolve_run_dir__mutmut_12'] = x_resolve_run_dir__mutmut_12 # type: ignore # mutmut generated
++mutants_x_resolve_run_dir__mutmut['x_resolve_run_dir__mutmut_13'] = x_resolve_run_dir__mutmut_13 # type: ignore # mutmut generated
++mutants_x_resolve_run_dir__mutmut['x_resolve_run_dir__mutmut_14'] = x_resolve_run_dir__mutmut_14 # type: ignore # mutmut generated
++mutants_x_resolve_run_dir__mutmut['x_resolve_run_dir__mutmut_15'] = x_resolve_run_dir__mutmut_15 # type: ignore # mutmut generated
++mutants_x_resolve_run_dir__mutmut['x_resolve_run_dir__mutmut_16'] = x_resolve_run_dir__mutmut_16 # type: ignore # mutmut generated
++mutants_x_evolve__mutmut: MutantDict = {}  # type: ignore
++
++
++@_mutmut_mutated(mutants_x_evolve__mutmut)

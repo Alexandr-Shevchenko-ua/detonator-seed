@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -89,7 +89,7 @@
+                 "candidates_jsonl": str(jsonl_path.relative_to(run_dir)),
+             },
+             "hashes": {
+-                "mission": tp.sha256_file(mission["_mission_path"]),
++                "XXmissionXX": tp.sha256_file(mission["_mission_path"]),
+                 "benchmark": tp.sha256_file(mission["_benchmark_path"]),
+                 "search": tp.sha256_file(mission["_search_path"]),
+             },

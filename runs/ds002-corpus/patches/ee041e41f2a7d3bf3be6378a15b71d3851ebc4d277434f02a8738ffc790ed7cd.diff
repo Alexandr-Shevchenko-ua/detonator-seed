@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -69,7 +69,7 @@
+             "(provider stderr/stdout omitted)"
+         )
+     try:
+-        response = json.loads(completed.stdout)
++        response = json.loads(None)
+     except json.JSONDecodeError:
+         raise RuntimeError("variation-command returned invalid JSON") from None
+     source = response.get("source")

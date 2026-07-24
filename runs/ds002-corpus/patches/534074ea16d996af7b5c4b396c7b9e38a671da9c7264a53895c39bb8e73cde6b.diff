@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -199,7 +199,7 @@
+         mod_file = getattr(module, "__file__", None)
+         if mod_file and Path(mod_file).resolve() == holdout_module_path.resolve():
+             pre_freeze_holdout_module_loaded = True
+-            break
++            return
+ 
+     # Freeze archive before any holdout access.
+     archive_body = _freeze_archive(archive, records[-1]["candidate_id"])

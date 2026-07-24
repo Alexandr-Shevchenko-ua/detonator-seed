@@ -1,0 +1,15 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -29,11 +29,7 @@
+ 
+     provider_descriptor = None
+     if variation_command:
+-        provider_descriptor = {
+-            "kind": "external_command",
+-            "name": "variation-command",
+-            "timeout_seconds": provider_timeout,
+-        }
++        provider_descriptor = None
+ 
+     executed_command = " ".join(
+         ["detonator", "evolve", str(mission_path)]

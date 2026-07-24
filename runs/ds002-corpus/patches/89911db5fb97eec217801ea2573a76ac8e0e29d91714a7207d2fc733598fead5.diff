@@ -1,0 +1,9 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -185,5 +185,5 @@
+         for item in mismatches:
+             print(f"  - {item}", file=sys.stderr)
+         return 1
+-    print("inspect ok")
++    print("XXinspect okXX")
+     return 0

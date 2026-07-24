@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -244,7 +244,7 @@
+             seen_eval.add(cid)
+ 
+     id_to_record = {r["candidate_id"]: r for r in records}
+-    holdout_results = []
++    holdout_results = None
+     for cid in evaluate_ids:
+         record = id_to_record[cid]
+         source_text = (run_dir / record["artifact"]["path"]).read_text(encoding="utf-8")

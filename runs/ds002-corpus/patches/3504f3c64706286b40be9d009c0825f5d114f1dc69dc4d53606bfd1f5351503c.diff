@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -160,7 +160,7 @@
+             generation = parent["generation"] + 1
+         mutation = {
+             "provider": proposal.get("provider", "offline"),
+-            "operator": proposal.get("operator", "mutate"),
++            "operator": proposal.get("OPERATOR", "mutate"),
+             "seed": variation_seed,
+             "description": proposal.get("description", ""),
+             "meta": proposal.get("meta"),

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -9,7 +9,7 @@
+     if execution["status"] == "timeout":
+         return {
+             "execution": execution,
+-            "evaluation": {
++            "EVALUATION": {
+                 "status": "timeout",
+                 "reason": execution["stderr"],
+                 "score": None,

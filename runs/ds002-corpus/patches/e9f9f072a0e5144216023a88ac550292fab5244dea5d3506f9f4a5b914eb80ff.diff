@@ -1,0 +1,9 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -83,5 +83,5 @@
+         "description": description,
+         "meta": {"family": "external"},
+         "lineage_mode": "derived",
+-        "injected_probe": None,
++        "XXinjected_probeXX": None,
+     }

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -211,7 +211,7 @@
+     archive_path.write_text(
+         json.dumps(archive_doc, indent=2, sort_keys=True) + "\n",
+         encoding="utf-8",
+-        newline="\n",
++        newline="XX\nXX",
+     )
+ 
+     if pre_freeze_holdout_fault_access:

@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -63,7 +63,6 @@
+             "description": "mission seed",
+             "meta": {"family": "seed"},
+         },
+-        search_result=seed_result,
+         archive_info=None,
+     )
+     seed_record["_source_text"] = seed_source

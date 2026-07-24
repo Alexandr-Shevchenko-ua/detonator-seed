@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -10,7 +10,7 @@
+         order = orderings.get(fault_id)
+         if order is None:
+             return {
+-                "status": "invalid",
++                "status": "INVALID",
+                 "reason": f"missing ordering for {fault_id}",
+                 "score": None,
+                 "orderings": orderings,

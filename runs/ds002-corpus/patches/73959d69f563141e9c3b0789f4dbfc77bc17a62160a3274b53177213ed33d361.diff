@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -35,7 +35,7 @@
+     occupied = sum(1 for cell in archive_doc["cells"] if cell.get("candidate_id"))
+     return {
+         "executed_descendants": len(descendants),
+-        "valid": counts["valid"],
++        "valid": counts["XXvalidXX"],
+         "invalid": counts["invalid"],
+         "crash": counts["crash"],
+         "timeout": counts["timeout"],

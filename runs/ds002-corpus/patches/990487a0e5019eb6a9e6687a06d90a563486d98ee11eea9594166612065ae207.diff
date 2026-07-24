@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -36,7 +36,7 @@
+             return {
+                 "status": "timeout",
+                 "exit_code": None,
+-                "elapsed_ms": elapsed_ms,
++                "XXelapsed_msXX": elapsed_ms,
+                 "stdout": stdout,
+                 "stderr": stderr or f"timeout after {timeout_seconds:.1f}s",
+                 "orderings": None,

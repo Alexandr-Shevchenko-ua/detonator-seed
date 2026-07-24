@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -344,7 +344,7 @@
+             "injected_failure_probes": metrics["injected_failure_probes"],
+         },
+         "archive": {
+-            "occupied_cells": [
++            "XXoccupied_cellsXX": [
+                 {
+                     "cell": cell["cell"],
+                     "candidate_id": cell.get("candidate_id"),

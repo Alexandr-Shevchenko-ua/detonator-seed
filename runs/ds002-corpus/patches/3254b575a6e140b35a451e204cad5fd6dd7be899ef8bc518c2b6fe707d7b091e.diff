@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -178,7 +178,7 @@
+             archive_info=None,
+         )
+         provisional["_source_text"] = source_text
+-        archive_info = _archive_consider(archive, provisional)
++        archive_info = _archive_consider(archive, None)
+         provisional["archive"] = archive_info
+         status = provisional["search"]["evaluation"]["status"]
+         if status in counts:

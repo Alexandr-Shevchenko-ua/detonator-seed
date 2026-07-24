@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -145,7 +145,7 @@
+                 if search_eval.get("score") != stored_search.get("score"):
+                     s1 = search_eval.get("score")
+                     s2 = stored_search.get("score")
+-                    if s1 is None or s2 is None or abs(float(s1) - float(s2)) > 1e-12:
++                    if s1 is None or s2 is None or abs(None) > 1e-12:
+                         mismatches.append(
+                             f"{cid} search score: stored={s2} replay={s1}"
+                         )

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -58,7 +58,7 @@
+         parent=None,
+         mutation={
+             "provider": "seed",
+-            "operator": "seed",
++            "XXoperatorXX": "seed",
+             "seed": variation_seed,
+             "description": "mission seed",
+             "meta": {"family": "seed"},

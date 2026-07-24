@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -25,7 +25,7 @@
+         "artifact": {"path": rel_path, "sha256": digest},
+         "mutation": {
+             "provider": mutation.get("provider", "seed"),
+-            "operator": mutation.get("operator", "seed"),
++            "operator": mutation.get("operator", None),
+             "seed": mutation.get("seed"),
+             "description": mutation.get("description", "seed policy"),
+             "meta": mutation.get("meta"),

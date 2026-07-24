@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -298,7 +298,7 @@
+         "best_observed_candidate_id": best_id,
+         "best_observed_score": best_score,
+         "delta": delta,
+-        "improved_over_seed": improved,
++        "XXimproved_over_seedXX": improved,
+     }
+     holdout_path = run_dir / "holdout.json"
+     holdout_path.write_text(json.dumps(holdout_doc, indent=2) + "\n", encoding="utf-8")

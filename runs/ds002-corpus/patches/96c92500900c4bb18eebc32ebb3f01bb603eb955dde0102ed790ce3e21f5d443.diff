@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -287,7 +287,7 @@
+ 
+     holdout_doc = {
+         "schema_version": 1,
+-        "frozen_archive": {
++        "FROZEN_ARCHIVE": {
+             "path": "archive.json",
+             "sha256": archive_doc["archive_sha256"],
+             "frozen_after_candidate_id": archive_doc["frozen_after_candidate_id"],

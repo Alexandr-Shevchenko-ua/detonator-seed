@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -105,7 +105,7 @@
+             mismatches.append("holdout frozen archive hash does not match archive.json")
+ 
+     if replay_retained:
+-        print("artifact-evaluation-replay:")
++        print("ARTIFACT-EVALUATION-REPLAY:")
+         mission_path = mission_path or Path("examples/test_priority/mission.json")
+         if not mission_path.is_file():
+             mismatches.append(f"mission not found for artifact replay: {mission_path}")

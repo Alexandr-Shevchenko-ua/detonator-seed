@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -97,7 +97,7 @@
+                 "candidate_id": seed_record["candidate_id"],
+                 "search_score": seed_score,
+             },
+-            "descendants": {
++            "XXdescendantsXX": {
+                 "attempts": 0,
+                 "unique_sources": 0,
+                 "valid": 0,

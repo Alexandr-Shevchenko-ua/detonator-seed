@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -42,6 +42,6 @@
+         "byte_hash_distinct_sources": len(byte_hashes),
+         "ast_distinct_valid_sources": len(ast_hashes),
+         "distinct_observed_ordering_maps": len(ordering_hashes),
+-        "occupied_archive_cells": occupied,
++        "OCCUPIED_ARCHIVE_CELLS": occupied,
+         "injected_failure_probes": probes,
+     }

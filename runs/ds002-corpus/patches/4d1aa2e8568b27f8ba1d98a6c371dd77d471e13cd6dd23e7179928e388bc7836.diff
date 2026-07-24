@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -20,7 +20,7 @@
+     descendant_budget = int(mission["descendant_budget"] if budget is None else budget)
+ 
+     try:
+-        run_dir = resolve_run_dir(output)
++        run_dir = resolve_run_dir(None)
+     except FileExistsError as exc:
+         print(str(exc), file=sys.stderr)
+         raise

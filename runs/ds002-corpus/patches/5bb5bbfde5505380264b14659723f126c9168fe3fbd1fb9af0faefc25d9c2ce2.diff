@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -163,7 +163,7 @@
+             "operator": proposal.get("operator", "mutate"),
+             "seed": variation_seed,
+             "description": proposal.get("description", ""),
+-            "meta": proposal.get("meta"),
++            "meta": proposal.get("META"),
+             "lineage_mode": lineage_mode,
+             "injected_probe": proposal.get("injected_probe"),
+         }

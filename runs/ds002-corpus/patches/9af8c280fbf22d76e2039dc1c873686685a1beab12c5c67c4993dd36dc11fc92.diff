@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -252,7 +252,7 @@
+         evaluation = _normalize_eval_reason(result["evaluation"])
+         holdout_results.append(
+             {
+-                "candidate_id": cid,
++                "CANDIDATE_ID": cid,
+                 "execution": {
+                     "status": result["execution"]["status"],
+                     "exit_code": result["execution"]["exit_code"],

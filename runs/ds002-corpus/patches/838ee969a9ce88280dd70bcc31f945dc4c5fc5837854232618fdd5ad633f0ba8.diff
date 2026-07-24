@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -11,7 +11,7 @@
+     ordering_hashes: set[str] = set()
+     for record in descendants:
+         if record["search"]["evaluation"]["status"] != "valid":
+-            continue
++            break
+         source = record.get("_source_text")
+         if source is None:
+             # Fall back is unavailable in summary-only contexts; callers pass in-memory records.

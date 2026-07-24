@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -297,7 +297,7 @@
+         "seed_score": seed_holdout_score,
+         "best_observed_candidate_id": best_id,
+         "best_observed_score": best_score,
+-        "delta": delta,
++        "XXdeltaXX": delta,
+         "improved_over_seed": improved,
+     }
+     holdout_path = run_dir / "holdout.json"

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -3,7 +3,7 @@
+     record: dict[str, Any],
+ ) -> dict[str, Any]:
+     evaluation = record["search"]["evaluation"]
+-    behavior = record["search"].get("behavior")
++    behavior = record["search"].get("XXbehaviorXX")
+     if evaluation.get("status") != "valid" or not behavior or not behavior.get("cell"):
+         return {
+             "decision": "ineligible",

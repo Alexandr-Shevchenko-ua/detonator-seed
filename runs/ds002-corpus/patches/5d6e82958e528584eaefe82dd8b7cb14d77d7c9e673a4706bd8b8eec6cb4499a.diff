@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -37,7 +37,7 @@
+ 
+     if verify:
+         print("verify:")
+-        order_index = {r["candidate_id"]: i for i, r in enumerate(records)}
++        order_index = None
+         for record in records:
+             path = run_dir / record["artifact"]["path"]
+             if not path.is_file():

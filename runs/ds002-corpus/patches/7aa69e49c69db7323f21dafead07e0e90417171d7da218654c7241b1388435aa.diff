@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -304,7 +304,7 @@
+     holdout_path.write_text(json.dumps(holdout_doc, indent=2) + "\n", encoding="utf-8")
+ 
+     descendant_records = records[1:]
+-    metrics = compute_run_metrics(records, archive_doc, counts)
++    metrics = compute_run_metrics(None, archive_doc, counts)
+     lineage = _lineage_ids(id_to_record, best_id)
+     summary = {
+         "schema_version": 1,

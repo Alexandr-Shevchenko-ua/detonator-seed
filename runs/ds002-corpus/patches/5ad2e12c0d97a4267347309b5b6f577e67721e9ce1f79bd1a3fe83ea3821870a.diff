@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -3,7 +3,7 @@
+     if output is None:
+         run_dir = (Path("runs") / _utc_run_id()).resolve()
+         # Uniqueness if the same second is reused.
+-        suffix = 1
++        suffix = None
+         base = run_dir
+         while run_dir.exists():
+             run_dir = base.parent / f"{base.name}-{suffix}"

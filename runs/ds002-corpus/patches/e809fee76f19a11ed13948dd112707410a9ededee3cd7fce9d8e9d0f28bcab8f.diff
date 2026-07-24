@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -49,6 +49,6 @@
+             },
+             "behavior": evaluation.get("behavior"),
+         },
+-        "archive": archive_info,
++        "XXarchiveXX": archive_info,
+     }
+     return record

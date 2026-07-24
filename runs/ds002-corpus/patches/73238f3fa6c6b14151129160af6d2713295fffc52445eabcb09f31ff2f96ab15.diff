@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -127,7 +127,6 @@
+             proposal_index=proposal_index,
+             variation_seed=variation_seed,
+             parent=candidate_parent,
+-            occupied_cells=occupied,
+             variation_command=variation_command,
+             provider_timeout_seconds=provider_timeout,
+             seen_hashes=seen_hashes,

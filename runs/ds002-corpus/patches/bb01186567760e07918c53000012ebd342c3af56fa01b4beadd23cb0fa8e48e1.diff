@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -410,7 +410,7 @@
+     return {
+         "run_dir": run_dir,
+         "records": records,
+-        "summary": summary,
++        "XXsummaryXX": summary,
+         "archive": archive_doc,
+         "holdout": holdout_doc,
+         "holdout_gate": holdout_gate,

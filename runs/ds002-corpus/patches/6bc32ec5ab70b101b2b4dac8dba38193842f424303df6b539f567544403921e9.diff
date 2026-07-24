@@ -1,0 +1,10 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -3,7 +3,7 @@
+     orderings: dict[str, list[str]],
+     fault_ids: list[str],
+ ) -> dict[str, Any]:
+-    costs = benchmark.cost_by_id()
++    costs = None
+     tests_by_id = {t["id"]: t for t in benchmark.public_tests()}
+     mean_all = sum(costs.values()) / len(costs)

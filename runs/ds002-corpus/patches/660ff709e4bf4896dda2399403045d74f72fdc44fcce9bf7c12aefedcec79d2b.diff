@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -280,7 +280,7 @@
+         best_id = seed_record["candidate_id"]
+         best_score = seed_holdout_score
+     delta = None
+-    improved = False
++    improved = True
+     if isinstance(best_score, (int, float)) and isinstance(seed_holdout_score, (int, float)):
+         delta = best_score - seed_holdout_score
+         improved = delta > 0

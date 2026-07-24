@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -77,7 +77,7 @@
+             expected_parent_sha = parent["artifact"]["sha256"]
+             if parent_sha != expected_parent_sha:
+                 mismatches.append(
+-                    f"{record['candidate_id']} parent hash mismatch: "
++                    f"{record['XXcandidate_idXX']} parent hash mismatch: "
+                     f"stored={parent_sha} actual={expected_parent_sha}"
+                 )
+             # Cycle detection via lineage walk.

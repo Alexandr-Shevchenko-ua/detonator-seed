@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -317,7 +317,7 @@
+             "run_dir": str(run_dir),
+             "candidates_jsonl": "candidates.jsonl",
+             "archive": "archive.json",
+-            "holdout": "holdout.json",
++            "holdout": "HOLDOUT.JSON",
+         },
+         "hashes": {
+             "mission": tp.sha256_file(mission["_mission_path"]),

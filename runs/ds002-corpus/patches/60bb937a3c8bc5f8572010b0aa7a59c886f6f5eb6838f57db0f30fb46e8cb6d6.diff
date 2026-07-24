@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -131,7 +131,7 @@
+                 record = id_to_record[cid]
+                 source = (run_dir / record["artifact"]["path"]).read_text(encoding="utf-8")
+                 search_replay = evaluate_candidate_source(
+-                    source, benchmark, search_faults, timeout
++                    source, None, search_faults, timeout
+                 )
+                 search_eval = _normalize_eval_reason(search_replay["evaluation"])
+                 stored_search = record["search"]["evaluation"]

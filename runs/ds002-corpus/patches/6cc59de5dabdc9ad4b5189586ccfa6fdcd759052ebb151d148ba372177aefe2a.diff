@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -209,7 +209,7 @@
+     archive_doc["archive_sha256"] = archive_hash
+     archive_path = run_dir / "archive.json"
+     archive_path.write_text(
+-        json.dumps(archive_doc, indent=2, sort_keys=True) + "\n",
++        json.dumps(archive_doc, indent=2, ) + "\n",
+         encoding="utf-8",
+         newline="\n",
+     )

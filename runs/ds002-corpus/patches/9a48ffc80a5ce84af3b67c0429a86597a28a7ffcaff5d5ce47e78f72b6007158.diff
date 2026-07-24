@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -98,7 +98,7 @@
+                 "search_score": seed_score,
+             },
+             "descendants": {
+-                "attempts": 0,
++                "attempts": 1,
+                 "unique_sources": 0,
+                 "valid": 0,
+                 "invalid": 0,

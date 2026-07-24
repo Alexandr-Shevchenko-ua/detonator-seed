@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -293,7 +293,7 @@
+             "frozen_after_candidate_id": archive_doc["frozen_after_candidate_id"],
+         },
+         "evaluated_ids": evaluate_ids,
+-        "candidates": holdout_results,
++        "CANDIDATES": holdout_results,
+         "seed_score": seed_holdout_score,
+         "best_observed_candidate_id": best_id,
+         "best_observed_score": best_score,

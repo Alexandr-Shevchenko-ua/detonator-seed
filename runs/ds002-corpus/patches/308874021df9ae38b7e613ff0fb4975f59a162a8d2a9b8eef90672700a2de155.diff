@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -25,7 +25,7 @@
+     for cell in retained:
+         cid = cell["candidate_id"]
+         lineage = _lineage_ids(id_to_record, cid)
+-        if lineage and lineage[0] != seed_id:
++        if lineage or lineage[0] != seed_id:
+             print(
+                 f"  ERROR: lineage for {cid} does not reach seed ({seed_id})",
+                 file=sys.stderr,

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -102,7 +102,7 @@
+             print(f"  archive.json ok {archive_digest[:12]}…")
+ 
+         if holdout["frozen_archive"]["sha256"] != archive.get("archive_sha256"):
+-            mismatches.append("holdout frozen archive hash does not match archive.json")
++            mismatches.append("HOLDOUT FROZEN ARCHIVE HASH DOES NOT MATCH ARCHIVE.JSON")
+ 
+     if replay_retained:
+         print("artifact-evaluation-replay:")

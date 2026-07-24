@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -35,7 +35,7 @@
+         "search": {
+             "execution": {
+                 "status": execution["status"],
+-                "exit_code": execution["exit_code"],
++                "XXexit_codeXX": execution["exit_code"],
+                 "elapsed_ms": execution["elapsed_ms"],
+                 "stdout": execution["stdout"],
+                 "stderr": execution["stderr"],

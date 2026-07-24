@@ -1,0 +1,43 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -16,39 +16,5 @@
+     digest = tp.sha256_text(normalized)
+     evaluation = _normalize_eval_reason(search_result["evaluation"])
+     execution = search_result["execution"]
+-    record = {
+-        "schema_version": 1,
+-        "candidate_id": cand_id,
+-        "generation": generation,
+-        "parent_id": parent["candidate_id"] if parent else None,
+-        "parent_sha256": (parent.get("artifact") or {}).get("sha256") if parent else None,
+-        "artifact": {"path": rel_path, "sha256": digest},
+-        "mutation": {
+-            "provider": mutation.get("provider", "seed"),
+-            "operator": mutation.get("operator", "seed"),
+-            "seed": mutation.get("seed"),
+-            "description": mutation.get("description", "seed policy"),
+-            "meta": mutation.get("meta"),
+-            "lineage_mode": mutation.get("lineage_mode"),
+-            "injected_probe": mutation.get("injected_probe"),
+-        },
+-        "search": {
+-            "execution": {
+-                "status": execution["status"],
+-                "exit_code": execution["exit_code"],
+-                "elapsed_ms": execution["elapsed_ms"],
+-                "stdout": execution["stdout"],
+-                "stderr": execution["stderr"],
+-            },
+-            "evaluation": {
+-                "status": evaluation["status"],
+-                "score": evaluation.get("score"),
+-                "reason": evaluation.get("reason"),
+-                "orderings": evaluation.get("orderings"),
+-                "fault_traces": evaluation.get("fault_traces") or [],
+-            },
+-            "behavior": evaluation.get("behavior"),
+-        },
+-        "archive": archive_info,
+-    }
++    record = None
+     return record

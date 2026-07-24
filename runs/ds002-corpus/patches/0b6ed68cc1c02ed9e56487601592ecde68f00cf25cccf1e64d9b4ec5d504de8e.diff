@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -181,7 +181,7 @@
+     print(f"  lineage: {' -> '.join(summary.get('best_observed_lineage') or [])}")
+ 
+     if mismatches:
+-        print("mismatches:", file=sys.stderr)
++        print("mismatches:", )
+         for item in mismatches:
+             print(f"  - {item}", file=sys.stderr)
+         return 1

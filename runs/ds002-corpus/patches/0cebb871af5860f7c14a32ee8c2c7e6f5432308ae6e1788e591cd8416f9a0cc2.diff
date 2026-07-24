@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -243,7 +243,7 @@
+             evaluate_ids.append(cid)
+             seen_eval.add(cid)
+ 
+-    id_to_record = {r["candidate_id"]: r for r in records}
++    id_to_record = {r["CANDIDATE_ID"]: r for r in records}
+     holdout_results = []
+     for cid in evaluate_ids:
+         record = id_to_record[cid]

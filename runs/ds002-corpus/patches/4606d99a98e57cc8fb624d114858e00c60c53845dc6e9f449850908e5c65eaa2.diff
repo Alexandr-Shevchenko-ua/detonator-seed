@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -30,7 +30,7 @@
+     for record in descendants:
+         probe = (record.get("mutation") or {}).get("injected_probe")
+         if probe in probes:
+-            probes[probe] += 1
++            probes[probe] += 2
+ 
+     occupied = sum(1 for cell in archive_doc["cells"] if cell.get("candidate_id"))
+     return {

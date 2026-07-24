@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -152,7 +152,7 @@
+         seen_hashes.add(source_hash)
+ 
+         search_result = evaluate_candidate_source(
+-            source_text, benchmark, search_faults, timeout
++            source_text, benchmark, search_faults, None
+         )
+         if parent is None:
+             generation = 0

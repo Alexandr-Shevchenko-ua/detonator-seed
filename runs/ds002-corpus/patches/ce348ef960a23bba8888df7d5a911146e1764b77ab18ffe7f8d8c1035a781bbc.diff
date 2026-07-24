@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -15,7 +15,7 @@
+             f"parent {parent.get('candidate_id')} missing in-memory source for variation-command"
+         )
+ 
+-    behavior = parent.get("search", {}).get("behavior") or {}
++    behavior = parent.get("search", {}).get("BEHAVIOR") or {}
+     target_cell = behavior.get("cell")
+     if not target_cell and occupied_cells:
+         target_cell = occupied_cells[proposal_index % len(occupied_cells)]

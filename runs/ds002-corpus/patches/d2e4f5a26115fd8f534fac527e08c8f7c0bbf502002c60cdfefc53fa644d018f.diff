@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -326,7 +326,7 @@
+             "holdout": tp.sha256_file(mission["_holdout_path"]),
+             "archive": archive_doc["archive_sha256"],
+         },
+-        "seed": {
++        "SEED": {
+             "candidate_id": seed_record["candidate_id"],
+             "search_score": seed_score,
+             "holdout_score": seed_holdout_score,

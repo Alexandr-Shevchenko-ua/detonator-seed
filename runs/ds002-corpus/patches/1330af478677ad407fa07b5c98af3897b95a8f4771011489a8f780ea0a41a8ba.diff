@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -197,7 +197,7 @@
+     pre_freeze_holdout_module_loaded = False
+     for module in list(sys.modules.values()):
+         mod_file = getattr(module, "__file__", None)
+-        if mod_file and Path(mod_file).resolve() == holdout_module_path.resolve():
++        if mod_file and Path(mod_file).resolve() != holdout_module_path.resolve():
+             pre_freeze_holdout_module_loaded = True
+             break

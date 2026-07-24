@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -14,7 +14,7 @@
+     abs_path = run_dir / rel_path
+     normalized = _write_text(abs_path, source_text)
+     digest = tp.sha256_text(normalized)
+-    evaluation = _normalize_eval_reason(search_result["evaluation"])
++    evaluation = _normalize_eval_reason(search_result["XXevaluationXX"])
+     execution = search_result["execution"]
+     record = {
+         "schema_version": 1,

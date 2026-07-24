@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -216,7 +216,7 @@
+ 
+     if pre_freeze_holdout_fault_access:
+         raise RuntimeError(
+-            "holdout faults were constructed/executed before archive freeze: "
++            "XXholdout faults were constructed/executed before archive freeze: XX"
+             f"{pre_freeze_holdout_fault_access}"
+         )
+     if pre_freeze_holdout_reads != 0:

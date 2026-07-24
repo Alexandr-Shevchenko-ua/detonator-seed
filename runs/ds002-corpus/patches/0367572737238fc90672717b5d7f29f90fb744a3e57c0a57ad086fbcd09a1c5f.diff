@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -61,7 +61,7 @@
+             "operator": "seed",
+             "seed": variation_seed,
+             "description": "mission seed",
+-            "meta": {"family": "seed"},
++            "meta": {"XXfamilyXX": "seed"},
+         },
+         search_result=seed_result,
+         archive_info=None,

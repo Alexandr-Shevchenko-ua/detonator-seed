@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -315,7 +315,7 @@
+         "provider": provider_descriptor,
+         "paths": {
+             "run_dir": str(run_dir),
+-            "candidates_jsonl": "candidates.jsonl",
++            "candidates_jsonl": "CANDIDATES.JSONL",
+             "archive": "archive.json",
+             "holdout": "holdout.json",
+         },

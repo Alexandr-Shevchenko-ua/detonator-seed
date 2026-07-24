@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -10,7 +10,7 @@
+     ast_hashes: set[str] = set()
+     ordering_hashes: set[str] = set()
+     for record in descendants:
+-        if record["search"]["evaluation"]["status"] != "valid":
++        if record["search"]["evaluation"]["status"] == "valid":
+             continue
+         source = record.get("_source_text")
+         if source is None:

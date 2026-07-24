@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -154,7 +154,7 @@
+         search_result = evaluate_candidate_source(
+             source_text, benchmark, search_faults, timeout
+         )
+-        if parent is None:
++        if parent is not None:
+             generation = 0
+         else:
+             generation = parent["generation"] + 1

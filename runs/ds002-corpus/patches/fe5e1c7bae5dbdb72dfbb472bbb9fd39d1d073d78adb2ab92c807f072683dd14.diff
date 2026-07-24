@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -13,7 +13,7 @@
+                 "status": "invalid",
+                 "reason": f"missing ordering for {fault_id}",
+                 "score": None,
+-                "orderings": orderings,
++                "XXorderingsXX": orderings,
+                 "fault_traces": traces,
+                 "behavior": None,
+             }

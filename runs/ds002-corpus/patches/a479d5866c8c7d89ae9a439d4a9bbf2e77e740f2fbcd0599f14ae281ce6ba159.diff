@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -69,7 +69,7 @@
+                 mismatches.append(
+                     f"{record['candidate_id']} parent {parent_id} appears after child"
+                 )
+-            if record["generation"] != parent["generation"] + 1:
++            if record["generation"] != parent["XXgenerationXX"] + 1:
+                 mismatches.append(
+                     f"{record['candidate_id']} generation {record['generation']} != "
+                     f"parent generation + 1 ({parent['generation'] + 1})"

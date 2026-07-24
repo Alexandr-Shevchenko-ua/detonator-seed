@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -52,7 +52,7 @@
+             else:
+                 print(f"  {record['candidate_id']} ok {digest[:12]}…")
+ 
+-            parent_id = record.get("parent_id")
++            parent_id = record.get(None)
+             parent_sha = record.get("parent_sha256")
+             if parent_id is None:
+                 if record["generation"] != 0:

@@ -1,0 +1,127 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -43,5 +43,123 @@
+         "ast_distinct_valid_sources": len(ast_hashes),
+         "distinct_observed_ordering_maps": len(ordering_hashes),
+         "occupied_archive_cells": occupied,
+-        "injected_failure_probes": probes,
++        "INJECTED_FAILURE_PROBES": probes,
+     }
++
++mutants_x_compute_run_metrics__mutmut['_mutmut_orig'] = x_compute_run_metrics__mutmut_orig # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_1'] = x_compute_run_metrics__mutmut_1 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_2'] = x_compute_run_metrics__mutmut_2 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_3'] = x_compute_run_metrics__mutmut_3 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_4'] = x_compute_run_metrics__mutmut_4 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_5'] = x_compute_run_metrics__mutmut_5 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_6'] = x_compute_run_metrics__mutmut_6 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_7'] = x_compute_run_metrics__mutmut_7 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_8'] = x_compute_run_metrics__mutmut_8 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_9'] = x_compute_run_metrics__mutmut_9 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_10'] = x_compute_run_metrics__mutmut_10 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_11'] = x_compute_run_metrics__mutmut_11 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_12'] = x_compute_run_metrics__mutmut_12 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_13'] = x_compute_run_metrics__mutmut_13 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_14'] = x_compute_run_metrics__mutmut_14 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_15'] = x_compute_run_metrics__mutmut_15 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_16'] = x_compute_run_metrics__mutmut_16 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_17'] = x_compute_run_metrics__mutmut_17 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_18'] = x_compute_run_metrics__mutmut_18 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_19'] = x_compute_run_metrics__mutmut_19 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_20'] = x_compute_run_metrics__mutmut_20 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_21'] = x_compute_run_metrics__mutmut_21 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_22'] = x_compute_run_metrics__mutmut_22 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_23'] = x_compute_run_metrics__mutmut_23 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_24'] = x_compute_run_metrics__mutmut_24 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_25'] = x_compute_run_metrics__mutmut_25 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_26'] = x_compute_run_metrics__mutmut_26 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_27'] = x_compute_run_metrics__mutmut_27 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_28'] = x_compute_run_metrics__mutmut_28 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_29'] = x_compute_run_metrics__mutmut_29 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_30'] = x_compute_run_metrics__mutmut_30 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_31'] = x_compute_run_metrics__mutmut_31 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_32'] = x_compute_run_metrics__mutmut_32 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_33'] = x_compute_run_metrics__mutmut_33 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_34'] = x_compute_run_metrics__mutmut_34 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_35'] = x_compute_run_metrics__mutmut_35 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_36'] = x_compute_run_metrics__mutmut_36 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_37'] = x_compute_run_metrics__mutmut_37 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_38'] = x_compute_run_metrics__mutmut_38 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_39'] = x_compute_run_metrics__mutmut_39 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_40'] = x_compute_run_metrics__mutmut_40 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_41'] = x_compute_run_metrics__mutmut_41 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_42'] = x_compute_run_metrics__mutmut_42 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_43'] = x_compute_run_metrics__mutmut_43 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_44'] = x_compute_run_metrics__mutmut_44 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_45'] = x_compute_run_metrics__mutmut_45 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_46'] = x_compute_run_metrics__mutmut_46 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_47'] = x_compute_run_metrics__mutmut_47 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_48'] = x_compute_run_metrics__mutmut_48 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_49'] = x_compute_run_metrics__mutmut_49 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_50'] = x_compute_run_metrics__mutmut_50 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_51'] = x_compute_run_metrics__mutmut_51 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_52'] = x_compute_run_metrics__mutmut_52 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_53'] = x_compute_run_metrics__mutmut_53 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_54'] = x_compute_run_metrics__mutmut_54 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_55'] = x_compute_run_metrics__mutmut_55 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_56'] = x_compute_run_metrics__mutmut_56 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_57'] = x_compute_run_metrics__mutmut_57 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_58'] = x_compute_run_metrics__mutmut_58 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_59'] = x_compute_run_metrics__mutmut_59 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_60'] = x_compute_run_metrics__mutmut_60 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_61'] = x_compute_run_metrics__mutmut_61 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_62'] = x_compute_run_metrics__mutmut_62 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_63'] = x_compute_run_metrics__mutmut_63 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_64'] = x_compute_run_metrics__mutmut_64 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_65'] = x_compute_run_metrics__mutmut_65 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_66'] = x_compute_run_metrics__mutmut_66 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_67'] = x_compute_run_metrics__mutmut_67 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_68'] = x_compute_run_metrics__mutmut_68 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_69'] = x_compute_run_metrics__mutmut_69 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_70'] = x_compute_run_metrics__mutmut_70 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_71'] = x_compute_run_metrics__mutmut_71 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_72'] = x_compute_run_metrics__mutmut_72 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_73'] = x_compute_run_metrics__mutmut_73 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_74'] = x_compute_run_metrics__mutmut_74 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_75'] = x_compute_run_metrics__mutmut_75 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_76'] = x_compute_run_metrics__mutmut_76 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_77'] = x_compute_run_metrics__mutmut_77 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_78'] = x_compute_run_metrics__mutmut_78 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_79'] = x_compute_run_metrics__mutmut_79 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_80'] = x_compute_run_metrics__mutmut_80 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_81'] = x_compute_run_metrics__mutmut_81 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_82'] = x_compute_run_metrics__mutmut_82 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_83'] = x_compute_run_metrics__mutmut_83 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_84'] = x_compute_run_metrics__mutmut_84 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_85'] = x_compute_run_metrics__mutmut_85 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_86'] = x_compute_run_metrics__mutmut_86 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_87'] = x_compute_run_metrics__mutmut_87 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_88'] = x_compute_run_metrics__mutmut_88 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_89'] = x_compute_run_metrics__mutmut_89 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_90'] = x_compute_run_metrics__mutmut_90 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_91'] = x_compute_run_metrics__mutmut_91 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_92'] = x_compute_run_metrics__mutmut_92 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_93'] = x_compute_run_metrics__mutmut_93 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_94'] = x_compute_run_metrics__mutmut_94 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_95'] = x_compute_run_metrics__mutmut_95 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_96'] = x_compute_run_metrics__mutmut_96 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_97'] = x_compute_run_metrics__mutmut_97 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_98'] = x_compute_run_metrics__mutmut_98 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_99'] = x_compute_run_metrics__mutmut_99 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_100'] = x_compute_run_metrics__mutmut_100 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_101'] = x_compute_run_metrics__mutmut_101 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_102'] = x_compute_run_metrics__mutmut_102 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_103'] = x_compute_run_metrics__mutmut_103 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_104'] = x_compute_run_metrics__mutmut_104 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_105'] = x_compute_run_metrics__mutmut_105 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_106'] = x_compute_run_metrics__mutmut_106 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_107'] = x_compute_run_metrics__mutmut_107 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_108'] = x_compute_run_metrics__mutmut_108 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_109'] = x_compute_run_metrics__mutmut_109 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_110'] = x_compute_run_metrics__mutmut_110 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_111'] = x_compute_run_metrics__mutmut_111 # type: ignore # mutmut generated
++mutants_x_compute_run_metrics__mutmut['x_compute_run_metrics__mutmut_112'] = x_compute_run_metrics__mutmut_112 # type: ignore # mutmut generated
++mutants_x__normalize_source__mutmut: MutantDict = {}  # type: ignore
++
++
++@_mutmut_mutated(mutants_x__normalize_source__mutmut)

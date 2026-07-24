@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -24,7 +24,7 @@
+                 "reason": reason,
+                 "score": None,
+                 "orderings": orderings,
+-                "fault_traces": traces,
++                "XXfault_tracesXX": traces,
+                 "behavior": None,
+             }
+         trace = benchmark.run_suite_until_failure(order, fault_id)

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -47,7 +47,7 @@
+         stderr = completed.stderr or ""
+         if completed.returncode != 0:
+             return {
+-                "status": "crash",
++                "status": "CRASH",
+                 "exit_code": completed.returncode,
+                 "elapsed_ms": elapsed_ms,
+                 "stdout": stdout,

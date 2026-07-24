@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -58,7 +58,7 @@
+     except subprocess.TimeoutExpired:
+         # Do not chain TimeoutExpired — its message includes argv.
+         raise RuntimeError(
+-            f"variation-command timed out after {provider_timeout_seconds:.1f}s"
++            None
+         )
+     except OSError as exc:
+         raise RuntimeError(f"variation-command failed to start: {type(exc).__name__}") from None

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -25,7 +25,7 @@
+         print(str(exc), file=sys.stderr)
+         raise
+     (run_dir / "candidates").mkdir(parents=True, exist_ok=True)
+-    jsonl_path = run_dir / "candidates.jsonl"
++    jsonl_path = run_dir * "candidates.jsonl"
+ 
+     provider_descriptor = None
+     if variation_command:

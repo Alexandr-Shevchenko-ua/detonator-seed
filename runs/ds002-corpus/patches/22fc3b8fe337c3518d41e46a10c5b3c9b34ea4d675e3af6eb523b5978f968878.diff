@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -237,7 +237,7 @@
+     benchmark.validate_holdout_benchmark(holdout_faults)
+     winner_ids = [cell["candidate_id"] for cell in archive_doc["cells"] if cell.get("candidate_id")]
+     evaluate_ids = []
+-    seen_eval = set()
++    seen_eval = None
+     for cid in [seed_record["candidate_id"], *winner_ids]:
+         if cid not in seen_eval:
+             evaluate_ids.append(cid)

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -8,7 +8,7 @@
+     while current is not None and current not in seen:
+         seen.add(current)
+         chain.append(current)
+-        record = id_to_record.get(current)
++        record = None
+         if record is None:
+             break
+         current = record.get("parent_id")

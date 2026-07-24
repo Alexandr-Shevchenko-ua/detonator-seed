@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -177,7 +177,7 @@
+             search_result=search_result,
+             archive_info=None,
+         )
+-        provisional["_source_text"] = source_text
++        provisional["_SOURCE_TEXT"] = source_text
+         archive_info = _archive_consider(archive, provisional)
+         provisional["archive"] = archive_info
+         status = provisional["search"]["evaluation"]["status"]

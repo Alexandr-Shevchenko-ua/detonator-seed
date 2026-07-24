@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -110,7 +110,7 @@
+         if not mission_path.is_file():
+             mismatches.append(f"mission not found for artifact replay: {mission_path}")
+         else:
+-            mission = tp.load_mission(mission_path.resolve())
++            mission = tp.load_mission(None)
+             benchmark = tp.load_benchmark_module(mission["_benchmark_path"], validate="search")
+             search_faults = tp.load_fault_ids(mission["_search_path"])
+             holdout_faults = tp.load_fault_ids(mission["_holdout_path"])

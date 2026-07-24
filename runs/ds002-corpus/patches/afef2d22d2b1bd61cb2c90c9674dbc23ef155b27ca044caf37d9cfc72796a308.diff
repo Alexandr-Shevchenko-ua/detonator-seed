@@ -1,0 +1,10 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -7,6 +7,6 @@
+         if missing or extra:
+             return "ordering must be an exact permutation of test ids"
+         return "ordering must be an exact permutation of test ids"
+-    if len(order) != len(set(order)):
++    if len(order) == len(set(order)):
+         return "duplicate test ids"
+     return None

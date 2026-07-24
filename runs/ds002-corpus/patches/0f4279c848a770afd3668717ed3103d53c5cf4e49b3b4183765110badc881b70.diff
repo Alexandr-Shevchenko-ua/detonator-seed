@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -81,7 +81,7 @@
+         summary = {
+             "schema_version": 1,
+             "run_id": run_dir.name,
+-            "executed_command": executed_command,
++            "XXexecuted_commandXX": executed_command,
+             "variation_seed": variation_seed,
+             "python_version": sys.version.split()[0],
+             "paths": {

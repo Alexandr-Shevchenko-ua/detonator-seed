@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -314,7 +314,7 @@
+         "python_version": sys.version.split()[0],
+         "provider": provider_descriptor,
+         "paths": {
+-            "run_dir": str(run_dir),
++            "XXrun_dirXX": str(run_dir),
+             "candidates_jsonl": "candidates.jsonl",
+             "archive": "archive.json",
+             "holdout": "holdout.json",

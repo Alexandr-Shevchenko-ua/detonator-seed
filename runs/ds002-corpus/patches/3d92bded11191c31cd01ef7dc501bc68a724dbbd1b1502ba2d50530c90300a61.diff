@@ -1,0 +1,19 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -123,15 +123,7 @@
+     for proposal_index in range(descendant_budget):
+         candidate_parent = _select_parent(archive, valid_records, proposal_index)
+         occupied = [[k[0], k[1]] for k in sorted(archive.keys())]
+-        proposal = _propose_descendant(
+-            proposal_index=proposal_index,
+-            variation_seed=variation_seed,
+-            parent=candidate_parent,
+-            occupied_cells=occupied,
+-            variation_command=variation_command,
+-            provider_timeout_seconds=provider_timeout,
+-            seen_hashes=seen_hashes,
+-        )
++        proposal = None
+         lineage_mode = proposal.get("lineage_mode", "seed")
+         if lineage_mode == "derived":
+             parent = candidate_parent

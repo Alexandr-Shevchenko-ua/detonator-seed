@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -118,7 +118,7 @@
+             benchmark.attach_holdout_definitions(holdout_module_path)
+             timeout = float(mission["candidate_timeout_seconds"])
+ 
+-            replay_ids = []
++            replay_ids = None
+             seen = set()
+             for cid in [records[0]["candidate_id"], *[c["candidate_id"] for c in retained]]:
+                 if cid not in seen:

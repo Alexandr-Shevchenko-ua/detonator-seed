@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -6,7 +6,7 @@
+     mission_path: Path | None = None,
+ ) -> int:
+     """Inspect a prior run. Returns process exit code."""
+-    run_dir = run_dir.resolve()
++    run_dir = None
+     if not run_dir.is_dir():
+         print(f"run directory not found: {run_dir}", file=sys.stderr)
+         return 2

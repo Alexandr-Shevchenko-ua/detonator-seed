@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -136,7 +136,7 @@
+         if lineage_mode == "derived":
+             parent = candidate_parent
+         elif lineage_mode == "seed":
+-            parent = seed_record
++            parent = None
+         elif lineage_mode == "none":
+             parent = None
+         else:

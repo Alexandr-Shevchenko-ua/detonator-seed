@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -253,7 +253,7 @@
+         holdout_results.append(
+             {
+                 "candidate_id": cid,
+-                "execution": {
++                "XXexecutionXX": {
+                     "status": result["execution"]["status"],
+                     "exit_code": result["execution"]["exit_code"],
+                     "elapsed_ms": result["execution"]["elapsed_ms"],

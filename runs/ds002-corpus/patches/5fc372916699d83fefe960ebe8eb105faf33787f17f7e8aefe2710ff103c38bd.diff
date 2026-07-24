@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -383,7 +383,7 @@
+     print(
+         "diversity: "
+         f"byte_hash_distinct={metrics['byte_hash_distinct_sources']} "
+-        f"ast_distinct_valid={metrics['ast_distinct_valid_sources']} "
++        f"ast_distinct_valid={metrics['XXast_distinct_valid_sourcesXX']} "
+         f"ordering_maps={metrics['distinct_observed_ordering_maps']}"
+     )
+     print(f"injected failure probes: {metrics['injected_failure_probes']}")

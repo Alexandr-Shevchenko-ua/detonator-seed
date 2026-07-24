@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -18,7 +18,7 @@
+         return {
+             "decision": "inserted",
+             "cell": [cell[0], cell[1]],
+-            "replaced_candidate_id": None,
++            "XXreplaced_candidate_idXX": None,
+             "reason": "empty_cell",
+         }
+     incumbent = archive[cell]

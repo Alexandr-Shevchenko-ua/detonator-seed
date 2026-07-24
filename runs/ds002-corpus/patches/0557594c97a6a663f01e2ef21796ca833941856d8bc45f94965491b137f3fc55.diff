@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -86,7 +86,7 @@
+             while cur is not None:
+                 if cur in seen:
+                     mismatches.append(f"lineage cycle involving {record['candidate_id']}")
+-                    break
++                    return
+                 seen.add(cur)
+                 cur = id_to_record.get(cur, {}).get("parent_id")

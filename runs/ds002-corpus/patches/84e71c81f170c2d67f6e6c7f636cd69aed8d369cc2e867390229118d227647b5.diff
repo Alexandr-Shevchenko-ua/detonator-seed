@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -157,7 +157,7 @@
+         if parent is None:
+             generation = 0
+         else:
+-            generation = parent["generation"] + 1
++            generation = None
+         mutation = {
+             "provider": proposal.get("provider", "offline"),
+             "operator": proposal.get("operator", "mutate"),

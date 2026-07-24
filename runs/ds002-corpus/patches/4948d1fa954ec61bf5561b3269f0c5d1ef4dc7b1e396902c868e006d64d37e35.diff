@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -126,7 +126,7 @@
+         proposal = _propose_descendant(
+             proposal_index=proposal_index,
+             variation_seed=variation_seed,
+-            parent=candidate_parent,
++            parent=None,
+             occupied_cells=occupied,
+             variation_command=variation_command,
+             provider_timeout_seconds=provider_timeout,

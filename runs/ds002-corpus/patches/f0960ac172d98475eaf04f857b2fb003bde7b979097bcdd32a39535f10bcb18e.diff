@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -33,7 +33,7 @@
+             return 1
+         print(f"  {cell['cell'][0]}/{cell['cell'][1]}: {' -> '.join(lineage)}")
+ 
+-    mismatches: list[str] = []
++    mismatches: list[str] = None
+ 
+     if verify:
+         print("verify:")

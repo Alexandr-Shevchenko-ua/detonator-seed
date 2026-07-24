@@ -1,0 +1,12 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -65,8 +65,7 @@
+ 
+     if completed.returncode != 0:
+         raise RuntimeError(
+-            f"variation-command exited {completed.returncode} "
+-            "(provider stderr/stdout omitted)"
++            None
+         )
+     try:
+         response = json.loads(completed.stdout)

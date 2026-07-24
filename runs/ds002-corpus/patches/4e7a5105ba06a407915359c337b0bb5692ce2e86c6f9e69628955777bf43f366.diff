@@ -1,0 +1,47 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -21,5 +21,43 @@
+     elif validate == "all":
+         module.validate_benchmark()
+     elif validate != "none":
+-        raise ValueError(f"unknown validate mode: {validate}")
++        raise ValueError(None)
+     return module
++
++mutants_x_load_benchmark_module__mutmut['_mutmut_orig'] = x_load_benchmark_module__mutmut_orig # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_1'] = x_load_benchmark_module__mutmut_1 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_2'] = x_load_benchmark_module__mutmut_2 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_3'] = x_load_benchmark_module__mutmut_3 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_4'] = x_load_benchmark_module__mutmut_4 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_5'] = x_load_benchmark_module__mutmut_5 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_6'] = x_load_benchmark_module__mutmut_6 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_7'] = x_load_benchmark_module__mutmut_7 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_8'] = x_load_benchmark_module__mutmut_8 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_9'] = x_load_benchmark_module__mutmut_9 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_10'] = x_load_benchmark_module__mutmut_10 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_11'] = x_load_benchmark_module__mutmut_11 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_12'] = x_load_benchmark_module__mutmut_12 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_13'] = x_load_benchmark_module__mutmut_13 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_14'] = x_load_benchmark_module__mutmut_14 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_15'] = x_load_benchmark_module__mutmut_15 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_16'] = x_load_benchmark_module__mutmut_16 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_17'] = x_load_benchmark_module__mutmut_17 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_18'] = x_load_benchmark_module__mutmut_18 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_19'] = x_load_benchmark_module__mutmut_19 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_20'] = x_load_benchmark_module__mutmut_20 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_21'] = x_load_benchmark_module__mutmut_21 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_22'] = x_load_benchmark_module__mutmut_22 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_23'] = x_load_benchmark_module__mutmut_23 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_24'] = x_load_benchmark_module__mutmut_24 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_25'] = x_load_benchmark_module__mutmut_25 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_26'] = x_load_benchmark_module__mutmut_26 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_27'] = x_load_benchmark_module__mutmut_27 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_28'] = x_load_benchmark_module__mutmut_28 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_29'] = x_load_benchmark_module__mutmut_29 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_30'] = x_load_benchmark_module__mutmut_30 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_31'] = x_load_benchmark_module__mutmut_31 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut['x_load_benchmark_module__mutmut_32'] = x_load_benchmark_module__mutmut_32 # type: ignore # mutmut generated
++mutants_x_purge_holdout_modules__mutmut: MutantDict = {}  # type: ignore
++
++
++@_mutmut_mutated(mutants_x_purge_holdout_modules__mutmut)

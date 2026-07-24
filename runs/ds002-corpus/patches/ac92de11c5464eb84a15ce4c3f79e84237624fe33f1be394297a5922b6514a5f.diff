@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -42,7 +42,7 @@
+                 "orderings": None,
+             }
+ 
+-        elapsed_ms = int((time.perf_counter() - started) * 1000)
++        elapsed_ms = int(None)
+         stdout = completed.stdout or ""
+         stderr = completed.stderr or ""
+         if completed.returncode != 0:

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -9,7 +9,7 @@
+         seen.add(current)
+         chain.append(current)
+         record = id_to_record.get(current)
+-        if record is None:
++        if record is not None:
+             break
+         current = record.get("parent_id")
+     chain.reverse()

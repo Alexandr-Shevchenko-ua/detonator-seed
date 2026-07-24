@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -2,7 +2,7 @@
+     archive: dict[tuple[str, str], dict[str, Any]],
+     record: dict[str, Any],
+ ) -> dict[str, Any]:
+-    evaluation = record["search"]["evaluation"]
++    evaluation = record["search"]["XXevaluationXX"]
+     behavior = record["search"].get("behavior")
+     if evaluation.get("status") != "valid" or not behavior or not behavior.get("cell"):
+         return {

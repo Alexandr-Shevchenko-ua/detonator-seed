@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -88,7 +88,7 @@
+                     mismatches.append(f"lineage cycle involving {record['candidate_id']}")
+                     break
+                 seen.add(cur)
+-                cur = id_to_record.get(cur, {}).get("parent_id")
++                cur = id_to_record.get(None, {}).get("parent_id")
+ 
+         body = {k: v for k, v in archive.items() if k != "archive_sha256"}
+         body_bytes = json.dumps(body, indent=2, sort_keys=True) + "\n"

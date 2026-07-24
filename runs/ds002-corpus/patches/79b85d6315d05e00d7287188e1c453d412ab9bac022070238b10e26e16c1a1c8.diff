@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -90,7 +90,7 @@
+             },
+             "hashes": {
+                 "mission": tp.sha256_file(mission["_mission_path"]),
+-                "benchmark": tp.sha256_file(mission["_benchmark_path"]),
++                "benchmark": tp.sha256_file(mission["XX_benchmark_pathXX"]),
+                 "search": tp.sha256_file(mission["_search_path"]),
+             },
+             "seed": {

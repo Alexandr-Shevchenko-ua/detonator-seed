@@ -1,0 +1,51 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -6,5 +6,47 @@
+     mission["_seed_path"] = (base / mission["seed"]).resolve()
+     mission["_benchmark_path"] = (base / mission["benchmark"]).resolve()
+     mission["_search_path"] = (base / mission["search_faults"]).resolve()
+-    mission["_holdout_path"] = (base / mission["holdout_faults"]).resolve()
++    mission["_holdout_path"] = (base / mission["HOLDOUT_FAULTS"]).resolve()
+     return mission
++
++mutants_x_load_mission__mutmut['_mutmut_orig'] = x_load_mission__mutmut_orig # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_1'] = x_load_mission__mutmut_1 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_2'] = x_load_mission__mutmut_2 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_3'] = x_load_mission__mutmut_3 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_4'] = x_load_mission__mutmut_4 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_5'] = x_load_mission__mutmut_5 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_6'] = x_load_mission__mutmut_6 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_7'] = x_load_mission__mutmut_7 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_8'] = x_load_mission__mutmut_8 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_9'] = x_load_mission__mutmut_9 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_10'] = x_load_mission__mutmut_10 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_11'] = x_load_mission__mutmut_11 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_12'] = x_load_mission__mutmut_12 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_13'] = x_load_mission__mutmut_13 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_14'] = x_load_mission__mutmut_14 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_15'] = x_load_mission__mutmut_15 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_16'] = x_load_mission__mutmut_16 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_17'] = x_load_mission__mutmut_17 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_18'] = x_load_mission__mutmut_18 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_19'] = x_load_mission__mutmut_19 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_20'] = x_load_mission__mutmut_20 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_21'] = x_load_mission__mutmut_21 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_22'] = x_load_mission__mutmut_22 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_23'] = x_load_mission__mutmut_23 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_24'] = x_load_mission__mutmut_24 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_25'] = x_load_mission__mutmut_25 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_26'] = x_load_mission__mutmut_26 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_27'] = x_load_mission__mutmut_27 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_28'] = x_load_mission__mutmut_28 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_29'] = x_load_mission__mutmut_29 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_30'] = x_load_mission__mutmut_30 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_31'] = x_load_mission__mutmut_31 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_32'] = x_load_mission__mutmut_32 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_33'] = x_load_mission__mutmut_33 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_34'] = x_load_mission__mutmut_34 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_35'] = x_load_mission__mutmut_35 # type: ignore # mutmut generated
++mutants_x_load_mission__mutmut['x_load_mission__mutmut_36'] = x_load_mission__mutmut_36 # type: ignore # mutmut generated
++mutants_x_load_benchmark_module__mutmut: MutantDict = {}  # type: ignore
++
++
++@_mutmut_mutated(mutants_x_load_benchmark_module__mutmut)

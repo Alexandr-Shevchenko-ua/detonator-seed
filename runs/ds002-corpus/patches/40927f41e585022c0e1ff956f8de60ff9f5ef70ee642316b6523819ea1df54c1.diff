@@ -1,0 +1,94 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -31,4 +31,90 @@
+             },
+         }
+     evaluation = tp.evaluate_orderings(benchmark, execution["orderings"], fault_ids)
+-    return {"execution": execution, "evaluation": evaluation}
++    return {"execution": execution, "EVALUATION": evaluation}
++
++mutants_x_evaluate_candidate_source__mutmut['_mutmut_orig'] = x_evaluate_candidate_source__mutmut_orig # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_1'] = x_evaluate_candidate_source__mutmut_1 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_2'] = x_evaluate_candidate_source__mutmut_2 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_3'] = x_evaluate_candidate_source__mutmut_3 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_4'] = x_evaluate_candidate_source__mutmut_4 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_5'] = x_evaluate_candidate_source__mutmut_5 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_6'] = x_evaluate_candidate_source__mutmut_6 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_7'] = x_evaluate_candidate_source__mutmut_7 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_8'] = x_evaluate_candidate_source__mutmut_8 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_9'] = x_evaluate_candidate_source__mutmut_9 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_10'] = x_evaluate_candidate_source__mutmut_10 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_11'] = x_evaluate_candidate_source__mutmut_11 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_12'] = x_evaluate_candidate_source__mutmut_12 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_13'] = x_evaluate_candidate_source__mutmut_13 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_14'] = x_evaluate_candidate_source__mutmut_14 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_15'] = x_evaluate_candidate_source__mutmut_15 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_16'] = x_evaluate_candidate_source__mutmut_16 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_17'] = x_evaluate_candidate_source__mutmut_17 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_18'] = x_evaluate_candidate_source__mutmut_18 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_19'] = x_evaluate_candidate_source__mutmut_19 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_20'] = x_evaluate_candidate_source__mutmut_20 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_21'] = x_evaluate_candidate_source__mutmut_21 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_22'] = x_evaluate_candidate_source__mutmut_22 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_23'] = x_evaluate_candidate_source__mutmut_23 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_24'] = x_evaluate_candidate_source__mutmut_24 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_25'] = x_evaluate_candidate_source__mutmut_25 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_26'] = x_evaluate_candidate_source__mutmut_26 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_27'] = x_evaluate_candidate_source__mutmut_27 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_28'] = x_evaluate_candidate_source__mutmut_28 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_29'] = x_evaluate_candidate_source__mutmut_29 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_30'] = x_evaluate_candidate_source__mutmut_30 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_31'] = x_evaluate_candidate_source__mutmut_31 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_32'] = x_evaluate_candidate_source__mutmut_32 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_33'] = x_evaluate_candidate_source__mutmut_33 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_34'] = x_evaluate_candidate_source__mutmut_34 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_35'] = x_evaluate_candidate_source__mutmut_35 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_36'] = x_evaluate_candidate_source__mutmut_36 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_37'] = x_evaluate_candidate_source__mutmut_37 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_38'] = x_evaluate_candidate_source__mutmut_38 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_39'] = x_evaluate_candidate_source__mutmut_39 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_40'] = x_evaluate_candidate_source__mutmut_40 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_41'] = x_evaluate_candidate_source__mutmut_41 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_42'] = x_evaluate_candidate_source__mutmut_42 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_43'] = x_evaluate_candidate_source__mutmut_43 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_44'] = x_evaluate_candidate_source__mutmut_44 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_45'] = x_evaluate_candidate_source__mutmut_45 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_46'] = x_evaluate_candidate_source__mutmut_46 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_47'] = x_evaluate_candidate_source__mutmut_47 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_48'] = x_evaluate_candidate_source__mutmut_48 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_49'] = x_evaluate_candidate_source__mutmut_49 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_50'] = x_evaluate_candidate_source__mutmut_50 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_51'] = x_evaluate_candidate_source__mutmut_51 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_52'] = x_evaluate_candidate_source__mutmut_52 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_53'] = x_evaluate_candidate_source__mutmut_53 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_54'] = x_evaluate_candidate_source__mutmut_54 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_55'] = x_evaluate_candidate_source__mutmut_55 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_56'] = x_evaluate_candidate_source__mutmut_56 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_57'] = x_evaluate_candidate_source__mutmut_57 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_58'] = x_evaluate_candidate_source__mutmut_58 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_59'] = x_evaluate_candidate_source__mutmut_59 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_60'] = x_evaluate_candidate_source__mutmut_60 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_61'] = x_evaluate_candidate_source__mutmut_61 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_62'] = x_evaluate_candidate_source__mutmut_62 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_63'] = x_evaluate_candidate_source__mutmut_63 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_64'] = x_evaluate_candidate_source__mutmut_64 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_65'] = x_evaluate_candidate_source__mutmut_65 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_66'] = x_evaluate_candidate_source__mutmut_66 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_67'] = x_evaluate_candidate_source__mutmut_67 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_68'] = x_evaluate_candidate_source__mutmut_68 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_69'] = x_evaluate_candidate_source__mutmut_69 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_70'] = x_evaluate_candidate_source__mutmut_70 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_71'] = x_evaluate_candidate_source__mutmut_71 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_72'] = x_evaluate_candidate_source__mutmut_72 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_73'] = x_evaluate_candidate_source__mutmut_73 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_74'] = x_evaluate_candidate_source__mutmut_74 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_75'] = x_evaluate_candidate_source__mutmut_75 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_76'] = x_evaluate_candidate_source__mutmut_76 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_77'] = x_evaluate_candidate_source__mutmut_77 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_78'] = x_evaluate_candidate_source__mutmut_78 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_79'] = x_evaluate_candidate_source__mutmut_79 # type: ignore # mutmut generated
++mutants_x_evaluate_candidate_source__mutmut['x_evaluate_candidate_source__mutmut_80'] = x_evaluate_candidate_source__mutmut_80 # type: ignore # mutmut generated
++mutants_x__normalize_eval_reason__mutmut: MutantDict = {}  # type: ignore
++
++
++@_mutmut_mutated(mutants_x__normalize_eval_reason__mutmut)

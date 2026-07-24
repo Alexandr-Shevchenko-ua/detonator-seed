@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -52,7 +52,7 @@
+     seed_result = evaluate_candidate_source(seed_source, benchmark, search_faults, timeout)
+     seed_record = materialize_candidate(
+         run_dir=run_dir,
+-        index=0,
++        index=None,
+         source_text=seed_source,
+         generation=0,
+         parent=None,

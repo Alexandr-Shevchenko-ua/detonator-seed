@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -9,7 +9,7 @@
+     mission = tp.load_mission(mission_path.resolve())
+     benchmark = tp.load_benchmark_module(mission["_benchmark_path"], validate="search")
+     benchmark.reset_holdout_fault_access()
+-    search_faults = tp.load_fault_ids(mission["_search_path"])
++    search_faults = tp.load_fault_ids(None)
+     timeout = float(mission["candidate_timeout_seconds"])
+     provider_timeout = float(
+         provider_timeout_seconds

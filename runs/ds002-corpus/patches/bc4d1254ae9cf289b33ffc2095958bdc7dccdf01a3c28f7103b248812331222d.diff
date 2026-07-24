@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -46,7 +46,7 @@
+             digest = tp.sha256_file(path)
+             if digest != record["artifact"]["sha256"]:
+                 mismatches.append(
+-                    f"{record['candidate_id']} hash mismatch: "
++                    f"{record['CANDIDATE_ID']} hash mismatch: "
+                     f"stored={record['artifact']['sha256']} actual={digest}"
+                 )
+             else:

@@ -1,0 +1,24 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -285,21 +285,7 @@
+         delta = best_score - seed_holdout_score
+         improved = delta > 0
+ 
+-    holdout_doc = {
+-        "schema_version": 1,
+-        "frozen_archive": {
+-            "path": "archive.json",
+-            "sha256": archive_doc["archive_sha256"],
+-            "frozen_after_candidate_id": archive_doc["frozen_after_candidate_id"],
+-        },
+-        "evaluated_ids": evaluate_ids,
+-        "candidates": holdout_results,
+-        "seed_score": seed_holdout_score,
+-        "best_observed_candidate_id": best_id,
+-        "best_observed_score": best_score,
+-        "delta": delta,
+-        "improved_over_seed": improved,
+-    }
++    holdout_doc = None
+     holdout_path = run_dir / "holdout.json"
+     holdout_path.write_text(json.dumps(holdout_doc, indent=2) + "\n", encoding="utf-8")

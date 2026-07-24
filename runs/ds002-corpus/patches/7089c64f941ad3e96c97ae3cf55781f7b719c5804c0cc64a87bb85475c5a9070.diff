@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -61,7 +61,7 @@
+             f"variation-command timed out after {provider_timeout_seconds:.1f}s"
+         )
+     except OSError as exc:
+-        raise RuntimeError(f"variation-command failed to start: {type(exc).__name__}") from None
++        raise RuntimeError(f"variation-command failed to start: {type(None).__name__}") from None
+ 
+     if completed.returncode != 0:
+         raise RuntimeError(

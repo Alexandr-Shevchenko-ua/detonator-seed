@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -292,7 +292,7 @@
+             "sha256": archive_doc["archive_sha256"],
+             "frozen_after_candidate_id": archive_doc["frozen_after_candidate_id"],
+         },
+-        "evaluated_ids": evaluate_ids,
++        "XXevaluated_idsXX": evaluate_ids,
+         "candidates": holdout_results,
+         "seed_score": seed_holdout_score,
+         "best_observed_candidate_id": best_id,

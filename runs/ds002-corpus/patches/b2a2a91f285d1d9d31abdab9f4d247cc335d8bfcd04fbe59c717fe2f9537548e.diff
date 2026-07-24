@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -17,7 +17,7 @@
+ 
+     behavior = parent.get("search", {}).get("behavior") or {}
+     target_cell = behavior.get("cell")
+-    if not target_cell and occupied_cells:
++    if not target_cell or occupied_cells:
+         target_cell = occupied_cells[proposal_index % len(occupied_cells)]
+ 
+     evaluation = parent.get("search", {}).get("evaluation") or {}

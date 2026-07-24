@@ -1,0 +1,11 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -2,7 +2,7 @@
+     mission = json.loads(mission_path.read_text(encoding="utf-8"))
+     base = mission_path.parent
+     mission["_mission_path"] = mission_path
+-    mission["_base"] = base
++    mission["_base"] = None
+     mission["_seed_path"] = (base / mission["seed"]).resolve()
+     mission["_benchmark_path"] = (base / mission["benchmark"]).resolve()
+     mission["_search_path"] = (base / mission["search_faults"]).resolve()

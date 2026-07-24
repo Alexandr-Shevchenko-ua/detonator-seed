@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -388,7 +388,7 @@
+     )
+     print(f"injected failure probes: {metrics['injected_failure_probes']}")
+     print("archive cells:")
+-    for cell in archive_doc["cells"]:
++    for cell in archive_doc["XXcellsXX"]:
+         cid = cell.get("candidate_id") or "-"
+         score = cell.get("search_score")
+         score_s = f"{score:.3f}" if isinstance(score, (int, float)) else "-"

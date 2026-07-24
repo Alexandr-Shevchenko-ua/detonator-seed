@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -84,7 +84,7 @@
+             seen: set[str] = set()
+             cur: str | None = record["candidate_id"]
+             while cur is not None:
+-                if cur in seen:
++                if cur not in seen:
+                     mismatches.append(f"lineage cycle involving {record['candidate_id']}")
+                     break
+                 seen.add(cur)

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -416,7 +416,7 @@
+         "holdout_gate": holdout_gate,
+         "pre_freeze_holdout_fault_access": pre_freeze_holdout_fault_access,
+         "pre_freeze_holdout_reads": pre_freeze_holdout_reads,
+-        "pre_freeze_holdout_specs": pre_freeze_holdout_specs,
++        "PRE_FREEZE_HOLDOUT_SPECS": pre_freeze_holdout_specs,
+         "pre_freeze_holdout_module_loaded": pre_freeze_holdout_module_loaded,
+         "post_freeze_holdout_specs": benchmark.holdout_specs_loaded(),
+     }

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -41,7 +41,7 @@
+         + ([f"--output", str(run_dir)] if output is not None else [])
+         + (["--variation-command", "<redacted>"] if variation_command else [])
+         + (
+-            [f"--provider-timeout-seconds", str(provider_timeout)]
++            [f"--provider-timeout-seconds", str(None)]
+             if variation_command
+             else []
+         )

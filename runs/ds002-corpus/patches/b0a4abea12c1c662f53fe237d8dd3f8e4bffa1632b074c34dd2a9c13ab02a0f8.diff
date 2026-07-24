@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -232,7 +232,7 @@
+         raise RuntimeError("holdout definitions were attached before archive freeze")
+ 
+     holdout_gate.mark_frozen()
+-    holdout_faults = holdout_gate.load_fault_ids()
++    holdout_faults = None
+     benchmark.attach_holdout_definitions(holdout_module_path)
+     benchmark.validate_holdout_benchmark(holdout_faults)
+     winner_ids = [cell["candidate_id"] for cell in archive_doc["cells"] if cell.get("candidate_id")]

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -128,7 +128,7 @@
+             holdout_by_id = {h["candidate_id"]: h for h in holdout["candidates"]}
+ 
+             for cid in replay_ids:
+-                record = id_to_record[cid]
++                record = None
+                 source = (run_dir / record["artifact"]["path"]).read_text(encoding="utf-8")
+                 search_replay = evaluate_candidate_source(
+                     source, benchmark, search_faults, timeout

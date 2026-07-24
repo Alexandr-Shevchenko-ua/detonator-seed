@@ -1,0 +1,13 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -151,9 +151,7 @@
+             source_hash = tp.sha256_text(_normalize_source(source_text))
+         seen_hashes.add(source_hash)
+ 
+-        search_result = evaluate_candidate_source(
+-            source_text, benchmark, search_faults, timeout
+-        )
++        search_result = None
+         if parent is None:
+             generation = 0
+         else:

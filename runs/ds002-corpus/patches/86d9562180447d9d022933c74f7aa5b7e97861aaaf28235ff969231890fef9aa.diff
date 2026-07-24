@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -329,7 +329,7 @@
+         "seed": {
+             "candidate_id": seed_record["candidate_id"],
+             "search_score": seed_score,
+-            "holdout_score": seed_holdout_score,
++            "XXholdout_scoreXX": seed_holdout_score,
+         },
+         "metrics": metrics,
+         "descendants": {

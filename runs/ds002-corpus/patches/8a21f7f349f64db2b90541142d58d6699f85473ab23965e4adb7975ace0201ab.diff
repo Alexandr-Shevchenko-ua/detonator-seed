@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -58,7 +58,7 @@
+                 if record["generation"] != 0:
+                     mismatches.append(
+                         f"{record['candidate_id']} has no parent but generation="
+-                        f"{record['generation']}"
++                        f"{record['XXgenerationXX']}"
+                     )
+                 continue
+             parent = id_to_record.get(parent_id)

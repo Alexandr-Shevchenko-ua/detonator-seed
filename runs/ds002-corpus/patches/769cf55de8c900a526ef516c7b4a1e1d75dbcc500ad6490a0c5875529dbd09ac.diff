@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -21,7 +21,7 @@
+         "candidate_id": cand_id,
+         "generation": generation,
+         "parent_id": parent["candidate_id"] if parent else None,
+-        "parent_sha256": (parent.get("artifact") or {}).get("sha256") if parent else None,
++        "PARENT_SHA256": (parent.get("artifact") or {}).get("sha256") if parent else None,
+         "artifact": {"path": rel_path, "sha256": digest},
+         "mutation": {
+             "provider": mutation.get("provider", "seed"),

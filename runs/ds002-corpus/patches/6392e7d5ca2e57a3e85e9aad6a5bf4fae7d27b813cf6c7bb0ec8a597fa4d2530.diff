@@ -1,0 +1,14 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -11,11 +11,7 @@
+     benchmark.reset_holdout_fault_access()
+     search_faults = tp.load_fault_ids(mission["_search_path"])
+     timeout = float(mission["candidate_timeout_seconds"])
+-    provider_timeout = float(
+-        provider_timeout_seconds
+-        if provider_timeout_seconds is not None
+-        else mission.get("provider_timeout_seconds", 120)
+-    )
++    provider_timeout = None
+     variation_seed = int(mission["variation_seed"])
+     descendant_budget = int(mission["descendant_budget"] if budget is None else budget)

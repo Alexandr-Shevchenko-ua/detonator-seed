@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -396,7 +396,7 @@
+     print(f"occupied archive cells: {metrics['occupied_archive_cells']}")
+     print("holdout:")
+     for item in holdout_results:
+-        score = item["evaluation"].get("score")
++        score = item["evaluation"].get("XXscoreXX")
+         score_s = f"{score:.6f}" if isinstance(score, (int, float)) else "-"
+         print(f"  {item['candidate_id']}: {score_s}")
+     if isinstance(best_score, (int, float)) and isinstance(delta, (int, float)):

@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -47,7 +47,6 @@
+     argv = shlex.split(variation_command)
+     try:
+         completed = subprocess.run(
+-            argv,
+             input=json.dumps(request),
+             text=True,
+             capture_output=True,

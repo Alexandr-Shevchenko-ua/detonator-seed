@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -193,7 +193,7 @@
+     pre_freeze_holdout_fault_access = benchmark.holdout_fault_access_log()
+     pre_freeze_holdout_reads = holdout_gate.read_count
+     pre_freeze_holdout_specs = benchmark.holdout_specs_loaded()
+-    holdout_module_path = mission["_benchmark_path"].parent / "holdout_faults.py"
++    holdout_module_path = mission["_BENCHMARK_PATH"].parent / "holdout_faults.py"
+     pre_freeze_holdout_module_loaded = False
+     for module in list(sys.modules.values()):
+         mod_file = getattr(module, "__file__", None)

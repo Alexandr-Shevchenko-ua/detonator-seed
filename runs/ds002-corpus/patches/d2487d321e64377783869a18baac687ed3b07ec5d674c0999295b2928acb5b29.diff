@@ -1,0 +1,10 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -171,7 +171,6 @@
+             run_dir=run_dir,
+             index=proposal_index + 1,
+             source_text=source_text,
+-            generation=generation,
+             parent=parent,
+             mutation=mutation,
+             search_result=search_result,

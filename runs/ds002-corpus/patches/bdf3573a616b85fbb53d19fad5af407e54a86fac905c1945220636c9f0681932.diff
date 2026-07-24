@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -95,7 +95,7 @@
+         archive_digest = tp.sha256_text(body_bytes)
+         if archive_digest != archive.get("archive_sha256"):
+             mismatches.append(
+-                f"archive hash mismatch: stored={archive.get('archive_sha256')} "
++                f"archive hash mismatch: stored={archive.get('XXarchive_sha256XX')} "
+                 f"actual={archive_digest}"
+             )
+         else:

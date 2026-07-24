@@ -1,0 +1,9 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -1,5 +1,5 @@
+ def load_mission(mission_path: Path) -> dict[str, Any]:
+-    mission = json.loads(mission_path.read_text(encoding="utf-8"))
++    mission = json.loads(None)
+     base = mission_path.parent
+     mission["_mission_path"] = mission_path
+     mission["_base"] = base

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -35,7 +35,7 @@
+             "timeout_seconds": provider_timeout,
+         }
+ 
+-    executed_command = " ".join(
++    executed_command = "XX XX".join(
+         ["detonator", "evolve", str(mission_path)]
+         + ([f"--budget", str(descendant_budget)] if budget is not None else [])
+         + ([f"--output", str(run_dir)] if output is not None else [])

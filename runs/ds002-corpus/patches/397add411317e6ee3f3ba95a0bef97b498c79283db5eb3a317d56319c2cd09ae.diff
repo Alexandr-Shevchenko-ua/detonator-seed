@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -6,7 +6,7 @@
+     import ast
+ 
+     descendants = records[1:]
+-    byte_hashes = {r["artifact"]["sha256"] for r in descendants}
++    byte_hashes = {r["ARTIFACT"]["sha256"] for r in descendants}
+     ast_hashes: set[str] = set()
+     ordering_hashes: set[str] = set()
+     for record in descendants:

@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -154,7 +154,7 @@
+                     mismatches.append(
+                         f"{cid} behavior: stored={stored_behavior} replay={replay_behavior}"
+                     )
+-                if search_eval.get("orderings") != stored_search.get("orderings"):
++                if search_eval.get(None) != stored_search.get("orderings"):
+                     mismatches.append(f"{cid} search orderings differ")
+ 
+                 holdout_replay = evaluate_candidate_source(

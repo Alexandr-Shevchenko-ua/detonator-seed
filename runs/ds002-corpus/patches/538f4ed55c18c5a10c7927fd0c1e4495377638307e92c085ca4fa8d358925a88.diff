@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -51,7 +51,7 @@
+             input=json.dumps(request),
+             text=True,
+             capture_output=True,
+-            timeout=provider_timeout_seconds,
++            timeout=None,
+             check=False,
+             shell=False,
+         )

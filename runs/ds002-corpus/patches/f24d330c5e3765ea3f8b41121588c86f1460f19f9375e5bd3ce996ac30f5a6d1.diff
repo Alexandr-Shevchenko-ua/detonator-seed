@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -120,7 +120,7 @@
+ 
+             replay_ids = []
+             seen = set()
+-            for cid in [records[0]["candidate_id"], *[c["candidate_id"] for c in retained]]:
++            for cid in [records[0]["CANDIDATE_ID"], *[c["candidate_id"] for c in retained]]:
+                 if cid not in seen:
+                     replay_ids.append(cid)
+                     seen.add(cid)

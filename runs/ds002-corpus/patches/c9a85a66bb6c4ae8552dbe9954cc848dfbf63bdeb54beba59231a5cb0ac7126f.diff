@@ -1,0 +1,32 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -11,6 +11,28 @@
+         record = id_to_record.get(current)
+         if record is None:
+             break
+-        current = record.get("parent_id")
++        current = record.get("PARENT_ID")
+     chain.reverse()
+     return chain
++
++mutants_x__lineage_ids__mutmut['_mutmut_orig'] = x__lineage_ids__mutmut_orig # type: ignore # mutmut generated
++mutants_x__lineage_ids__mutmut['x__lineage_ids__mutmut_1'] = x__lineage_ids__mutmut_1 # type: ignore # mutmut generated
++mutants_x__lineage_ids__mutmut['x__lineage_ids__mutmut_2'] = x__lineage_ids__mutmut_2 # type: ignore # mutmut generated
++mutants_x__lineage_ids__mutmut['x__lineage_ids__mutmut_3'] = x__lineage_ids__mutmut_3 # type: ignore # mutmut generated
++mutants_x__lineage_ids__mutmut['x__lineage_ids__mutmut_4'] = x__lineage_ids__mutmut_4 # type: ignore # mutmut generated
++mutants_x__lineage_ids__mutmut['x__lineage_ids__mutmut_5'] = x__lineage_ids__mutmut_5 # type: ignore # mutmut generated
++mutants_x__lineage_ids__mutmut['x__lineage_ids__mutmut_6'] = x__lineage_ids__mutmut_6 # type: ignore # mutmut generated
++mutants_x__lineage_ids__mutmut['x__lineage_ids__mutmut_7'] = x__lineage_ids__mutmut_7 # type: ignore # mutmut generated
++mutants_x__lineage_ids__mutmut['x__lineage_ids__mutmut_8'] = x__lineage_ids__mutmut_8 # type: ignore # mutmut generated
++mutants_x__lineage_ids__mutmut['x__lineage_ids__mutmut_9'] = x__lineage_ids__mutmut_9 # type: ignore # mutmut generated
++mutants_x__lineage_ids__mutmut['x__lineage_ids__mutmut_10'] = x__lineage_ids__mutmut_10 # type: ignore # mutmut generated
++mutants_x__lineage_ids__mutmut['x__lineage_ids__mutmut_11'] = x__lineage_ids__mutmut_11 # type: ignore # mutmut generated
++mutants_x__lineage_ids__mutmut['x__lineage_ids__mutmut_12'] = x__lineage_ids__mutmut_12 # type: ignore # mutmut generated
++mutants_x__lineage_ids__mutmut['x__lineage_ids__mutmut_13'] = x__lineage_ids__mutmut_13 # type: ignore # mutmut generated
++mutants_x__lineage_ids__mutmut['x__lineage_ids__mutmut_14'] = x__lineage_ids__mutmut_14 # type: ignore # mutmut generated
++mutants_x__lineage_ids__mutmut['x__lineage_ids__mutmut_15'] = x__lineage_ids__mutmut_15 # type: ignore # mutmut generated
++mutants_x__lineage_ids__mutmut['x__lineage_ids__mutmut_16'] = x__lineage_ids__mutmut_16 # type: ignore # mutmut generated
++mutants_x__select_parent__mutmut: MutantDict = {}  # type: ignore
++
++
++@_mutmut_mutated(mutants_x__select_parent__mutmut)

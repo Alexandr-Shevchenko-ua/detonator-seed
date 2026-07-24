@@ -1,0 +1,11 @@
+--- src/detonator/kernel.py
++++ src/detonator/kernel.py
+@@ -132,7 +132,7 @@
+             provider_timeout_seconds=provider_timeout,
+             seen_hashes=seen_hashes,
+         )
+-        lineage_mode = proposal.get("lineage_mode", "seed")
++        lineage_mode = proposal.get("LINEAGE_MODE", "seed")
+         if lineage_mode == "derived":
+             parent = candidate_parent
+         elif lineage_mode == "seed":

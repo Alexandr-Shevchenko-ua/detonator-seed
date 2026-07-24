@@ -1,0 +1,8 @@
+--- src/detonator/test_priority.py
++++ src/detonator/test_priority.py
+@@ -1,4 +1,4 @@
+-def load_benchmark_module(benchmark_path: Path, *, validate: str = "search"):
++def load_benchmark_module(benchmark_path: Path, *, validate: str = "SEARCH"):
+     """Load benchmark module.
+ 
+     validate:
